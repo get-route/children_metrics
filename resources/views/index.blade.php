@@ -110,8 +110,8 @@
             <div class="position-absolute start-100 bottom-0 translate-middle-x d-none d-xl-block ms-xl-n4"><img
                     src="{{asset('Frontend/img/dest/shape.svg')}} " alt="destination"/></div>
             <div class="mb-7 text-center">
-                <h5 class="text-secondary">Top Selling </h5>
-                <h3 class="fs-xl-10 fs-lg-8 fs-7 fw-bold font-cursive text-capitalize">Top Destinations</h3>
+                <h5 class="text-secondary">Метрики месяца </h5>
+                <h3 class="fs-xl-10 fs-lg-8 fs-7 fw-bold font-cursive text-capitalize">Самые трендовые метрики месяца</h3>
             </div>
             <div class="row">
                 <div class="col-md-4 mb-4">
@@ -121,12 +121,9 @@
                         <div class="card-body py-4 px-3">
                             <div class="d-flex flex-column flex-lg-row justify-content-between mb-3">
                                 <h4 class="text-secondary fw-medium"><a
-                                        class="link-900 text-decoration-none stretched-link" href="#!">Rome, Italty</a>
-                                </h4><span class="fs-1 fw-medium">$5,42k</span>
+                                        class="link-900 text-decoration-none stretched-link" href="#!">Черная рамка</a>
+                                </h4><span class="fs-1 fw-medium">Р99 РУБ</span>
                             </div>
-                            <div class="d-flex align-items-center"><img
-                                    src="{{asset('Frontend/img/dest/navigation.svg')}} " style="margin-right: 14px"
-                                    width="20" alt="navigation"/><span class="fs-0 fw-medium">10 Days Trip</span></div>
                         </div>
                     </div>
                 </div>
@@ -137,12 +134,9 @@
                         <div class="card-body py-4 px-3">
                             <div class="d-flex flex-column flex-lg-row justify-content-between mb-3">
                                 <h4 class="text-secondary fw-medium"><a
-                                        class="link-900 text-decoration-none stretched-link" href="#!">London, UK</a>
-                                </h4><span class="fs-1 fw-medium">$4.2k</span>
+                                        class="link-900 text-decoration-none stretched-link" href="#!">Светлая рамка</a>
+                                </h4><span class="fs-1 fw-medium">99 РУБ</span>
                             </div>
-                            <div class="d-flex align-items-center"><img
-                                    src="{{asset('Frontend/img/dest/navigation.svg')}} " style="margin-right: 14px"
-                                    width="20" alt="navigation"/><span class="fs-0 fw-medium">12 Days Trip</span></div>
                         </div>
                     </div>
                 </div>
@@ -153,12 +147,9 @@
                         <div class="card-body py-4 px-3">
                             <div class="d-flex flex-column flex-lg-row justify-content-between mb-3">
                                 <h4 class="text-secondary fw-medium"><a
-                                        class="link-900 text-decoration-none stretched-link" href="#!">Full Europe</a>
-                                </h4><span class="fs-1 fw-medium">$15k</span>
+                                        class="link-900 text-decoration-none stretched-link" href="#!">Светлая рамка</a>
+                                </h4><span class="fs-1 fw-medium">99 РУБ</span>
                             </div>
-                            <div class="d-flex align-items-center"><img
-                                    src="{{asset('Frontend/img/dest/navigation.svg')}} " style="margin-right: 14px"
-                                    width="20" alt="navigation"/><span class="fs-0 fw-medium">28 Days Trip</span></div>
                         </div>
                     </div>
                 </div>
@@ -178,35 +169,31 @@
             <div class="row align-items-center">
                 <div class="col-lg-6">
                     <div class="mb-4 text-start">
-                        <h5 class="text-secondary">Easy and Fast </h5>
-                        <h3 class="fs-xl-10 fs-lg-8 fs-7 fw-bold font-cursive text-capitalize">Book your next trip in 3
-                            easy steps</h3>
+                        <h5 class="text-secondary">Сделай свою Метрику </h5>
+                        <h3 class="fs-xl-10 fs-lg-8 fs-7 fw-bold font-cursive text-capitalize">Создайте уникальную метрику за 3 шага</h3>
                     </div>
                     <div class="d-flex align-items-start mb-5">
                         <div class="bg-primary me-sm-4 me-3 p-3" style="border-radius: 13px"><img
                                 src="{{asset('Frontend/img/steps/selection.svg')}}" width="22" alt="steps"/></div>
                         <div class="flex-1">
-                            <h5 class="text-secondary fw-bold fs-0">Choose Destination</h5>
-                            <p>Choose your favourite place. No matter <br class="d-none d-sm-block"> where you travel
-                                inside the World.</p>
+                            <h5 class="text-secondary fw-bold fs-0">Откройте редактор</h5>
+                            <p>Просто выбирайте интересующий Вас элмент метрики по шагам <br class="d-none d-sm-block"> или приобретите уже готовый премиум вариант.</p>
                         </div>
                     </div>
                     <div class="d-flex align-items-start mb-5">
                         <div class="bg-danger me-sm-4 me-3 p-3" style="border-radius: 13px"><img
                                 src="{{asset('Frontend/img/steps/water-sport.svg')}} " width="22" alt="steps"/></div>
                         <div class="flex-1">
-                            <h5 class="text-secondary fw-bold fs-0">Make Payment</h5>
-                            <p>After find your perfect spot, make your <br class="d-none d-sm-block"> payment and get
-                                ready to travel.</p>
+                            <h5 class="text-secondary fw-bold fs-0">Подтвердите сохранение</h5>
+                            <p>Заполните необходимые поля в редакторе и <br class="d-none d-sm-block"> оплатите шаблон после сохранения.</p>
                         </div>
                     </div>
                     <div class="d-flex align-items-start mb-5">
                         <div class="bg-info me-sm-4 me-3 p-3" style="border-radius: 13px"><img
                                 src="{{asset('Frontend/img/steps/taxi.svg')}} " width="22" alt="steps"/></div>
                         <div class="flex-1">
-                            <h5 class="text-secondary fw-bold fs-0">Reach Airport on Selected Date</h5>
-                            <p>Lastly, you have to arrive at the airport <br class="d-none d-sm-block"> on time and
-                                enjoy the vacation.</p>
+                            <h5 class="text-secondary fw-bold fs-0">Скачате шаблон и распечатайте</h5>
+                            <p>Получите итоговый вариант документа <br class="d-none d-sm-block"> и распечатайте его в удобном для Вас варианте.</p>
                         </div>
                     </div>
                 </div>
@@ -279,9 +266,8 @@
             <div class="row">
                 <div class="col-lg-5">
                     <div class="mb-8 text-start">
-                        <h5 class="text-secondary">Testimonials </h5>
-                        <h3 class="fs-xl-10 fs-lg-8 fs-7 fw-bold font-cursive text-capitalize">What people say about
-                            Us.</h3>
+                        <h5 class="text-secondary">Отзывы </h5>
+                        <h3 class="fs-xl-10 fs-lg-8 fs-7 fw-bold font-cursive text-capitalize">Что клиенты говорят о нас</h3>
                     </div>
                 </div>
                 <div class="col-lg-1"></div>
@@ -305,11 +291,9 @@
                                                 src="{{asset('Frontend/img/testimonial/author.png')}} " height="65"
                                                 width="65" alt=""/></div>
                                         <div class="card-body p-4">
-                                            <p class="fw-medium mb-4">&quot;On the Windows talking painted pasture yet
-                                                its express parties use. Sure last upon he same as knew next. Of
-                                                believed or diverted no.&quot;</p>
-                                            <h5 class="text-secondary">Mike taylor</h5>
-                                            <p class="fw-medium fs--1 mb-0">Lahore, Pakistan</p>
+                                            <p class="fw-medium mb-4">&quot;Удобный сервис. Долго искала как мне сделать свою, не шаблонную метрику для ребенка. В итоге у нас некоторые за это больше 1т просят. У Вас я за 99 рублей все сама сделала.&quot;</p>
+                                            <h5 class="text-secondary">Юлия Васнецова</h5>
+                                            <p class="fw-medium fs--1 mb-0">Россия, Омск</p>
                                         </div>
                                     </div>
                                     <div class="card shadow-sm position-absolute top-0 z-index--1 mb-3 w-100 h-100"
@@ -322,11 +306,9 @@
                                                 src="{{asset('Frontend/img/testimonial/author2.png')}} " height="65"
                                                 width="65" alt=""/></div>
                                         <div class="card-body p-4">
-                                            <p class="fw-medium mb-4">&quot;Jadoo is recognized as one of the finest
-                                                travel agency in the world. When it came to planning a trip, I found
-                                                them to be dependable.&quot;</p>
-                                            <h5 class="text-secondary">Thomas Wagon</h5>
-                                            <p class="fw-medium fs--1 mb-0">CEO of Red Button</p>
+                                            <p class="fw-medium mb-4">&quot;Спасибо, Вы классные. Я не стала заморачиваться и скачала уже готовый премиум вариант. Все идеально подошло. Сейчас в рамочку поставила и любуемся с мужем.&quot;</p>
+                                            <h5 class="text-secondary">Анна Виткова</h5>
+                                            <p class="fw-medium fs--1 mb-0">Россия, Пермь</p>
                                         </div>
                                     </div>
                                     <div class="card shadow-sm position-absolute top-0 z-index--1 mb-3 w-100 h-100"
@@ -339,11 +321,9 @@
                                                 src="{{asset('Frontend/img/testimonial/author3.png')}} " height="65"
                                                 width="65" alt=""/></div>
                                         <div class="card-body p-4">
-                                            <p class="fw-medium mb-4">&quot;On the Windows talking painted pasture yet
-                                                its express parties use. Sure last upon he same as knew next. Of
-                                                believed or diverted no.&quot;</p>
-                                            <h5 class="text-secondary">Kelly Willium</h5>
-                                            <p class="fw-medium fs--1 mb-0">Khulna, Bangladesh</p>
+                                            <p class="fw-medium mb-4">&quot;Думаю альтернативы Вашему сервису пока нет. Спасибо, очень удобно, а главное по карману. Некоторые частники у нас за это под 2 000 просят, я была удивлена, когда в ВК увидела Вас.&quot;</p>
+                                            <h5 class="text-secondary">Катерина Митина</h5>
+                                            <p class="fw-medium fs--1 mb-0">Россия, Рязань</p>
                                         </div>
                                     </div>
                                     <div class="card shadow-sm position-absolute top-0 z-index--1 mb-3 w-100 h-100"
@@ -367,55 +347,7 @@
         </div><!-- end of .container-->
 
     </section>
-    <!-- <section> close ============================-->
-    <!-- ============================================-->
 
-
-    <div class="position-relative pt-9 pt-lg-8 pb-6 pb-lg-8">
-        <div class="container">
-            <div class="row row-cols-lg-5 row-cols-md-3 row-cols-2 flex-center">
-                <div class="col">
-                    <div class="card shadow-hover mb-4" style="border-radius:10px;">
-                        <div class="card-body text-center"><img class="img-fluid"
-                                                                src="{{asset('Frontend/img/partner/1.png')}} " alt=""/>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card shadow-hover mb-4" style="border-radius:10px;">
-                        <div class="card-body text-center"><img class="img-fluid"
-                                                                src="{{asset('Frontend/img/partner/2.png')}} " alt=""/>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card shadow-hover mb-4" style="border-radius:10px;">
-                        <div class="card-body text-center"><img class="img-fluid"
-                                                                src="{{asset('Frontend/img/partner/3.png')}} " alt=""/>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card shadow-hover mb-4" style="border-radius:10px;">
-                        <div class="card-body text-center"><img class="img-fluid"
-                                                                src="{{asset('Frontend/img/partner/4.png')}} " alt=""/>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card shadow-hover mb-4" style="border-radius:10px;">
-                        <div class="card-body text-center"><img class="img-fluid"
-                                                                src="{{asset('Frontend/img/partner/5.png')}} " alt=""/>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <!-- ============================================-->
-    <!-- <section> begin ============================-->
     <section class="pt-6">
 
         <div class="container">
@@ -430,19 +362,18 @@
                 </div>
                 <div class="row justify-content-center">
                     <div class="col-lg-8 col-md-10">
-                        <h2 class="text-secondary lh-1-7 mb-7">Subscribe to get information, latest news and other
-                            interesting offers about Cobham</h2>
+                        <h2 class="text-secondary lh-1-7 mb-7">У нас постоянно проходят акции и розыгрыши. Подпишитесь на нас в соц сетях или по почте, чтобы быть в курсе...</h2>
                         <form class="row g-3 align-items-center w-lg-75 mx-auto">
                             <div class="col-sm">
                                 <div class="input-group-icon">
                                     <input class="form-control form-little-squirrel-control" type="email"
-                                           placeholder="Enter email " aria-label="email"/><img class="input-box-icon"
+                                           placeholder="Введите email " aria-label="email"/><img class="input-box-icon"
                                                                                                src="{{asset('Frontend/img/cta/mail.svg')}} "
                                                                                                width="17" alt="mail"/>
                                 </div>
                             </div>
                             <div class="col-sm-auto">
-                                <button class="btn btn-danger orange-gradient-btn fs--1">Subscribe</button>
+                                <button class="btn btn-danger orange-gradient-btn fs--1">Подписаться</button>
                             </div>
                         </form>
                     </div>

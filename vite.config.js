@@ -9,7 +9,7 @@ export default defineConfig({
                 'resources/js/app.js',
                 'resources/js/fontawesome/all.min.js',
                 'resources/js/theme.js',
-                'resources/css/theme.css'
+                'resources/css/theme.css',
             ],
             refresh: true,
         }),

@@ -17,8 +17,7 @@
 <main class="main" id="top">
     @yield('menu')
     <section style="padding-top: 7rem;">
-        <div class="bg-holder" style="background-image:url({{asset('Frontend/img/hero/hero-bg.svg')}} );">
-        </div>
+
         <!--/.bg-holder-->
 
         <div class="container">

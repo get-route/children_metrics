@@ -15,10 +15,9 @@ import { createApp } from 'vue';
 
 const app = createApp({});
 
-import ExampleComponent from './components/ExampleComponent.vue';
-import First from "./components/First.vue";
-app.component('example-component', ExampleComponent);
-app.component('first-comp', First);
+import RedactIndexComponents from "./components/frontend/redactor/RedactIndexComponents.vue";
+
+app.component('redact-index',RedactIndexComponents)
 
 /**
  * The following block of code may be used to automatically register your

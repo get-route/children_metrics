@@ -13,8 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
+Route::get('/','App\Http\Controllers\IndexController@index')->name('index');
+Route::get('/redactor','App\Http\Controllers\RedactorController@index')->name('index.redactor');
 
 

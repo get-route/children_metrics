@@ -71,10 +71,12 @@
 <!-- ===============================================-->
 <!--    JavaScripts-->
 <!-- ===============================================-->
-<script src="{{asset('Frontend/js/bootstrap/bootstrap.min.js')}}"></script>
+
 @vite([
 'resources/js/fontawesome/all.min.js',
 'resources/js/theme.js',
 'resources/css/theme.css',
+'resources/js/app.js',
+
 ])
 @endsection

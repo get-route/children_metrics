@@ -18,7 +18,12 @@
 <main class="main" id="top">
     @yield('menu')
         <section style="padding-top: 7rem;" id="app">
-            <redact-index></redact-index>
+            <div class="container">
+
+                    <Redactor-Index></Redactor-Index>
+
+            </div>
+
 
         </section>
 
@@ -29,6 +34,8 @@
 <!-- ===============================================-->
 <!-- ============================================-->
 @yield('footer')
+
 </body>
 
 </html>
+

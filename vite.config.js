@@ -19,7 +19,11 @@ export default defineConfig({
                     base: null,
                     includeAbsolute: false,
                 },
+                compilerOptions: {
+                    isCustomElement: (tag) => ['md-linedivider'].includes(tag),
+                }
             },
+
         }),
     ],
     resolve: {
@@ -27,4 +31,6 @@ export default defineConfig({
             vue: 'vue/dist/vue.esm-bundler.js',
         },
     },
+
+
 });

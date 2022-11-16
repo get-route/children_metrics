@@ -65,6 +65,7 @@
 
 
 <div class="py-5 text-center">
+
     <p class="mb-0 text-secondary fs--1 fw-medium">All rights reserved@jadoo.co </p>
 </div>
 
@@ -73,10 +74,9 @@
 <!-- ===============================================-->
 
 @vite([
+'resources/js/app.js',
 'resources/js/fontawesome/all.min.js',
 'resources/js/theme.js',
 'resources/css/theme.css',
-'resources/js/app.js',
-
 ])
 @endsection

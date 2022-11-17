@@ -8,7 +8,8 @@
 
 
 @yield('head')
-
+<link rel="stylesheet" href="https://unpkg.com/huebee@2/dist/huebee.min.css">
+<script src="https://unpkg.com/huebee@2/dist/huebee.pkgd.min.js"></script>
 <body>
 
 <!-- ===============================================-->
@@ -21,18 +22,17 @@
             <div class="container">
 
                     <Redactor-Index></Redactor-Index>
-
             </div>
 
 
         </section>
-
 
 </main>
 <!-- ===============================================-->
 <!--    End of Main Content-->
 <!-- ===============================================-->
 <!-- ============================================-->
+
 @yield('footer')
 
 </body>

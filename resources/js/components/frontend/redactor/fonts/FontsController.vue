@@ -2,14 +2,14 @@
 
 
     <div class="col-lg-6">
-        <input v-model="names" @input="NameClick" placeholder="Укажите имя ребенка">
+        <input @input="NameClick" placeholder="Укажите имя ребенка">
     </div>
     <div class="col-lg-6" v-if="this.$store.state.fontRedact.name">
         <select class="form-select btn font-selected" @change="FontsClick">
-            <option selected>Выберите шрифт...</option>
-            <option class="segoe-font" value="segoe-font">{{names}}</option>
-            <option class="verdana-font" value="verdana-font">{{names}}</option>
-            <option class="monotype-corsiva" value="monotype-corsiva">{{names}}</option>
+            <option selected>Выберите шрифт</option>
+            <option class="segoe-font" value="segoe-font">{{this.$store.state.fontRedact.name}}</option>
+            <option class="verdana-font" value="verdana-font">{{this.$store.state.fontRedact.name}}</option>
+            <option class="monotype-corsiva" value="monotype-corsiva">{{this.$store.state.fontRedact.name}}</option>
         </select>
     </div>
     <div class="col-lg-6">
@@ -17,8 +17,6 @@
     </div>
 
 
-{{this.$store.getters.GET_NAMES}}
-{{this.$store.getters.GET_FONT_SIZE}}
 
 
 
@@ -54,7 +52,6 @@ export default {
 <style >
     .segoe-font{
         font-family: "Segoe Script";
-
     }
     .verdana-font{
         font-family: "Verdana";

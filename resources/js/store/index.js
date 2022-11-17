@@ -1,5 +1,4 @@
 import test2 from "./modules/test2.js";
-
 import fontsRedact from "./modules/fonts/fonts.js";
 //import redactor from "./modules/redactor.js";
 import {createStore} from "vuex";

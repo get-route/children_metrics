@@ -1,67 +1,68 @@
 <template>
     <div class="row">
-        <div class="col-lg-4">
 
-            <FontsController>
-<!--                <Chrome v-model="colors" @change-color="onChange"></Chrome>-->
-            </FontsController>
-        </div>
-        <input class="color-input" data-huebee='{ "setBGColor": true, "saturations": 2 }' />
-        <div class="col-lg-8" >
-            <p :style="btnStyles.color">Привет мир</p>
-            <p :class="this.$store.state.fontRedact.font" :style="btnStyles.font_size">
-            {{this.$store.state.fontRedact.name}}
-            {{this.$store.state.fontRedact.count}}
+            <FontsController></FontsController>
 
-        </p>
+        <div class="col-lg-6">
+            <p :class="this.$store.state.fontRedact.font" :style="btnStyles.font_size+';'+ 'color:' + this.$store.state.fontRedact.gender_child">
+                {{this.$store.state.fontRedact.child}}
+                {{this.$store.state.fontRedact.count}}
+
+            </p>
+            <p :class="this.$store.state.fontRedact.font" :style="btnStyles.font_size+';'+ 'color:' + this.$store.state.fontRedact.name_child">
+                {{this.$store.state.fontRedact.name}}
+                {{this.$store.state.fontRedact.count}}
+
+            </p>
         </div>
+
+        <p>Имя</p>
+
+        <p>Дата</p>
+        <p>Время</p>
+        <p>День недели</p>
+
+        <p>Вес</p>
+        <p>Рост</p>
+
+        <p>Мама</p>
+        <p>Папа</p>
+        <p>братья</p>
+        <p>сестры</p>
+
+        <p>Город</p>
+        <p>год соб</p>
+        <p>Знак Зодиака</p>
+        <p>доп</p>
+
+
     </div>
 
 </template>
 
 <script>
     import FontsController from "./fonts/FontsController.vue";
-    import { Photoshop, Chrome } from 'vue-color'
-    import 'vue-color/dist/vue-color.min'
-    import {mapState} from 'vuex'
     export default {
         name: "Redactor-Index",
-        components: {FontsController, Chrome},
+
+        components: {FontsController},
+
         // mounted() {
         //     this.FontSizeText(this.$store.state.fontRedact.count)
         // },
-        data () {
-
-            return {
-
-                colors: {
-                    hex: '#860000',
-                    hex8: '#194D33A8',
-                    hsl: { h: 150, s: 0.5, l: 0.2, a: 1 },
-                    hsv: { h: 150, s: 0.66, v: 0.30, a: 1 },
-                    rgba: { r: 25, g: 77, b: 51, a: 1 },
-                    a: 1
-                }
-            }
-        },
         computed: {
             btnStyles() {
                 return {
-                    color: 'color:' + this.colors.hex,
                     font_size: 'font-size:' + this.$store.state.fontRedact.count + 'px',
                 };
             },
         },
-        methods:{
-            onChange (val) {
-                this.colors = val
-            }
-        }
-        //methods:{
-            // FontSizeText(font){
-            //     return myElement.style.setProperty('--font-sizen', font +'px')
-            // }
-      //  }
+
+       //  methods:{
+       //      FontSizeText(font){
+       //          return myElement.style.setProperty('--font-sizen', font +'px')
+       //      }
+       // }
     }
 </script>
 

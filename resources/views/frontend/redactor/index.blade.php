@@ -8,8 +8,7 @@
 
 
 @yield('head')
-<link rel="stylesheet" href="https://unpkg.com/huebee@2/dist/huebee.min.css">
-<script src="https://unpkg.com/huebee@2/dist/huebee.pkgd.min.js"></script>
+
 <body>
 
 <!-- ===============================================-->

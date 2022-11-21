@@ -2,7 +2,6 @@ const state= {
     font:null,
     name:null,
     child:null,
-    gender_child:null,
     name_child:null,
     count:15,
 

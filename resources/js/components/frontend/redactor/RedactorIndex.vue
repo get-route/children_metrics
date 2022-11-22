@@ -1,40 +1,82 @@
 <template>
     <div class="row">
         <div class="col-lg-6">
-            <FontsController dispatch="FONT_PROPERTY"></FontsController>
+            <div class="row">
+                <div class="col-lg-12">
+                    <FontsController
+                        dispatchFont="FONT_PROPERTY"
+                        dispatchName="NAME_PROPERTY"
+                        dispatchSizeFont = "FONT_SIZE"
+                        dispatchColor = "FONT_COLOR"
+                        :namesField = this.$store.state.fontRedact.name
+                        :fontSizeField = this.$store.state.fontRedact.fontSizeName
+                        :fontColorField=this.$store.state.fontRedact.colorName
+                        h2="Настройка имени"
+                        faqButton="'Укажите имя, которое будет использоваться при заголовки метрики. При желании можно нажмать на значок шестеренки и настроить текстовую область.'"
+                        formPlaceholder="Это тоже"
+                    ></FontsController>
+                    <FontsController
+                    dispatchFont="FONT_PROPERTY_CHILD"
+                    dispatchName="NAME_PROPERTY_CHILD"
+                    dispatchSizeFont = "FONT_SIZE_CHILD"
+                    dispatchColor = "FONT_COLOR_CHILD"
+                    :namesField = this.$store.state.ChildFonts.nameChild
+                    :fontSizeField = this.$store.state.ChildFonts.fontSizeNameChild
+                    :fontColorField=this.$store.state.ChildFonts.colorNameChild
+                    h2="Настройка пола"
+                    faqButton="'Укажите имя'"
+                    formPlaceholder="Задайте имя"
+                ></FontsController>
+                </div>
+
+
+
+
+
+
+                <p>Имя</p>
+
+                <p>Дата</p>
+                <p>Время</p>
+                <p>День недели</p>
+
+                <p>Вес</p>
+                <p>Рост</p>
+
+                <p>Мама</p>
+                <p>Папа</p>
+                <p>братья</p>
+                <p>сестры</p>
+
+                <p>Город</p>
+                <p>год соб</p>
+                <p>Знак Зодиака</p>
+                <p>доп</p>
+
+
+            </div>
         </div>
-
-
         <div class="col-lg-6">
+            <div class="col-lg-12">
 
-            <p :class="this.$store.state.fontRedact.font" :style="btnStyles.font_size+';'+ 'color:' + this.$store.state.fontRedact.name_child">
+                <p :class="this.$store.state.fontRedact.font" :style="'font-size:' + this.$store.state.fontRedact.fontSizeName + 'px'+';'+ 'color:' + this.$store.state.fontRedact.colorName">
                 {{this.$store.state.fontRedact.name}}
-                {{this.$store.state.fontRedact.count}}
+                    {{this.$store.state.fontRedact.fontSizeName}}
 
-            </p>
+                </p>
+            </div>
+            <div class="col-lg-12">
+
+                <p :class="this.$store.state.ChildFonts.fontChild" :style="'font-size:' + this.$store.state.ChildFonts.fontSizeNameChild + 'px'+';'+ 'color:' + this.$store.state.ChildFonts.colorNameChild">
+                    {{this.$store.state.ChildFonts.nameChild}}
+                    {{this.$store.state.ChildFonts.fontSizeNameChild}}
+
+                </p>
+            </div>
         </div>
-
-        <p>Имя</p>
-
-        <p>Дата</p>
-        <p>Время</p>
-        <p>День недели</p>
-
-        <p>Вес</p>
-        <p>Рост</p>
-
-        <p>Мама</p>
-        <p>Папа</p>
-        <p>братья</p>
-        <p>сестры</p>
-
-        <p>Город</p>
-        <p>год соб</p>
-        <p>Знак Зодиака</p>
-        <p>доп</p>
-
-
     </div>
+
+
 
 </template>
 
@@ -44,22 +86,14 @@
         name: "Redactor-Index",
         components: {FontsController},
 
-        // mounted() {
-        //     this.FontSizeText(this.$store.state.fontRedact.count)
-        // },
         computed: {
             btnStyles() {
                 return {
-                    font_size: 'font-size:' + this.$store.state.fontRedact.count + 'px',
+                    font_size: 'font-size:' + this.$store.state.fontRedact.fontSizeName + 'px',
                 };
             },
         },
 
-       //  methods:{
-       //      FontSizeText(font){
-       //          return myElement.style.setProperty('--font-sizen', font +'px')
-       //      }
-       // }
     }
 </script>
 

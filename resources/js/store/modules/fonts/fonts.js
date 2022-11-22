@@ -1,9 +1,9 @@
 const state= {
-    font:null,
     name:null,
-    child:null,
-    name_child:null,
-    count:15,
+    font:null,
+    fontSizeName:15,
+    colorName:null,
+
 
 }
 const actions= {
@@ -13,11 +13,12 @@ const actions= {
     NAME_PROPERTY(context , payload){
         context.commit("SET_NAMES_REDACTOR",payload)
     },
-    NAME_CHILD_PROPERTY(context , payload){
-        context.commit("SET_CHILD_REDACTOR",payload)
-    },
+
     FONT_SIZE(context, payload){
         context.commit("SET_SIZE_FONT", payload)
+    } ,
+    FONT_COLOR(context, payload){
+        context.commit("SET_SIZE_COLOR", payload)
     } ,
 
 
@@ -30,11 +31,12 @@ const getters = {
     GET_NAMES(state) {
         return state.name;
     },
-    GET_CHILD(state) {
-        return state.child;
-    },
+
     GET_FONT_SIZE(state){
-        return state.count;
+        return state.fontSizeName;
+    } ,
+    GET_FONT_COLOR(state){
+        return state.colorName;
     } ,
 
 
@@ -47,11 +49,11 @@ const mutations = {
     SET_NAMES_REDACTOR:(state, payload)=>{
         state.name = payload
     },
-    SET_CHILD_REDACTOR:(state, payload)=>{
-        state.child = payload
-    },
     SET_SIZE_FONT:(state, payload)=>{
-        state.count = payload
+        state.fontSizeName = payload
+}  ,
+    SET_SIZE_COLOR:(state, payload)=>{
+        state.colorName = payload
 }  ,
 
 }

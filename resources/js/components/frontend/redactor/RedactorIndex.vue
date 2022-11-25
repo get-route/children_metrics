@@ -1,6 +1,6 @@
 <template>
     <div class="row">
-        <div class="col-lg-6">
+        <div class="col-lg-5">
             <div class="row">
                 <div class="col-lg-12">
                     <FontsController
@@ -56,23 +56,31 @@
 
             </div>
         </div>
-        <div class="col-lg-6">
-            <div class="col-lg-12">
+        <div class="col-lg-12">
+            <section class="metrica">
+                <div   class="col-lg-12 text-center" :style="this.elem">
 
-                <p :class="this.$store.state.fontRedact.font" :style="'font-size:' + this.$store.state.fontRedact.fontSizeName + 'px'+';'+ 'color:' + this.$store.state.fontRedact.colorName">
-                {{this.$store.state.fontRedact.name}}
-                    {{this.$store.state.fontRedact.fontSizeName}}
+                    <div   :class="this.$store.state.fontRedact.font" :style="'font-size:' + this.$store.state.fontRedact.fontSizeName + 'px'+';'+ 'color:' + this.$store.state.fontRedact.colorName">
+                        {{this.$store.state.fontRedact.name}}
+                        <div  class="col-lg-12" :style="'font-size:' + this.$store.state.fontRedact.fontSizeName/2 + 'px'">
+                            <button @click="right(10)" class="text-center btn btn-dark step_botton">🡡</button>
+                            <button class="text-center btn btn-dark step_botton">🡠</button>
+                            <button class="text-center btn btn-dark step_botton">🡢</button>
+                            <button class="text-center btn btn-dark step_botton">🡣</button>
+                        </div>
 
-                </p>
-            </div>
-            <div class="col-lg-12">
+                    </div>
 
-                <p :class="this.$store.state.ChildFonts.fontChild" :style="'font-size:' + this.$store.state.ChildFonts.fontSizeNameChild + 'px'+';'+ 'color:' + this.$store.state.ChildFonts.colorNameChild">
-                    {{this.$store.state.ChildFonts.nameChild}}
-                    {{this.$store.state.ChildFonts.fontSizeNameChild}}
+                </div>
+                <div class="col-lg-12">
 
-                </p>
-            </div>
+                    <p  :class="this.$store.state.ChildFonts.fontChild" :style="'font-size:' + this.$store.state.ChildFonts.fontSizeNameChild + 'px'+';'+ 'color:' + this.$store.state.ChildFonts.colorNameChild">
+                        {{this.$store.state.ChildFonts.nameChild}}
+
+                    </p>
+                </div>
+            </section>
+
         </div>
     </div>
 
@@ -85,7 +93,14 @@
     export default {
         name: "Redactor-Index",
         components: {FontsController},
-
+        data(){
+          return{
+              elem:null,
+              fieldActive:null,
+              stepFocus:false,
+              right:null,
+          }
+        },
         computed: {
             btnStyles() {
                 return {
@@ -93,11 +108,27 @@
                 };
             },
         },
+        methods:{
+            right(rights){
+                this.right++
+                this.right = rights
+                this.elem = ' position: absolute; left:'+ this.right +'px ; top:6px'
+            }
+
+        }
 
     }
 </script>
 
 <style >
+    .metrica{
+        background-image: url("./public/Frontend/img/metrica/metrika.jpg" );
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        height: 1593px;
+        width: 1126px;
+    }
     .segoe-font{
         font-family: "Segoe Script";
     }
@@ -129,5 +160,8 @@
         color: #190b34;
         font-family: "Segoe Script";
         opacity: 70%;
+    }
+    .step_botton{
+        margin: 2px;
     }
 </style>

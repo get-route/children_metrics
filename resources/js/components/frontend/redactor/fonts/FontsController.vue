@@ -20,7 +20,7 @@
                             <p>
                                 <button class="btn-danger btn" @click="FontSizeButton('-',fontSizeField, dispatchSizeFont)">-</button>
                                 Размер: {{fontSizeField}}
-                                <button class="btn-success btn" @click="FontSizeButton('+',fontSizeField, dispatchSizeFont)">+</button>
+                                <button class="btn-success btn"  @click="FontSizeButton('+',fontSizeField, dispatchSizeFont)" >+</button>
                             </p>
 
                         </div>
@@ -90,6 +90,7 @@ export default {
                 this.$store.dispatch(dispatch, fontSizeField)
             }
         },
+
         infoAlert(alerts){
             return alert(alerts)
         },

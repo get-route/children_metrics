@@ -3,11 +3,16 @@
                 <h2  class="hr mt-5 mb-5 text-center">{{h2}}</h2>
                 <div class="col-lg-12">
                     <div class="input-group mb-3">
-                        <input @input="NameClick($event, dispatchName)" type="text" class="form-control" :placeholder="formPlaceholder" aria-label="Recipient's username" aria-describedby="basic-addon2" id="nameChild">
-                        <div class="input-group-prepend">
+                        <input @input="NameClick($event, dispatchName)" type="text" class="form-control col-md-12" :placeholder="formPlaceholder" aria-label="Recipient's username" aria-describedby="basic-addon2" id="nameChild">
+                        <div class="input-group-prepend col-md-12">
                             <label @click="show.nameShow = !show.nameShow" class="btn bg-secondary m-2" style="color: #f1f3f2" for="inputGroupSelect01"><i class="fa fa-cog" aria-hidden="true"></i></label>
                             <label @click="infoAlert(faqButton)" class="btn bg-secondary m-2" style="color: #f1f3f2" for="inputGroupSelect01"><i class="fa fa-question" aria-hidden="true"></i>
                             </label>
+                            <label><button class="text-center btn btn-dark step_botton" @click="RightBottomPosition(dispatchTopPos,10,topPosition)">🡣</button></label>
+                            <label><button  class="text-center btn btn-dark step_botton" @click="RightBottomPosition(dispatchTopPos,-10,topPosition)">🡡</button></label>
+                            <label><button class="text-center btn btn-dark step_botton" @click="RightBottomPosition(dispatchLeftPos,-10,leftPosition)">🡠</button></label>
+                            <label><button class="text-center btn btn-dark step_botton" @click="RightBottomPosition(dispatchLeftPos,10,leftPosition)">🡢</button></label>
+
                         </div>
                     </div>
                 </div>
@@ -21,6 +26,10 @@
                                 <button class="btn-danger btn" @click="FontSizeButton('-',fontSizeField, dispatchSizeFont)">-</button>
                                 Размер: {{fontSizeField}}
                                 <button class="btn-success btn"  @click="FontSizeButton('+',fontSizeField, dispatchSizeFont)" >+</button>
+
+
+
+
                             </p>
 
                         </div>
@@ -57,12 +66,16 @@ export default {
         'dispatchName',
         'dispatchSizeFont',
         'dispatchColor',
+        'dispatchTopPos',
+        'dispatchLeftPos',
         'h2',
         'formPlaceholder',
         'faqButton',
         'namesField',
         'fontSizeField',
         'fontColorField',
+        'topPosition',
+        'leftPosition',
     ],
     data(){
       return{
@@ -90,7 +103,9 @@ export default {
                 this.$store.dispatch(dispatch, fontSizeField)
             }
         },
-
+        RightBottomPosition(dispatch, step, state){
+            this.$store.dispatch(dispatch,state+step)
+        },
         infoAlert(alerts){
             return alert(alerts)
         },

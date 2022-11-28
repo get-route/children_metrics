@@ -52,23 +52,33 @@
                 <p>год соб</p>
                 <p>Знак Зодиака</p>
                 <p>доп</p>
-
+                @touchmove.prevent="movemob($event)"
+                @mousedown="this.clicks = true" @mousemove.prevent="move($event)"
 
             </div>
         </div>
+
         <div class="col-lg-12">
             <section class="metrica">
-                <div   class="col-lg-12 text-center" :style="this.elem">
+
+                <div   class="col-lg-12 text-center">
 
                     <div   :class="this.$store.state.fontRedact.font" :style="'font-size:' + this.$store.state.fontRedact.fontSizeName + 'px'+';'+ 'color:' + this.$store.state.fontRedact.colorName">
-                        {{this.$store.state.fontRedact.name}}
-                        <div  class="col-lg-12" :style="'font-size:' + this.$store.state.fontRedact.fontSizeName/2 + 'px'">
-                            <button @click="right(10)" class="text-center btn btn-dark step_botton">🡡</button>
-                            <button class="text-center btn btn-dark step_botton">🡠</button>
-                            <button class="text-center btn btn-dark step_botton">🡢</button>
-                            <button class="text-center btn btn-dark step_botton">🡣</button>
-                        </div>
 
+
+                        <div draggable="true" :style="'position: absolute; left:'+ this.$store.state.fontRedact.leftName+'px ; right:'+this.$store.state.fontRedact.rightName+'px; bottom:'+this.$store.state.fontRedact.bottomName+'px; top:'+this.$store.state.fontRedact.topName+'px'">
+                            {{this.$store.state.fontRedact.name}}
+
+
+                        <p  class="col-lg-12" :style="'font-size:' + this.$store.state.fontRedact.fontSizeName/2 + 'px'">
+                            <button class="text-center btn btn-dark step_botton" @click="RightBottomPosition('TOP_NAME',10,this.$store.state.fontRedact.topName)">🡣</button>
+                            <button  class="text-center btn btn-dark step_botton" @click="RightBottomPosition('BOTTOM_NAME',-20,this.$store.state.fontRedact.topName)">🡡</button>
+                            <button class="text-center btn btn-dark step_botton" @click="RightBottomPosition('RIGHT_NAME',10,this.$store.state.fontRedact.rightName)">🡠</button>
+                            <button class="text-center btn btn-dark step_botton" @click="RightBottomPosition('LEFT_NAME',10,this.$store.state.fontRedact.leftName)">🡢</button>
+
+
+                        </p>
+                        </div>
                     </div>
 
                 </div>
@@ -98,7 +108,12 @@
               elem:null,
               fieldActive:null,
               stepFocus:false,
-              right:null,
+              posX:null,
+              posY:null,
+              top:null,
+              left:null,
+              touch:null,
+              clicks:false,
           }
         },
         computed: {
@@ -109,11 +124,58 @@
             },
         },
         methods:{
-            right(rights){
-                this.right++
-                this.right = rights
-                this.elem = ' position: absolute; left:'+ this.right +'px ; top:6px'
-            }
+            TopLeftPosition(dispatch, step, state){
+                this.$store.dispatch(dispatch,state-step)
+            },
+            RightBottomPosition(dispatch, step, state){
+                this.$store.dispatch(dispatch,state+step)
+            },
+
+            // Move(pageX, pageY){
+            //     this.posX = pageX + 'px'
+            //     this.posY = pageY -this.$store.state.fontRedact.fontSizeName/2 + 'px'
+            // },
+            // move: function ($event)
+            //     {
+            //         if (this.clicks == true){
+            //
+            //
+            //         //console.log($event.offsetX)
+            //         //console.log($event.pageY )
+            //         //console.log($event.pageX)
+            //         this.top = $event.pageY -(1200+$event.offsetY/2)
+            //         this.left = $event.pageX-($event.offsetX/2)
+            //         this.touch="cursor:pointer; z-index:1000; position: absolute; left:"+ this.left+"px ; top:"+ this.top+"px"
+            //     }},
+            //
+            //  movemob(event){
+            //     //console.log(this.touch)
+            //
+            //
+            //     //console.log(event.changedTouches[0].pageX)
+            //     //console.log(event.changedTouches[0].target.clientHeight)
+            //     //console.log(this.$store.state.fontRedact.fontSizeName)
+            //     //console.log(event.target.clickHeight)
+            //     //console.log(event.changedTouches[0].pageY)
+            //
+            //     this.top = event.changedTouches[0].pageY -(1140+event.changedTouches[0].target.clientHeight/2)
+            //     this.left = event.changedTouches[0].pageX-(event.changedTouches[0].target.clientWidth/2)
+            //      //console.log(this.touch)
+            //     this.touch="cursor:pointer; z-index:1000; position: absolute; left:"+ this.left+"px ; top:"+ this.top+"px"
+            //    // this.posX = event.changedTouches[0].pageX-90
+            //     //this.posY = event.changedTouches[0].pageY - 900/2
+            //
+            // },
+            // MouseMowe(event){
+            //     //this.Move(event.pageX, event.pageY)
+            //
+            // },
+            // Position(event){
+            //     this.Move(event.pageX, event.pageY)
+            //     // this.elem = ' position: absolute; left:'+ this.posX+'px ; top:'+ this.posY+'px'
+            //     this.elem = 'position: absolute; left:'+ this.posX+'px ; top:'+ this.posY+'px'
+            //    // console.log(this.posX)
+            // }
 
         }
 
@@ -126,8 +188,6 @@
         background-repeat: no-repeat;
         background-position: center;
         background-size: cover;
-        height: 1593px;
-        width: 1126px;
     }
     .segoe-font{
         font-family: "Segoe Script";

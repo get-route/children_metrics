@@ -3,6 +3,10 @@ const state= {
     font:null,
     fontSizeName:15,
     colorName:null,
+    topName:95,
+    leftName: 95,
+    rightName:95,
+    bottomName:95,
 
 
 }
@@ -19,6 +23,20 @@ const actions= {
     } ,
     FONT_COLOR(context, payload){
         context.commit("SET_SIZE_COLOR", payload)
+    } ,
+    TOP_NAME(context, payload){
+        state.bottomName = state.topName
+        context.commit("SET_TOP_NAME", payload)
+    } ,
+    LEFT_NAME(context, payload){
+        context.commit("SET_LEFT_NAME", payload)
+    } ,
+    RIGHT_NAME(context, payload){
+        context.commit("SET_RIGHT_NAME", payload)
+    } ,
+    BOTTOM_NAME(context, payload){
+        state.topName = state.bottomName
+        context.commit("SET_BOTTOM_NAME", payload)
     } ,
 
 
@@ -38,6 +56,18 @@ const getters = {
     GET_FONT_COLOR(state){
         return state.colorName;
     } ,
+    GET_TOP_NAME(state){
+        return state.topName;
+    } ,
+    GET_LEFT_NAME(state){
+        return state.leftName;
+    } ,
+    GET_RIGHT_NAME(state){
+        return state.rightName;
+    } ,
+    GET_BOTTOM_NAME(state){
+        return state.bottomName;
+    } ,
 
 
 }
@@ -54,6 +84,18 @@ const mutations = {
 }  ,
     SET_SIZE_COLOR:(state, payload)=>{
         state.colorName = payload
+}  ,
+    SET_TOP_NAME:(state, payload)=>{
+        state.topName = payload
+}  ,
+    SET_LEFT_NAME:(state, payload)=>{
+        state.leftName = payload
+}  ,
+    SET_RIGHT_NAME:(state, payload)=>{
+        state.rightName = payload
+}  ,
+    SET_BOTTOM_NAME:(state, payload)=>{
+        state.bottomName = payload
 }  ,
 
 }

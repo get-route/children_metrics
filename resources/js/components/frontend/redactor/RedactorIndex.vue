@@ -15,6 +15,8 @@
                         :fontColorField=this.$store.state.fontRedact.colorName
                         :topPosition="this.$store.state.fontRedact.topName"
                         :leftPosition="this.$store.state.fontRedact.leftName"
+                        :posField="this.$refs.nameField"
+                        :PosImg = "this.$refs.fotodemo"
                         h2="Настройка имени"
                         faqButton="'Укажите имя, которое будет использоваться при заголовки метрики. При желании можно нажмать на значок шестеренки и настроить текстовую область.'"
                         formPlaceholder="Это тоже"
@@ -61,18 +63,16 @@
 
         <!-- #OutPut information input field section# -->
         <div class="col-lg-7 col-md-7 col-7 text-center sticky-top mt-6">
-            <div class="foto_demo " :style="'background-image: url('+'public/Frontend/img/metrica/metrika.jpg' +');'">
-
-
+            <img src="public/Frontend/img/metrica/metrika.jpg" class="foto_demo" ref="fotodemo">
                     <div  class="col-lg-12 text-center">
 
-                        <div  :class="this.$store.state.fontRedact.font" :style="'font-size:' + this.$store.state.fontRedact.fontSizeName + 'px'+';'+ 'color:' + this.$store.state.fontRedact.colorName+ ';position: absolute; left:'+ this.$store.state.fontRedact.leftName+'px; top:'+this.$store.state.fontRedact.topName+'px'">
+                        <div @click="img($event)" ref="nameField" :class="this.$store.state.fontRedact.font" :style="'font-size:' + this.$store.state.fontRedact.fontSizeName + 'px'+';'+ 'color:' + this.$store.state.fontRedact.colorName+ ';position: absolute; left:'+ this.$store.state.fontRedact.leftName+'px; top:'+this.$store.state.fontRedact.topName+'px'">
                                 {{this.$store.state.fontRedact.name}}
                         </div>
 
                     </div>
 
-            </div>
+
         </div>
         <!-- #/END OutPut information input field section# -->
 
@@ -88,6 +88,22 @@
     export default {
         name: "Redactor-Index",
         components: {FontsController},
+        mounted() {
+
+            //this.$store.dispatch("actionScreenWeight",window.screen.width - 90)
+            //this.$store.dispatch("actionScreenHeight", window.screen.height - 90)
+            //размеры $event.target.getBoundingClientRect()
+            //this.img()
+            console.log(this.$refs.fotodemo.getBoundingClientRect().right)
+        },
+        computed:{
+        },
+        methods:{
+            img(event){
+                // console.log($event.target.getBoundingClientRect())
+                console.log(event.target.getBoundingClientRect())
+            }
+        }
 
     }
 </script>
@@ -129,12 +145,8 @@
         margin: 2px;
     }
     .foto_demo{
-
-        background-repeat: no-repeat;
-        background-position: center;
-        background-size: contain;
-        width: 600px;
-        height: 600px;
+        width: 80%;
+        height: auto;
     }
     .foto_demo img{
 

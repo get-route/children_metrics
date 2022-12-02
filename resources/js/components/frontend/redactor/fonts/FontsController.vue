@@ -1,6 +1,7 @@
 <template>
 
                 <h2  class="hr mt-5 mb-5 text-center">{{h2}}</h2>
+
                 <div class="col-lg-12">
                     <div class="input-group mb-3">
                         <input @input="NameClick($event, dispatchName)" type="text" class="form-control col-md-12" :placeholder="formPlaceholder" aria-label="Recipient's username" aria-describedby="basic-addon2" id="nameChild">
@@ -8,10 +9,10 @@
                             <label @click="show.nameShow = !show.nameShow" class="btn bg-secondary m-2" style="color: #f1f3f2" for="inputGroupSelect01"><i class="fa fa-cog" aria-hidden="true"></i></label>
                             <label @click="infoAlert(faqButton)" class="btn bg-secondary m-2" style="color: #f1f3f2" for="inputGroupSelect01"><i class="fa fa-question" aria-hidden="true"></i>
                             </label>
-                            <label><button class="text-center btn btn-dark step_botton" @click="RightBottomPosition(dispatchTopPos,10,topPosition)">🡣</button></label>
-                            <label><button  class="text-center btn btn-dark step_botton" @click="RightBottomPosition(dispatchTopPos,-10,topPosition)">🡡</button></label>
-                            <label><button class="text-center btn btn-dark step_botton" @click="RightBottomPosition(dispatchLeftPos,-10,leftPosition)">🡠</button></label>
-                            <label><button class="text-center btn btn-dark step_botton" @click="RightBottomPosition(dispatchLeftPos,10,leftPosition)">🡢</button></label>
+                            <label><button class="text-center btn btn-dark step_botton" @click="RightBottomPosition(dispatchTopPos,10,topPosition,this.posField.getBoundingClientRect().bottom,this.PosImg.getBoundingClientRect().bottom)">🡣</button></label>
+                            <label><button  class="text-center btn btn-dark step_botton" @click="RightBottomPosition(dispatchTopPos,-10,topPosition,this.posField.getBoundingClientRect().top,this.PosImg.getBoundingClientRect().top)">🡡</button></label>
+                            <label><button class="text-center btn btn-dark step_botton" @click="RightBottomPosition(dispatchLeftPos,-10,leftPosition,this.posField.getBoundingClientRect().left,this.PosImg.getBoundingClientRect().left)">🡠</button></label>
+                            <label><button class="text-center btn btn-dark step_botton" @click="RightBottomPosition(dispatchLeftPos,10,leftPosition,this.posField.getBoundingClientRect().right,this.PosImg.getBoundingClientRect().right)">🡢</button></label>
 
                         </div>
                     </div>
@@ -76,6 +77,8 @@ export default {
         'fontColorField',
         'topPosition',
         'leftPosition',
+        'PosImg',
+        'posField',
     ],
     data(){
       return{
@@ -103,11 +106,21 @@ export default {
                 this.$store.dispatch(dispatch, fontSizeField)
             }
         },
-        RightBottomPosition(dispatch, step, state){
-            this.$store.dispatch(dispatch,state+step)
+        RightBottomPosition(dispatch, step, state, positionField,positionImg){
+            console.log(this.PosImg.getBoundingClientRect().left)
+            console.log(this.posField.getBoundingClientRect().left)
+            //console.log(this.leftPosition)
+            if ((positionField < positionImg)){
+                this.$store.dispatch(dispatch,state+5)
+            }else {
+                this.$store.dispatch(dispatch,state-5)
+            }
         },
         infoAlert(alerts){
             return alert(alerts)
+        },
+        img(){
+            console.log(this.leftPosImg.getBoundingClientRect().left)
         },
         },
     computed: {

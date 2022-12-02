@@ -14,16 +14,30 @@ export default createStore( {
             'verdana-font',
             'monotype-corsiva',
         ],
+        // screenWight:null,
+        // screenHeight:null,
     },
     actions: {
         // SET(context , payload){
         //     context.commit("SETF",payload)
         // }
+        // actionScreenHeight(context, payload){
+        //     context.commit("setScreenHeight",payload)
+        // },
+        // actionScreenWeight(context, payload){
+        //     context.commit("setScreenWight",payload)
+        // },
     },
 //Получают данные от хранилища. Писать заглавными буквами
     getters : {
         // names(state) {
         //     return state.font;
+        // }
+        // getScreenWight(state){
+        //     return state.screenWight
+        // } ,
+        // getScreenHeight(state){
+        //     return state.screenHeight
         // }
     },
 //Для установки нужных данных в хранилище. Идет как commit
@@ -34,6 +48,13 @@ export default createStore( {
         // increment (state) {
         //     state.count++
         // }
+        // setScreenWight:(state,payload)=>{
+        //     state.screenWight = payload
+        // },
+        // setScreenHeight:(state,payload)=>{
+        //     state.screenHeight = payload
+        // },
+
     },
 
     modules:{

@@ -42,7 +42,7 @@
                             </div>
                             <select class="custom-select" id="inputGroupSelect01" @change="NameClick($event, dispatchFont)">
                                 <option selected>Выбрать...</option>
-                                <option v-for="fonts in this.$store.state.fontAr" :class="fonts" :value="fonts">({{fonts}}) {{namesField}}</option>
+                                <option v-for="fonts in this.$store.state.fontAr" :style="'font-family:'+fonts" :value="fonts">({{fonts}}) {{namesField}}</option>
                             </select>
                         </div>
                     </div>
@@ -107,8 +107,8 @@ export default {
             }
         },
         RightBottomPosition(dispatch, step, state, positionField,positionImg){
-            console.log(this.PosImg.getBoundingClientRect().left)
-            console.log(this.posField.getBoundingClientRect().left)
+            //console.log(this.PosImg.getBoundingClientRect().left)
+           // console.log(this.posField.getBoundingClientRect().left)
             //console.log(this.leftPosition)
             if ((positionField < positionImg)){
                 this.$store.dispatch(dispatch,state+5)
@@ -118,9 +118,6 @@ export default {
         },
         infoAlert(alerts){
             return alert(alerts)
-        },
-        img(){
-            console.log(this.leftPosImg.getBoundingClientRect().left)
         },
         },
     computed: {

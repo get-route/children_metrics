@@ -10,9 +10,12 @@ export default createStore( {
         // font:55,
         //Набор шрифтов. fontAr.name = .class
         fontAr : [
-            'segoe-font',
-            'verdana-font',
-            'monotype-corsiva',
+            // 'segoe-font',
+            // 'verdana-font',
+            // 'monotype-corsiva',
+            'Segoe Script',
+            'Verdana',
+            'Monotype Corsiva',
         ],
         // screenWight:null,
         // screenHeight:null,

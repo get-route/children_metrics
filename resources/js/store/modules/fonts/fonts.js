@@ -3,8 +3,8 @@ const state= {
     font:null,
     fontSizeName:15,
     colorName:null,
-    topName:95,
-    leftName: 95,
+    topName:150,
+    leftName: 150,
 
 }
 const actions= {

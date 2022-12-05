@@ -17,6 +17,7 @@ export default createStore( {
             'Verdana',
             'Monotype Corsiva',
         ],
+        urlSite:"metriki.ru"
         // screenWight:null,
         // screenHeight:null,
     },

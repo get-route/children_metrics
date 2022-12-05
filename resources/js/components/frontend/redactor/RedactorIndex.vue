@@ -64,9 +64,9 @@
         <!-- #OutPut information input field section# -->
         <div class="col-lg-7 col-md-7 col-7 text-center sticky-top mt-6" >
 
+            <img src="public/Frontend/img/metrica/metrika2.jpg" class="foto_demo" ref="fotodemo">
 
                     <div  class="col-lg-12 text-center" id="metric_success">
-                        <img src="public/Frontend/img/metrica/metrika.jpg" class="foto_demo" ref="fotodemo">
                         <div @click="img($event)" ref="nameField" :style="'font-family:'+this.$store.state.fontRedact.font+';font-size:' + this.$store.state.fontRedact.fontSizeName + 'px'+';'+ 'color:' + this.$store.state.fontRedact.colorName+ ';position: absolute; left:'+ this.$store.state.fontRedact.leftName+'px; top:'+this.$store.state.fontRedact.topName+'px'">
                                 {{this.$store.state.fontRedact.name}}
                         </div>
@@ -80,7 +80,9 @@
 
 
     </div>
-        <SaveComponent>
+        <SaveComponent
+        :imgNatParams="this.$refs.fotodemo"
+        >
 
         </SaveComponent>
 
@@ -104,16 +106,20 @@
             //this.$store.dispatch("actionScreenHeight", window.screen.height - 90)
             //размеры $event.target.getBoundingClientRect()
             //this.img()
-            console.log(this.$refs.fotodemo.getBoundingClientRect().right)
-            console.log(document.getElementById("canvas"))
+            // console.log(this.$refs.fotodemo.getBoundingClientRect().right)
+            // console.log(document.getElementById("canvas"))
+            // console.log(this.$refs.fotodemo.naturalHeight)
+            // console.log(this.$refs.fotodemo.naturalWidth)
+            // console.log(this.$refs.fotodemo.clientHeight)
+            // console.log(this.$refs.fotodemo.clientWidth)
+             console.log(this.$refs)
+            console.log("Left - "+this.$store.state.fontRedact.leftName,
+            "TOP - " + this.$store.state.fontRedact.topName)
         },
         computed:{
         },
         methods:{
-            img(img_path){
-                // console.log($event.target.getBoundingClientRect())
-                console.log(event.target.getBoundingClientRect())
-            },
+
         }
 
     }

@@ -107,9 +107,9 @@ export default {
             }
         },
         RightBottomPosition(dispatch, step, state, positionField,positionImg){
-            //console.log(this.PosImg.getBoundingClientRect().left)
+           //  console.log(this.PosImg.getBoundingClientRect().left)
            // console.log(this.posField.getBoundingClientRect().left)
-            //console.log(this.leftPosition)
+           //  console.log(this.leftPosition)
             if ((positionField < positionImg)){
                 this.$store.dispatch(dispatch,state+5)
             }else {

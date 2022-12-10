@@ -21,18 +21,26 @@
                         faqButton="'Укажите имя, которое будет использоваться при заголовки метрики. При желании можно нажмать на значок шестеренки и настроить текстовую область.'"
                         formPlaceholder="Это тоже"
                     ></FontsController>
-<!--                    <FontsController-->
-<!--                    dispatchFont="FONT_PROPERTY_CHILD"-->
-<!--                    dispatchName="NAME_PROPERTY_CHILD"-->
-<!--                    dispatchSizeFont = "FONT_SIZE_CHILD"-->
-<!--                    dispatchColor = "FONT_COLOR_CHILD"-->
-<!--                    :namesField = this.$store.state.ChildFonts.nameChild-->
-<!--                    :fontSizeField = this.$store.state.ChildFonts.fontSizeNameChild-->
-<!--                    :fontColorField=this.$store.state.ChildFonts.colorNameChild-->
-<!--                    h2="Настройка пола"-->
-<!--                    faqButton="'Укажите имя'"-->
-<!--                    formPlaceholder="Задайте имя"-->
-<!--                ></FontsController>-->
+
+                    <FontsController
+                    dispatchFont="FONT_PROPERTY_CHILD"
+                    dispatchName="NAME_PROPERTY_CHILD"
+                    dispatchSizeFont = "FONT_SIZE_CHILD"
+                    dispatchColor = "FONT_COLOR_CHILD"
+                    dispatchTopPos ="TOP_CHILD"
+                    dispatchLeftPos ="LEFT_CHILD"
+                    :namesField = this.$store.state.ChildFonts.nameChild
+                    :fontSizeField = this.$store.state.ChildFonts.fontSizeNameChild
+                    :fontColorField=this.$store.state.ChildFonts.colorNameChild
+                    :topPosition="this.$store.state.ChildFonts.topChildPos"
+                    :leftPosition="this.$store.state.ChildFonts.leftChildPos"
+                    :posField="this.$refs.ChildField"
+                    :PosImg = "this.$refs.fotodemo"
+
+                    h2="Настройка пола"
+                    faqButton="'Укажите имя'"
+                    formPlaceholder="Задайте имя"
+                ></FontsController>
                 </div>
 
 
@@ -64,27 +72,37 @@
         <!-- #OutPut information input field section# -->
         <div class="col-lg-7 col-md-7 col-7 text-center sticky-top mt-6" >
 
-            <img src="public/Frontend/img/metrica/metrika2.jpg" class="foto_demo" ref="fotodemo">
+            <img src="public/Frontend/img/metrica/metrika4.jpg" class="foto_demo" ref="fotodemo">
 
-                    <div  class="col-lg-12 text-center" id="metric_success">
-                        <div @click="img($event)" ref="nameField" :style="'font-family:'+this.$store.state.fontRedact.font+';font-size:' + this.$store.state.fontRedact.fontSizeName + 'px'+';'+ 'color:' + this.$store.state.fontRedact.colorName+ ';position: absolute; left:'+ this.$store.state.fontRedact.leftName+'px; top:'+this.$store.state.fontRedact.topName+'px'">
+                    <div  class="col-lg-12 text-center" >
+                        <div  ref="nameField" :style="'font-family:'+this.$store.state.fontRedact.font+';font-size:' + this.$store.state.fontRedact.fontSizeName + 'px'+';'+ 'color:' + this.$store.state.fontRedact.colorName+ ';position: absolute; left:'+ this.$store.state.fontRedact.leftName+'px; top:'+this.$store.state.fontRedact.topName+'px'">
                                 {{this.$store.state.fontRedact.name}}
+
                         </div>
 
                     </div>
 
+            <div  class="col-lg-12 text-center" >
+                <div  ref="ChildField" :style="'font-family:'+this.$store.state.ChildFonts.fontChild+';font-size:' + this.$store.state.ChildFonts.fontSizeNameChild + 'px'+';'+ 'color:' + this.$store.state.ChildFonts.colorNameChild+ ';position: absolute; left:'+ this.$store.state.ChildFonts.leftChildPos+'px; top:'+this.$store.state.ChildFonts.topChildPos+'px'">
+                    {{this.$store.state.ChildFonts.nameChild}}
 
+                </div>
+
+            </div>
+
+            <SaveComponent
+                :imgNatParams="this.$refs.fotodemo"
+
+            >
+
+            </SaveComponent>
 
         </div>
         <!-- #/END OutPut information input field section# -->
 
 
     </div>
-        <SaveComponent
-        :imgNatParams="this.$refs.fotodemo"
-        >
 
-        </SaveComponent>
 
 
 
@@ -102,6 +120,7 @@
           }
         },
         mounted() {
+
             //this.$store.dispatch("actionScreenWeight",window.screen.width - 90)
             //this.$store.dispatch("actionScreenHeight", window.screen.height - 90)
             //размеры $event.target.getBoundingClientRect()
@@ -110,13 +129,14 @@
             // console.log(document.getElementById("canvas"))
             // console.log(this.$refs.fotodemo.naturalHeight)
             // console.log(this.$refs.fotodemo.naturalWidth)
-            // console.log(this.$refs.fotodemo.clientHeight)
-            // console.log(this.$refs.fotodemo.clientWidth)
-             console.log(this.$refs)
-            console.log("Left - "+this.$store.state.fontRedact.leftName,
-            "TOP - " + this.$store.state.fontRedact.topName)
-        },
-        computed:{
+            //  console.log(this.$refs.fotodemo.clientHeight)
+            //  console.log(this.$refs.fotodemo.clientWidth)
+            //  console.log(this.$refs)
+            //  console.log(window.screen.width)
+            //  console.log(window.screen.height)
+            // console.log("Left - "+this.$store.state.fontRedact.leftName,
+            // "TOP - " + this.$store.state.fontRedact.topName)
+           // console.log( this.valueInput.nameField.name)
         },
         methods:{
 

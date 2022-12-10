@@ -3,7 +3,8 @@ const state= {
     fontChild:null,
     fontSizeNameChild:15,
     colorNameChild:null,
-
+    topChildPos:200,
+    leftChildPos:200,
 
 }
 const actions= {
@@ -19,6 +20,12 @@ const actions= {
     } ,
     FONT_COLOR_CHILD(context, payload){
         context.commit("SET_SIZE_COLOR_CHILD", payload)
+    } ,
+    TOP_CHILD(context, payload){
+        context.commit("SET_TOP_CHILD", payload)
+    } ,
+    LEFT_CHILD(context, payload){
+        context.commit("SET_LEFT_CHILD", payload)
     } ,
 
 
@@ -38,6 +45,12 @@ const getters = {
     GET_FONT_COLOR_CHILD(state){
         return state.colorNameChild;
     } ,
+    GET_POS_LEFT_CHILD(state){
+        return state.leftChildPos;
+    } ,
+    GET_POS_TOP_CHILD(state){
+        return state.topChildPos;
+    } ,
 
 
 }
@@ -54,6 +67,12 @@ const mutations = {
     }  ,
     SET_SIZE_COLOR_CHILD:(state, payload)=>{
         state.colorNameChild = payload
+    }  ,
+    SET_TOP_CHILD:(state, payload)=>{
+        state.topChildPos = payload
+    }  ,
+    SET_LEFT_CHILD:(state, payload)=>{
+        state.leftChildPos = payload
     }  ,
 
 }

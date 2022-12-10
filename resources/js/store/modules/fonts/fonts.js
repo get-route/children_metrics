@@ -6,6 +6,7 @@ const state= {
     topName:150,
     leftName: 150,
 
+
 }
 const actions= {
     FONT_PROPERTY(context , payload){

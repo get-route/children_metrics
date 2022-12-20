@@ -1,7 +1,7 @@
 const state= {
-    nameChild:null,
+    nameChild:" ",
     fontChild:null,
-    fontSizeNameChild:15,
+    fontSizeNameChild:35,
     colorNameChild:null,
     topChildPos:200,
     leftChildPos:200,

@@ -4,15 +4,25 @@
 
                 <div class="col-lg-12">
                     <div class="input-group mb-3">
-                        <input @input="NameClick($event, dispatchName)" type="text" class="form-control col-md-12" :placeholder="formPlaceholder" aria-label="Recipient's username" aria-describedby="basic-addon2" id="nameChild">
-                        <div class="input-group-prepend col-md-12">
+                        <input  @input="NameClick($event, dispatchName)" type="text" class="form-control col-md-12" :placeholder="formPlaceholder" aria-label="Recipient's username" aria-describedby="basic-addon2" id="nameChild">
+                        <div class="input-group-prepend col-md-12 col-12">
                             <label @click="show.nameShow = !show.nameShow" class="btn bg-secondary m-2" style="color: #f1f3f2" for="inputGroupSelect01"><i class="fa fa-cog" aria-hidden="true"></i></label>
                             <label @click="infoAlert(faqButton)" class="btn bg-secondary m-2" style="color: #f1f3f2" for="inputGroupSelect01"><i class="fa fa-question" aria-hidden="true"></i>
                             </label>
-                            <label><button class="text-center btn btn-dark step_botton" @click="RightBottomPosition(dispatchTopPos,10,topPosition,this.posField.getBoundingClientRect().bottom,this.PosImg.getBoundingClientRect().bottom)">🡣</button></label>
-                            <label><button  class="text-center btn btn-dark step_botton" @click="RightBottomPosition(dispatchTopPos,-10,topPosition,this.posField.getBoundingClientRect().top,this.PosImg.getBoundingClientRect().top)">🡡</button></label>
-                            <label><button class="text-center btn btn-dark step_botton" @click="RightBottomPosition(dispatchLeftPos,-10,leftPosition,this.posField.getBoundingClientRect().left,this.PosImg.getBoundingClientRect().left)">🡠</button></label>
-                            <label><button class="text-center btn btn-dark step_botton" @click="RightBottomPosition(dispatchLeftPos,10,leftPosition,this.posField.getBoundingClientRect().right,this.PosImg.getBoundingClientRect().right)">🡢</button></label>
+                        </div>
+                            <div class="input-group-prepend col-md-12">
+                            <label>
+                                <button class="text-center btn btn-dark step_botton" @click="RightBottomPosition(dispatchTopPos,10,topPosition,this.posField.getBoundingClientRect().bottom,this.PosImg.getBoundingClientRect().bottom)">🡣</button>
+                            </label>
+                            <label>
+                                <button  class="text-center btn btn-dark step_botton" @click="RightBottomPosition(dispatchTopPos,-10,topPosition,this.posField.getBoundingClientRect().top,this.PosImg.getBoundingClientRect().top)">🡡</button>
+                            </label>
+                            <label>
+                                <button class="text-center btn btn-dark step_botton" @click="RightBottomPosition(dispatchLeftPos,-10,leftPosition,this.posField.getBoundingClientRect().left,this.PosImg.getBoundingClientRect().left)">🡠</button>
+                            </label>
+                            <label>
+                                <button class="text-center btn btn-dark step_botton" @click="RightBottomPosition(dispatchLeftPos,10,leftPosition,this.posField.getBoundingClientRect().right,this.PosImg.getBoundingClientRect().right)">🡢</button>
+                            </label>
 
                         </div>
                     </div>
@@ -85,12 +95,14 @@ export default {
           //ID input hidden params
           show: {
               nameShow:false,
+              inputShow:false,
           },
           pureColor:null,
 
               }
 
     },
+
     methods:{
         NameClick(event,dispatch){
                 this.$store.dispatch(dispatch, event.target.value)
@@ -107,8 +119,8 @@ export default {
             }
         },
         RightBottomPosition(dispatch, step, state, positionField,positionImg){
-           //  console.log(this.PosImg.getBoundingClientRect().left)
-           // console.log(this.posField.getBoundingClientRect().left)
+             //console.log(this.PosImg.getBoundingClientRect().left)
+            //console.log(this.posField.getBoundingClientRect().left)
            //  console.log(this.leftPosition)
             if ((positionField < positionImg)){
                 this.$store.dispatch(dispatch,state+5)

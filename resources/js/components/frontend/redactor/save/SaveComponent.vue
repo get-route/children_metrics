@@ -2,7 +2,28 @@
     <div v-if="imgNatParams" class="col-lg-12 text-center mt-5">
 
 
-        <button id="download" class="btn btn-success m-2" ref="load_metrics"  @click="imgReads($event,this.imgRead,this.canvas,this.context, imgNatParams, this.$store.state.fontRedact,this.$store.state.ChildFonts )">Скачать </button>
+        <button id="download" class="btn btn-success m-2" ref="load_metrics"  @click="imgReads(
+        $event,
+        this.imgRead,
+        this.canvas,
+        this.context,
+        imgNatParams,
+        this.adaptivePosition,
+        this.$store.state.fontRedact,
+        this.$store.state.ChildFonts,
+        this.$store.state.Brother,
+        this.$store.state.AddInfo,
+        this.$store.state.Birthday,
+        this.$store.state.Father,
+        this.$store.state.Height,
+        this.$store.state.Horo,
+        this.$store.state.Mother,
+        this.$store.state.Sister,
+        this.$store.state.Town,
+        this.$store.state.WatchBirthday,
+        this.$store.state.Week,
+        this.$store.state.Weight,
+        this.$store.state.YearsName)">Скачать </button>
             <canvas id="canvas" hidden>
 
             </canvas>
@@ -28,26 +49,107 @@
 
         methods:{
             //Method read img and property field component/Ф-я добавляет текст за счет канвас и выводит на экран с заполненными данными из формы.
-            imgReads(event,imgRead,canvas, context, imgSize,fieldName, fieldChild ){
+            imgReads(event,imgRead,canvas, context, imgSize,adaptive,fieldName, fieldChild,fieldBrother, fieldAddInfo, fieldBirthday, fieldFather, fieldHeight, fieldHoro, fieldMother, fieldSister, fieldTown, fieldWatchBirthday, fieldWeek, fieldWeight, fieldYearsName){
                 imgRead = new Image()
                 canvas = document.getElementById("canvas")
                 canvas.width = 3508;
                 canvas.height = 4961;
                 context = canvas.getContext("2d")
                 imgRead.src = imgSize.currentSrc
-                console.log(fieldName)
+
                 imgRead.onload = function () {
                     context.drawImage(imgRead,0,0)
-
-                    //font.js component
+                    var ParamsHeight = imgSize.naturalHeight/imgSize.clientHeight
+                    var ParamsWidth = imgSize.naturalWidth/imgSize.clientWidth
+                    var coefficientWidthHeight = imgSize.naturalWidth/imgSize.clientHeight
+                    //font.js component --fieldName--
                     context.fillStyle = fieldName.colorName
-                    context.font = fieldName.fontSizeName * (imgSize.naturalHeight/imgSize.clientHeight) +'px '+fieldName.font
-                   context.fillText(fieldName.name,fieldName.leftName * (imgSize.naturalWidth/imgSize.clientWidth) - fieldName.fontSizeName*(imgSize.naturalHeight/imgSize.clientHeight) * 2, fieldName.topName * (imgSize.naturalHeight/imgSize.clientHeight) + fieldName.fontSizeName*(imgSize.naturalHeight/imgSize.clientHeight))
+                    context.font = fieldName.fontSizeName * (ParamsWidth) +'px '+fieldName.font
 
-                    //children.js component
+                   context.fillText(fieldName.name,(fieldName.leftName * (coefficientWidthHeight)+fieldName.leftName) -((fieldName.fontSizeName * (ParamsHeight))), ((ParamsHeight)* fieldName.topName ) +(fieldName.fontSizeName * (ParamsWidth)))
+
+                    //children.js component --fieldChild--
                     context.fillStyle = fieldChild.colorNameChild
-                    context.font = fieldChild.fontSizeNameChild * (imgSize.naturalHeight/imgSize.clientHeight) +'px '+fieldChild.fontChild
-                    context.fillText(fieldChild.nameChild,fieldChild.leftChildPos * (imgSize.naturalWidth/imgSize.clientWidth) - fieldChild.fontSizeNameChild*(imgSize.naturalHeight/imgSize.clientHeight) * 2, fieldChild.topChildPos * (imgSize.naturalHeight/imgSize.clientHeight) + fieldChild.fontSizeNameChild*(imgSize.naturalHeight/imgSize.clientHeight))
+                    context.font = fieldChild.fontSizeNameChild * (ParamsWidth) +'px '+fieldChild.fontChild
+
+                    context.fillText(fieldChild.nameChild,(fieldChild.leftChildPos * (coefficientWidthHeight)+fieldChild.leftChildPos) -((fieldChild.fontSizeNameChild * (ParamsHeight))), ((ParamsHeight)* fieldChild.topChildPos ) +(fieldChild.fontSizeNameChild * (ParamsWidth)))
+
+                    //brother.js component --fieldBrother--
+                    context.fillStyle = fieldBrother.colorNameBrother
+                    context.font = fieldBrother.fontSizeNameBrother * (ParamsWidth) +'px '+fieldBrother.fontBrother
+
+                    context.fillText(fieldBrother.nameBrother,(fieldBrother.leftBrotherPos * (coefficientWidthHeight)+fieldBrother.leftBrotherPos) -((fieldBrother.fontSizeNameBrother * (ParamsHeight))), ((ParamsHeight)* fieldBrother.topBrotherPos ) +(fieldBrother.fontSizeNameBrother * (ParamsWidth)))
+
+                    //addinfo.js component --fieldAddnfo--
+                    context.fillStyle = fieldAddInfo.colorNameAddInfo
+                    context.font = fieldAddInfo.fontSizeNameAddInfo * (ParamsWidth) +'px '+fieldAddInfo.fontAddInfo
+
+                    context.fillText(fieldAddInfo.nameAddInfo,(fieldAddInfo.leftAddInfoPos * (coefficientWidthHeight)+fieldAddInfo.leftAddInfoPos) -((fieldAddInfo.fontSizeNameAddInfo * (ParamsHeight))), ((ParamsHeight)* fieldAddInfo.topAddInfoPos ) +(fieldAddInfo.fontSizeNameAddInfo * (ParamsWidth)))
+                        //Birthday.js component --fieldBirthday--
+                        context.fillStyle = fieldBirthday.colorNameBirthday
+                    context.font = fieldBirthday.fontSizeNameBirthday * (ParamsWidth) +'px '+fieldBirthday.fontBirthday
+
+                    context.fillText(fieldBirthday.nameBirthday,(fieldBirthday.leftBirthdayPos * (coefficientWidthHeight)+fieldBirthday.leftBirthdayPos) -((fieldBirthday.fontSizeNameBirthday * (ParamsHeight))), ((ParamsHeight)* fieldBirthday.topBirthdayPos ) +(fieldBirthday.fontSizeNameBirthday * (ParamsWidth)))
+
+                    //Father.js component --fieldFather--
+                    context.fillStyle = fieldFather.colorNameFather
+                    context.font = fieldFather.fontSizeNameFather * (ParamsWidth) +'px '+fieldFather.fontFather
+
+                    context.fillText(fieldFather.nameFather,(fieldFather.leftFatherPos * (coefficientWidthHeight)+fieldFather.leftFatherPos) -((fieldFather.fontSizeNameFather * (ParamsHeight))), ((ParamsHeight)* fieldFather.topFatherPos ) +(fieldFather.fontSizeNameFather * (ParamsWidth)))
+
+                    //Height.js component --fieldHeight--
+                    context.fillStyle = fieldHeight.colorNameHeight
+                    context.font = fieldHeight.fontSizeNameHeight * (ParamsWidth) +'px '+fieldHeight.fontHeight
+
+                    context.fillText(fieldHeight.nameHeight,(fieldHeight.leftHeightPos * (coefficientWidthHeight)+fieldHeight.leftHeightPos) -((fieldHeight.fontSizeNameHeight * (ParamsHeight))), ((ParamsHeight)* fieldHeight.topHeightPos ) +(fieldHeight.fontSizeNameHeight * (ParamsWidth)))
+
+                    //Horo.js component --fieldHoro--
+                    context.fillStyle = fieldHoro.colorNameHoro
+                    context.font = fieldHoro.fontSizeNameHoro * (ParamsWidth) +'px '+fieldHoro.fontHoro
+
+                    context.fillText(fieldHoro.nameHoro,(fieldHoro.leftHoroPos * (coefficientWidthHeight)+fieldHoro.leftHoroPos) -((fieldHoro.fontSizeNameHoro * (ParamsHeight))), ((ParamsHeight)* fieldHoro.topHoroPos ) +(fieldHoro.fontSizeNameHoro * (ParamsWidth)))
+
+
+                    //Mother.js component --fieldMother--
+                    context.fillStyle = fieldMother.colorNameMother
+                    context.font = fieldMother.fontSizeNameMother * (ParamsWidth) +'px '+fieldMother.fontMother
+
+                    context.fillText(fieldMother.nameMother,(fieldMother.leftMotherPos * (coefficientWidthHeight)+fieldMother.leftMotherPos) -((fieldMother.fontSizeNameMother * (ParamsHeight))), ((ParamsHeight)* fieldMother.topMotherPos ) +(fieldMother.fontSizeNameMother * (ParamsWidth)))
+
+                    //Sister.js component --fieldSister--
+                    context.fillStyle = fieldSister.colorNameSister
+                    context.font = fieldSister.fontSizeNameSister * (ParamsWidth) +'px '+fieldSister.fontSister
+
+                    context.fillText(fieldSister.nameSister,(fieldSister.leftSisterPos * (coefficientWidthHeight)+fieldSister.leftSisterPos) -((fieldSister.fontSizeNameSister * (ParamsHeight))), ((ParamsHeight)* fieldSister.topSisterPos ) +(fieldSister.fontSizeNameSister * (ParamsWidth)))
+
+                    //Town.js component --fieldTown--
+                    context.fillStyle = fieldTown.colorNameTown
+                    context.font = fieldTown.fontSizeNameTown * (ParamsWidth) +'px '+fieldTown.fontTown
+
+                    context.fillText(fieldTown.nameTown,(fieldTown.leftTownPos * (coefficientWidthHeight)+fieldTown.leftTownPos) -((fieldTown.fontSizeNameTown * (ParamsHeight))), ((ParamsHeight)* fieldTown.topTownPos ) +(fieldTown.fontSizeNameTown * (ParamsWidth)))
+
+                    //WatchBirthday.js component --fieldWatchBirthday--
+                    context.fillStyle = fieldWatchBirthday.colorNameWatchBirthday
+                    context.font = fieldWatchBirthday.fontSizeNameWatchBirthday * (ParamsWidth) +'px '+fieldWatchBirthday.fontWatchBirthday
+
+                    context.fillText(fieldWatchBirthday.nameWatchBirthday,(fieldWatchBirthday.leftWatchBirthdayPos * (coefficientWidthHeight)+fieldWatchBirthday.leftWatchBirthdayPos) -((fieldWatchBirthday.fontSizeNameWatchBirthday * (ParamsHeight))), ((ParamsHeight)* fieldWatchBirthday.topWatchBirthdayPos ) +(fieldWatchBirthday.fontSizeNameWatchBirthday * (ParamsWidth)))
+
+                    //Week.js component --fieldWeek--
+                    context.fillStyle = fieldWeek.colorNameWeek
+                    context.font = fieldWeek.fontSizeNameWeek * (ParamsWidth) +'px '+fieldWeek.fontWeek
+
+                    context.fillText(fieldWeek.nameWeek,(fieldWeek.leftWeekPos * (coefficientWidthHeight)+fieldWeek.leftWeekPos) -((fieldWeek.fontSizeNameWeek * (ParamsHeight))), ((ParamsHeight)* fieldWeek.topWeekPos ) +(fieldWeek.fontSizeNameWeek * (ParamsWidth)))
+
+                    //Weight.js component --fieldWeight--
+                    context.fillStyle = fieldWeight.colorNameWeight
+                    context.font = fieldWeight.fontSizeNameWeight * (ParamsWidth) +'px '+fieldWeight.fontWeight
+
+                    context.fillText(fieldWeight.nameWeight,(fieldWeight.leftWeightPos * (coefficientWidthHeight)+fieldWeight.leftWeightPos) -((fieldWeight.fontSizeNameWeight * (ParamsHeight))), ((ParamsHeight)* fieldWeight.topWeightPos ) +(fieldWeight.fontSizeNameWeight * (ParamsWidth)))
+                    //YearsName.js component --fieldYearsName--
+                    context.fillStyle = fieldYearsName.colorNameYearsName
+                    context.font = fieldYearsName.fontSizeNameYearsName * (ParamsWidth) +'px '+fieldYearsName.fontYearsName
+
+                    context.fillText(fieldYearsName.nameYearsName,(fieldYearsName.leftYearsNamePos * (coefficientWidthHeight)+fieldYearsName.leftYearsNamePos) -((fieldYearsName.fontSizeNameYearsName * (ParamsHeight))), ((ParamsHeight)* fieldYearsName.topYearsNamePos ) +(fieldYearsName.fontSizeNameYearsName * (ParamsWidth)))
 
                     //link start
                     var image = canvas.toDataURL();

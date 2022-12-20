@@ -1,7 +1,7 @@
 const state= {
-    name:null,
+    name:" ",
     font:null,
-    fontSizeName:15,
+    fontSizeName:35,
     colorName:null,
     topName:150,
     leftName: 150,

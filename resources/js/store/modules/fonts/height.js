@@ -2,9 +2,9 @@ const state= {
     nameHeight:" ",
     fontHeight:null,
     fontSizeNameHeight:35,
-    colorNameHeight:null,
-    topHeightPos:190,
-    leftHeightPos:190,
+    colorNameHeight:'#000000',
+    topHeightPos:0,
+    leftHeightPos:40,
 
 }
 const actions= {

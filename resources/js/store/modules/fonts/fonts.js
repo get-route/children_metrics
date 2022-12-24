@@ -2,9 +2,9 @@ const state= {
     name:" ",
     font:null,
     fontSizeName:35,
-    colorName:null,
-    topName:150,
-    leftName: 150,
+    colorName:'#000000',
+    topName:0,
+    leftName: 0,
 
 
 }

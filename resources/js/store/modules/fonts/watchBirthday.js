@@ -2,9 +2,9 @@ const state= {
     nameWatchBirthday:" ",
     fontWatchBirthday:null,
     fontSizeNameWatchBirthday:35,
-    colorNameWatchBirthday:null,
-    topWatchBirthdayPos:250,
-    leftWatchBirthdayPos:200,
+    colorNameWatchBirthday:'#000000',
+    topWatchBirthdayPos:40,
+    leftWatchBirthdayPos:0,
 
 }
 const actions= {

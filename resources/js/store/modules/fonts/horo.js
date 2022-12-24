@@ -2,9 +2,9 @@ const state= {
     nameHoro:" ",
     fontHoro:null,
     fontSizeNameHoro:35,
-    colorNameHoro:null,
-    topHoroPos:250,
-    leftHoroPos:200,
+    colorNameHoro:'#000000',
+    topHoroPos:80,
+    leftHoroPos:80,
 
 }
 const actions= {

@@ -27,18 +27,49 @@ export default createStore( {
             'Verdana',
             'Monotype Corsiva',
         ],
+        start:'Начинаю редактирование файла метрики',
+        progress:'Наношу текст',
+        progressTwo:'Формирую заголовки',
+        progressThree:'Закрашиваю необходимые области',
+        finish:'Метрика готова к скачиванию! Спасибо за ожидание...'
     },
     actions: {
-
+        PRE_START(payload, context){
+            context.commit('SET_PRESTART',payload)
+        }
     },
 //Получают данные от хранилища. Писать заглавными буквами
     getters : {
+        GET_PRESTART(state){
+            return state.prestart
+        },
+        GET_START(state){
+            return state.start
+        },
+        GET_PROGRESS(state){
+            return state.progress
+        },
+        GET_PROGRESSTWO(state){
+            return state.progressTwo
+        },
+        GET_PROGRESSTHREE(state){
+            return state.progressThree
+        },
+        GET_FINISH(state){
+            return state.finish
+        },
+
+
+
+
+
 
     },
 //Для установки нужных данных в хранилище. Идет как commit
     mutations : {
-
-
+        SET_PRESTART(state,payload){
+            state.prestart = payload
+        }
     },
 
     modules:{

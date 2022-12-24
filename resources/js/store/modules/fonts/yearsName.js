@@ -2,9 +2,9 @@ const state= {
     nameYearsName:" ",
     fontYearsName:null,
     fontSizeNameYearsName:35,
-    colorNameYearsName:null,
-    topYearsNamePos:250,
-    leftYearsNamePos:200,
+    colorNameYearsName:'#000000',
+    topYearsNamePos:120,
+    leftYearsNamePos:80,
 
 }
 const actions= {

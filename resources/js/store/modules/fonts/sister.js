@@ -2,9 +2,9 @@ const state= {
     nameSister:" ",
     fontSister:null,
     fontSizeNameSister:35,
-    colorNameSister:null,
-    topSisterPos:250,
-    leftSisterPos:200,
+    colorNameSister:'#000000',
+    topSisterPos:0,
+    leftSisterPos:80,
 
 }
 const actions= {

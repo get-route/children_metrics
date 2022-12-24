@@ -2,9 +2,9 @@ const state= {
     nameFather:" ",
     fontFather:null,
     fontSizeNameFather:35,
-    colorNameFather:null,
-    topFatherPos:180,
-    leftFatherPos:180,
+    colorNameFather:'#000000',
+    topFatherPos:120,
+    leftFatherPos:40,
 
 }
 const actions= {

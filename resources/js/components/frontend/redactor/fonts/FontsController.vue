@@ -45,7 +45,6 @@
 
                         </div>
 
-
                         <div class="input-group col-lg-12 text-center" >
                             <div class="input-group-prepend">
                                 <label  class="input-group-text" for="inputGroupSelect01">Шрифт</label>
@@ -57,14 +56,6 @@
                         </div>
                     </div>
                 </transition>
-
-
-
-
-
-
-
-
 </template>
 
 <script>

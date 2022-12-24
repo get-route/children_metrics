@@ -2,9 +2,9 @@ const state= {
     nameWeek:" ",
     fontWeek:null,
     fontSizeNameWeek:35,
-    colorNameWeek:null,
-    topWeekPos:250,
-    leftWeekPos:200,
+    colorNameWeek:'#000000',
+    topWeekPos:120,
+    leftWeekPos:0,
 
 }
 const actions= {

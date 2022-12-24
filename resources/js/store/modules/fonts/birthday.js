@@ -2,9 +2,9 @@ const state= {
     nameBirthday:" ",
     fontBirthday:null,
     fontSizeNameBirthday:35,
-    colorNameBirthday:null,
-    topBirthdayPos:250,
-    leftBirthdayPos:290,
+    colorNameBirthday:'#000000',
+    topBirthdayPos:80,
+    leftBirthdayPos:0,
 
 }
 const actions= {

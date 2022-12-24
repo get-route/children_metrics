@@ -2,9 +2,9 @@ const state= {
     nameAddInfo:" ",
     fontAddInfo:null,
     fontSizeNameAddInfo:35,
-    colorNameAddInfo:null,
-    topAddInfoPos:230,
-    leftAddInfoPos:250,
+    colorNameAddInfo:'#000000',
+    topAddInfoPos:160,
+    leftAddInfoPos:80,
 
 }
 const actions= {

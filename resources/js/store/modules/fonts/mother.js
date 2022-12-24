@@ -2,9 +2,9 @@ const state= {
     nameMother:" ",
     fontMother:null,
     fontSizeNameMother:35,
-    colorNameMother:null,
-    topMotherPos:250,
-    leftMotherPos:200,
+    colorNameMother:'#000000',
+    topMotherPos:80,
+    leftMotherPos:40,
 
 }
 const actions= {

@@ -2,9 +2,9 @@ const state= {
     nameBrother:" ",
     fontBrother:null,
     fontSizeNameBrother:35,
-    colorNameBrother:null,
-    topBrotherPos:250,
-    leftBrotherPos:300,
+    colorNameBrother:'#000000',
+    topBrotherPos:160,
+    leftBrotherPos:40,
 
 }
 const actions= {

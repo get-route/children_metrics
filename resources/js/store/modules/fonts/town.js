@@ -2,9 +2,9 @@ const state= {
     nameTown:" ",
     fontTown:null,
     fontSizeNameTown:35,
-    colorNameTown:null,
-    topTownPos:250,
-    leftTownPos:200,
+    colorNameTown:'#000000',
+    topTownPos:40,
+    leftTownPos:80,
 
 }
 const actions= {

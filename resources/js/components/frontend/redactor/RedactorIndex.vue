@@ -21,7 +21,7 @@
                         :PosImg = "this.$refs.fotodemo"
                         h2="Укажите имя..."
                         faqButton="'Укажите имя, которое будет использоваться при заголовки метрики. При желании можно нажмать на значок шестеренки и настроить текстовую область.'"
-                        formPlaceholder="Это тоже"
+                        formPlaceholder="Задайте имя"
                     ></FontsController>
                     <!-- WatchBirthday - время рождения-->
                     <FontsController
@@ -313,10 +313,12 @@
         </div>
 
         <!-- #OutPut information input field section# -->
-        <div class="col-lg-7 col-md-7 col-7 text-center sticky-top mt-6" >
+        <div class="col-lg-7 col-md-7 col-7 text-center " >
+
+            <div class="col-lg-12 sticky-top mt-6">
+
 
             <img src="public/Frontend/img/metrica/metrika4.jpg" class="foto_demo" ref="fotodemo">
-
             <!--            Name - поле для имени-->
             <div class="col-lg-12 text-center">
                 <div ref="nameField"
@@ -346,8 +348,14 @@
             </div>
             <!--            AddInfo - поле для указания информации-->
             <div class="col-lg-12 text-center">
-             <!--            Birthday - поле для указания даты рождения-->
-             <div class="col-lg-12 text-center">
+                <div ref="AddInfoField"
+                     :style="'font-family:'+this.$store.state.AddInfo.fontAddInfo+';font-size:' + this.$store.state.AddInfo.fontSizeNameAddInfo + 'px'+';'+ 'color:' + this.$store.state.AddInfo.colorNameAddInfo+ ';position: absolute; left:'+ this.$store.state.AddInfo.leftAddInfoPos+'px; top:'+this.$store.state.AddInfo.topAddInfoPos+'px'">
+                    {{this.$store.state.AddInfo.nameAddInfo}}
+
+                </div>
+            </div>
+            <!--            Birthday - поле для указания даты рождения-->
+            <div class="col-lg-12 text-center">
                     <div ref="BirthdayField"
                          :style="'font-family:'+this.$store.state.Birthday.fontBirthday+';font-size:' + this.$store.state.Birthday.fontSizeNameBirthday + 'px'+';'+ 'color:' + this.$store.state.Birthday.colorNameBirthday+ ';position: absolute; left:'+ this.$store.state.Birthday.leftBirthdayPos+'px; top:'+this.$store.state.Birthday.topBirthdayPos+'px'">
                         {{this.$store.state.Birthday.nameBirthday}}
@@ -355,7 +363,7 @@
 
                 </div>
                 <!--            Father - поле для указания отца-->
-                <div class="col-lg-12 text-center">
+            <div class="col-lg-12 text-center">
                     <div ref="FatherField"
                          :style="'font-family:'+this.$store.state.Father.fontFather+';font-size:' + this.$store.state.Father.fontSizeNameFather + 'px'+';'+ 'color:' + this.$store.state.Father.colorNameFather+ ';position: absolute; left:'+ this.$store.state.Father.leftFatherPos+'px; top:'+this.$store.state.Father.topFatherPos+'px'">
                         {{this.$store.state.Father.nameFather}}
@@ -363,9 +371,8 @@
                     </div>
 
                 </div>
-
                 <!--            Height - поле для указания роста-->
-                <div class="col-lg-12 text-center">
+            <div class="col-lg-12 text-center">
                     <div ref="HeightField"
                          :style="'font-family:'+this.$store.state.Height.fontHeight+';font-size:' + this.$store.state.Height.fontSizeNameHeight + 'px'+';'+ 'color:' + this.$store.state.Height.colorNameHeight+ ';position: absolute; left:'+ this.$store.state.Height.leftHeightPos+'px; top:'+this.$store.state.Height.topHeightPos+'px'">
                         {{this.$store.state.Height.nameHeight}}
@@ -373,9 +380,8 @@
                     </div>
 
                 </div>
-
                 <!--            Horo - поле для указания знака задиака-->
-                <div class="col-lg-12 text-center">
+            <div class="col-lg-12 text-center">
                     <div ref="HoroField"
                          :style="'font-family:'+this.$store.state.Horo.fontHoro+';font-size:' + this.$store.state.Horo.fontSizeNameHoro + 'px'+';'+ 'color:' + this.$store.state.Horo.colorNameHoro+ ';position: absolute; left:'+ this.$store.state.Horo.leftHoroPos+'px; top:'+this.$store.state.Horo.topHoroPos+'px'">
                         {{this.$store.state.Horo.nameHoro}}
@@ -383,9 +389,8 @@
                     </div>
 
                 </div>
-
                 <!--            Mother - поле для указания матери-->
-                <div class="col-lg-12 text-center">
+            <div class="col-lg-12 text-center">
                     <div ref="MotherField"
                          :style="'font-family:'+this.$store.state.Mother.fontMother+';font-size:' + this.$store.state.Mother.fontSizeNameMother + 'px'+';'+ 'color:' + this.$store.state.Mother.colorNameMother+ ';position: absolute; left:'+ this.$store.state.Mother.leftMotherPos+'px; top:'+this.$store.state.Mother.topMotherPos+'px'">
                         {{this.$store.state.Mother.nameMother}}
@@ -393,9 +398,8 @@
                     </div>
 
                 </div>
-
                 <!--            Sister - поле для указания систер-->
-                <div class="col-lg-12 text-center">
+            <div class="col-lg-12 text-center">
                     <div ref="SisterField"
                          :style="'font-family:'+this.$store.state.Sister.fontSister+';font-size:' + this.$store.state.Sister.fontSizeNameSister + 'px'+';'+ 'color:' + this.$store.state.Sister.colorNameSister+ ';position: absolute; left:'+ this.$store.state.Sister.leftSisterPos+'px; top:'+this.$store.state.Sister.topSisterPos+'px'">
                         {{this.$store.state.Sister.nameSister}}
@@ -403,9 +407,8 @@
                     </div>
 
                 </div>
-
                 <!--            Town - поле для указания города-->
-                <div class="col-lg-12 text-center">
+            <div class="col-lg-12 text-center">
                     <div ref="TownField"
                          :style="'font-family:'+this.$store.state.Town.fontTown+';font-size:' + this.$store.state.Town.fontSizeNameTown + 'px'+';'+ 'color:' + this.$store.state.Town.colorNameTown+ ';position: absolute; left:'+ this.$store.state.Town.leftTownPos+'px; top:'+this.$store.state.Town.topTownPos+'px'">
                         {{this.$store.state.Town.nameTown}}
@@ -413,9 +416,8 @@
                     </div>
 
                 </div>
-
                 <!--            WatchBirthday - поле для указания времени рождения-->
-                <div class="col-lg-12 text-center">
+            <div class="col-lg-12 text-center">
                     <div ref="WatchBirthdayField"
                          :style="'font-family:'+this.$store.state.WatchBirthday.fontWatchBirthday+';font-size:' + this.$store.state.WatchBirthday.fontSizeNameWatchBirthday + 'px'+';'+ 'color:' + this.$store.state.WatchBirthday.colorNameWatchBirthday+ ';position: absolute; left:'+ this.$store.state.WatchBirthday.leftWatchBirthdayPos+'px; top:'+this.$store.state.WatchBirthday.topWatchBirthdayPos+'px'">
                         {{this.$store.state.WatchBirthday.nameWatchBirthday}}
@@ -423,9 +425,8 @@
                     </div>
 
                 </div>
-
                 <!--            Week - поле для указания недели рождения-->
-                <div class="col-lg-12 text-center">
+            <div class="col-lg-12 text-center">
                     <div ref="WeekField"
                          :style="'font-family:'+this.$store.state.Week.fontWeek+';font-size:' + this.$store.state.Week.fontSizeNameWeek + 'px'+';'+ 'color:' + this.$store.state.Week.colorNameWeek+ ';position: absolute; left:'+ this.$store.state.Week.leftWeekPos+'px; top:'+this.$store.state.Week.topWeekPos+'px'">
                         {{this.$store.state.Week.nameWeek}}
@@ -433,9 +434,8 @@
                     </div>
 
                 </div>
-
                 <!--            Weight - поле для указания веса-->
-                <div class="col-lg-12 text-center">
+            <div class="col-lg-12 text-center">
                     <div ref="WeightField"
                          :style="'font-family:'+this.$store.state.Weight.fontWeight+';font-size:' + this.$store.state.Weight.fontSizeNameWeight + 'px'+';'+ 'color:' + this.$store.state.Weight.colorNameWeight+ ';position: absolute; left:'+ this.$store.state.Weight.leftWeightPos+'px; top:'+this.$store.state.Weight.topWeightPos+'px'">
                         {{this.$store.state.Weight.nameWeight}}
@@ -443,9 +443,8 @@
                     </div>
 
                 </div>
-
                 <!--            YearsName - поле для указания названия года-->
-                <div class="col-lg-12 text-center">
+            <div class="col-lg-12 text-center">
                     <div ref="YearsNameField"
                          :style="'font-family:'+this.$store.state.YearsName.fontYearsName+';font-size:' + this.$store.state.YearsName.fontSizeNameYearsName + 'px'+';'+ 'color:' + this.$store.state.YearsName.colorNameYearsName+ ';position: absolute; left:'+ this.$store.state.YearsName.leftYearsNamePos+'px; top:'+this.$store.state.YearsName.topYearsNamePos+'px'">
                         {{this.$store.state.YearsName.nameYearsName}}
@@ -453,17 +452,11 @@
                     </div>
 
                 </div>
-
-
 <!--                Canvas download button. Кнопка и логика загрузки для канваса. Чтобы наносить надписи на изображение.-->
-            <SaveComponent :imgNatParams="this.$refs.fotodemo">
+            <SaveComponent :imgNatParams="this.$refs.fotodemo"></SaveComponent>
 
-            </SaveComponent>
-
-        </div>
         <!-- #/END OutPut information input field section# -->
-
-
+        </div>
     </div>
 
     </div>
@@ -494,11 +487,11 @@
             // console.log(this.$refs.fotodemo.naturalWidth)
             //  console.log(this.$refs.fotodemo.clientHeight)
             //  console.log(this.$refs.fotodemo.clientWidth)
-             console.log(this.$refs)
+             //console.log(this.$refs)
             //  console.log(window.screen.width)
             //  console.log(window.screen.height)
-             console.log("Left - "+this.$store.state.fontRedact.leftName,
-             "TOP - " + this.$store.state.fontRedact.topName)
+             //console.log("Left - "+this.$store.state.fontRedact.leftName,
+             //"TOP - " + this.$store.state.fontRedact.topName)
            // console.log( this.valueInput.nameField.name)
         },
 

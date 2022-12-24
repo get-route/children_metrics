@@ -2,9 +2,9 @@ const state= {
     nameWeight:" ",
     fontWeight:null,
     fontSizeNameWeight:35,
-    colorNameWeight:null,
-    topWeightPos:250,
-    leftWeightPos:200,
+    colorNameWeight:'#000000',
+    topWeightPos:160,
+    leftWeightPos:0,
 
 }
 const actions= {

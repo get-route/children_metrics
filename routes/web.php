@@ -12,6 +12,10 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::group(['prefix'=>'/cabinet'],function (){
+    Route::get('/index','App\Http\Controllers\Cabinet\IndexCabinetController@index')->name('cabinet');
+});
+
 
 Route::get('/','App\Http\Controllers\IndexController@index')->name('index');
 Route::get('/redactor','App\Http\Controllers\RedactorController@index')->name('index.redactor');

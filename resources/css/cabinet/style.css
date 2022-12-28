@@ -20865,9 +20865,11 @@ dl li {
 }
 
 .table td img {
-  width: 36px;
-  height: 36px;
-  border-radius: 100%;
+    width: 60%;
+    height: auto;
+    border: black 1px outset;
+    box-shadow: 6px 6px 6px #787f86;
+
 }
 
 .table td .badge {
@@ -21907,3 +21909,4 @@ dl li {
 }
 
 /*# sourceMappingURL=maps/style.css.map */
+

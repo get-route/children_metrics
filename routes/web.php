@@ -15,6 +15,9 @@ use Illuminate\Support\Facades\Route;
 Route::group(['prefix'=>'/cabinet'],function (){
     Route::get('/index','App\Http\Controllers\Cabinet\IndexCabinetController@index')->name('cabinet');
 });
+Route::group(['prefix'=>'/adm_panel'],function (){
+    Route::get('/index','App\Http\Controllers\Admin\IndexAdminController@index')->name('admin');
+});
 
 
 Route::get('/','App\Http\Controllers\IndexController@index')->name('index');

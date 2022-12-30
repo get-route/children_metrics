@@ -1,4 +1,4 @@
-@section('title','Панель управления сайтом. Админская')
+@section('title','Страница управления тегами')
 @include('admin.layout.header')
 @include('admin.layout.footer')
 @include('admin.layout.sidebar')
@@ -88,76 +88,28 @@
                                         <thead>
                                         <tr>
                                             <th>
-                                                Метрика
+                                                ID
                                             </th>
                                             <th>
-                                                Название
-                                            </th>
-                                            <th>
-                                                Цена
-                                            </th>
-                                            <th>
-                                                Дата
+                                                Заголовок
                                             </th>
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <tr>
-                                            <td class="py-1 img-table">
-                                                <img src="{{asset('Frontend\img\metrica\metrika.jpg')}}" alt="image">
-                                            </td>
-                                            <td>
-                                                Herman Beck
-                                            </td>
-                                            <td>
-                                                $ 77.99
-                                            </td>
-                                            <td>
-                                                May 15, 2015
-                                            </td>
-                                            <td>
-                                                <a href="#" class="btn btn-dark m-2">Скачать</a>
-                                                <a href="#" class="btn btn-danger m-2">Удалить</a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="py-1">
-                                                <img src="{{asset('Frontend\img\metrica\metrika2.jpg')}}" alt="image">
-                                            </td>
-                                            <td>
-                                                Messsy Adam
-                                            </td>
-
-                                            <td>
-                                                $245.30
-                                            </td>
-                                            <td>
-                                                July 1, 2015
-                                            </td>
-                                            <td>
-                                                <a href="#" class="btn btn-dark m-2">Скачать</a>
-                                                <a href="#" class="btn btn-danger m-2">Удалить</a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="py-1">
-                                                <img src="{{asset('Frontend\img\metrica\metrika3.jpg')}}" alt="image">
-                                            </td>
-                                            <td>
-                                                John Richards
-                                            </td>
-
-                                            <td>
-                                                $138.00
-                                            </td>
-                                            <td>
-                                                Apr 12, 2015
-                                            </td>
-                                            <td>
-                                                <a href="#" class="btn btn-dark m-2">Скачать</a>
-                                                <a href="#" class="btn btn-danger m-2">Удалить</a>
-                                            </td>
-                                        </tr>
+                                        @foreach($tags_all as $tag)
+                                            <tr>
+                                                <td>
+                                                    {{$tag->id}}
+                                                </td>
+                                                <td>
+                                                    {{$tag->title}}
+                                                </td>
+                                                <td>
+                                                    <a href="#" class="btn btn-dark m-2">Править</a>
+                                                    <a href="#" class="btn btn-danger m-2">Удалить</a>
+                                                </td>
+                                            </tr>
+                                        @endforeach
                                         </tbody>
                                     </table>
                                 </div>
@@ -184,5 +136,6 @@
 </body>
 
 </html>
+
 
 

@@ -1,4 +1,4 @@
-@section('title','Панель управления сайтом. Админская')
+@section('title','Админка для комментариев')
 @include('admin.layout.header')
 @include('admin.layout.footer')
 @include('admin.layout.sidebar')
@@ -88,13 +88,16 @@
                                         <thead>
                                         <tr>
                                             <th>
-                                                Метрика
+                                                ID
                                             </th>
                                             <th>
-                                                Название
+                                                Имя
                                             </th>
                                             <th>
-                                                Цена
+                                                Email
+                                            </th>
+                                            <th>
+                                                Текст
                                             </th>
                                             <th>
                                                 Дата
@@ -102,62 +105,36 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <tr>
-                                            <td class="py-1 img-table">
-                                                <img src="{{asset('Frontend\img\metrica\metrika.jpg')}}" alt="image">
-                                            </td>
-                                            <td>
-                                                Herman Beck
-                                            </td>
-                                            <td>
-                                                $ 77.99
-                                            </td>
-                                            <td>
-                                                May 15, 2015
-                                            </td>
-                                            <td>
-                                                <a href="#" class="btn btn-dark m-2">Скачать</a>
-                                                <a href="#" class="btn btn-danger m-2">Удалить</a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="py-1">
-                                                <img src="{{asset('Frontend\img\metrica\metrika2.jpg')}}" alt="image">
-                                            </td>
-                                            <td>
-                                                Messsy Adam
-                                            </td>
+                                        @foreach($comments_all as $comment)
+                                            <tr>
+                                                <td>
+                                                    {{$comment->id}}
+                                                </td>
+                                                <td>
+                                                    {{$comment->name}}
+                                                </td>
+                                                <td>
+                                                    {{$comment->email}}
+                                                </td>
 
-                                            <td>
-                                                $245.30
-                                            </td>
-                                            <td>
-                                                July 1, 2015
-                                            </td>
-                                            <td>
-                                                <a href="#" class="btn btn-dark m-2">Скачать</a>
-                                                <a href="#" class="btn btn-danger m-2">Удалить</a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="py-1">
-                                                <img src="{{asset('Frontend\img\metrica\metrika3.jpg')}}" alt="image">
-                                            </td>
-                                            <td>
-                                                John Richards
-                                            </td>
+                                                <td>
+                                                    {{$comment->text}}
+                                                </td>
+                                                <td>
+                                                    {{$comment->updated_at}}
+                                                </td>
 
-                                            <td>
-                                                $138.00
-                                            </td>
-                                            <td>
-                                                Apr 12, 2015
-                                            </td>
-                                            <td>
-                                                <a href="#" class="btn btn-dark m-2">Скачать</a>
-                                                <a href="#" class="btn btn-danger m-2">Удалить</a>
-                                            </td>
-                                        </tr>
+                                                <td>
+                                                    <a href="#" class="btn btn-dark m-2">Править</a>
+                                                    <a href="#" class="btn btn-danger m-2">Удалить</a>
+                                                    @if($comment->public =="Нет")
+                                                    <a href="#" class="btn btn-success m-2">Одобрить</a>
+                                                    @else
+                                                        <a href="#" class="btn btn-secondary m-2">Запретить</a>
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                        @endforeach
                                         </tbody>
                                     </table>
                                 </div>
@@ -184,5 +161,6 @@
 </body>
 
 </html>
+
 
 

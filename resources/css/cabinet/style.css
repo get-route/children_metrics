@@ -20869,8 +20869,14 @@ dl li {
     height: auto;
     border: black 1px outset;
     box-shadow: 6px 6px 6px #787f86;
-
 }
+.table td img:hover {
+    width: 65%;
+    height: auto;
+    border: #f3f0f0 1px outset;
+    box-shadow: 6px 6px 6px #eeeeee;
+}
+
 
 .table td .badge {
   margin-bottom: 0;

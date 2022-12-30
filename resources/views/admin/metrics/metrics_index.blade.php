@@ -1,4 +1,4 @@
-@section('title','Панель управления сайтом. Админская')
+@section('title','Админка для метрик')
 @include('admin.layout.header')
 @include('admin.layout.footer')
 @include('admin.layout.sidebar')
@@ -91,7 +91,10 @@
                                                 Метрика
                                             </th>
                                             <th>
-                                                Название
+                                                Заголовок
+                                            </th>
+                                            <th>
+                                                Описание
                                             </th>
                                             <th>
                                                 Цена
@@ -99,65 +102,39 @@
                                             <th>
                                                 Дата
                                             </th>
+                                            <th>
+                                                Просмотры
+                                            </th>
                                         </tr>
                                         </thead>
                                         <tbody>
+                                        @foreach($all_metrics as $metrica)
                                         <tr>
                                             <td class="py-1 img-table">
-                                                <img src="{{asset('Frontend\img\metrica\metrika.jpg')}}" alt="image">
+                                                <a href="{{route('index')}}/{{$metrica->url}}" target="_blank"> <img src="{{asset('Frontend\img\metrica/'.$metrica->photo)}}" alt="image"></a>
                                             </td>
                                             <td>
-                                                Herman Beck
+                                                {{$metrica->title}}
                                             </td>
                                             <td>
-                                                $ 77.99
-                                            </td>
-                                            <td>
-                                                May 15, 2015
-                                            </td>
-                                            <td>
-                                                <a href="#" class="btn btn-dark m-2">Скачать</a>
-                                                <a href="#" class="btn btn-danger m-2">Удалить</a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="py-1">
-                                                <img src="{{asset('Frontend\img\metrica\metrika2.jpg')}}" alt="image">
-                                            </td>
-                                            <td>
-                                                Messsy Adam
+                                                {{$metrica->description}}
                                             </td>
 
                                             <td>
-                                                $245.30
+                                                {{$metrica->prise}}
                                             </td>
                                             <td>
-                                                July 1, 2015
+                                                {{$metrica->updated_at}}
                                             </td>
                                             <td>
-                                                <a href="#" class="btn btn-dark m-2">Скачать</a>
+                                               {{$metrica->views}}
+                                            </td>
+                                            <td>
+                                                <a href="#" class="btn btn-dark m-2">Править</a>
                                                 <a href="#" class="btn btn-danger m-2">Удалить</a>
                                             </td>
                                         </tr>
-                                        <tr>
-                                            <td class="py-1">
-                                                <img src="{{asset('Frontend\img\metrica\metrika3.jpg')}}" alt="image">
-                                            </td>
-                                            <td>
-                                                John Richards
-                                            </td>
-
-                                            <td>
-                                                $138.00
-                                            </td>
-                                            <td>
-                                                Apr 12, 2015
-                                            </td>
-                                            <td>
-                                                <a href="#" class="btn btn-dark m-2">Скачать</a>
-                                                <a href="#" class="btn btn-danger m-2">Удалить</a>
-                                            </td>
-                                        </tr>
+                                        @endforeach
                                         </tbody>
                                     </table>
                                 </div>

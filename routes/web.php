@@ -17,6 +17,9 @@ Route::group(['prefix'=>'/cabinet'],function (){
 });
 Route::group(['prefix'=>'/adm_panel'],function (){
     Route::get('/index','App\Http\Controllers\Admin\IndexAdminController@index')->name('admin');
+    Route::resource('/metrics_admin','App\Http\Controllers\Admin\MetricsAdminController');
+    Route::resource('/comments_admin','App\Http\Controllers\Admin\CommentsAdminController');
+    Route::resource('/tags_admin','App\Http\Controllers\Admin\TagsAdminController');
 });
 
 

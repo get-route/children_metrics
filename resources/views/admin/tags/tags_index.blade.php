@@ -77,42 +77,13 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
+                <div class="row" id="app">
                     <div class="col-lg-12 grid-margin stretch-card">
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="card-title">Сводная таблица</h4>
 
-                                <div class="table-responsive">
-                                    <table class="table table-striped">
-                                        <thead>
-                                        <tr>
-                                            <th>
-                                                ID
-                                            </th>
-                                            <th>
-                                                Заголовок
-                                            </th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        @foreach($tags_all as $tag)
-                                            <tr>
-                                                <td>
-                                                    {{$tag->id}}
-                                                </td>
-                                                <td>
-                                                    {{$tag->title}}
-                                                </td>
-                                                <td>
-                                                    <a href="#" class="btn btn-dark m-2">Править</a>
-                                                    <a href="#" class="btn btn-danger m-2">Удалить</a>
-                                                </td>
-                                            </tr>
-                                        @endforeach
-                                        </tbody>
-                                    </table>
-                                </div>
+                              <admin-tag-component></admin-tag-component>
                             </div>
                         </div>
                     </div>                </div>
@@ -136,6 +107,5 @@
 </body>
 
 </html>
-
 
 

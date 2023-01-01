@@ -15,8 +15,8 @@ class MetricsAdminController extends Controller
      */
     public function index()
     {
-        $all_metrics = DB::table('metrics')->get();
-        return view('admin.metrics.metrics_index',compact('all_metrics'));
+//        $all_metrics = DB::table('metrics')->get();
+        return view('admin.metrics.metrics_index');
 
     }
 

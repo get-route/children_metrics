@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\TagRequest;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -15,8 +17,7 @@ class TagsAdminController extends Controller
      */
     public function index()
     {
-        $tags_all = DB::table('tags')->get();
-        return view('admin.tags.tags_index',compact('tags_all'));
+        return view('admin.tags.tags_index');
     }
 
     /**
@@ -35,20 +36,22 @@ class TagsAdminController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(TagRequest $request)
     {
-        //
+        $data = $request->validate();
+        $createTag = Tag::create(['title'=>$request->title]);
+        return $createTag;
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
-        //
+        $tags_all = DB::table('tags')->get();
+        return response()->json($tags_all);
     }
 
     /**
@@ -69,9 +72,11 @@ class TagsAdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(TagRequest $request, $id)
     {
-        //
+        //$data = $request->validate();
+        $update_tag = DB::table('tags')->where('id','=',$id)->update(['title'=>$request->title]);
+        return $update_tag;
     }
 
     /**
@@ -80,8 +85,9 @@ class TagsAdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Tag $id)
     {
-        //
+        $deleteTag = DB::table('tags')->where('id','=',$id->id)->delete();
+        return $deleteTag;
     }
 }

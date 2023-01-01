@@ -15,8 +15,8 @@ class CommentsAdminController extends Controller
      */
     public function index()
     {
-        $comments_all = DB::table('comments')->get();
-        return view('admin.comments.comments_index',compact('comments_all'));
+//        $comments_all = DB::table('comments')->get();
+        return view('admin.comments.comments_index');
     }
 
     /**

@@ -10,8 +10,8 @@
                     Заголовок
                 </th>
                 <th>
-                    <a href="#" class="btn btn-success" @click.prevent="createTag(addTag)">+</a>
-                    <input v-model="addTag">
+                    <a href="#" class="btn btn-success m-2" @click.prevent="createTag()">+</a>
+                    <input v-model="titleAdd">
                 </th>
             </tr>
             </thead>
@@ -42,6 +42,7 @@
             return{
                 getTag: {},
                 title:null,
+                titleAdd:null,
                 redactorActive:null,
                 addTag:null
             }
@@ -77,13 +78,17 @@
                     alert('Произошла ошибка при удалении, обратитесь в консоль')
                 })
             },
-            createTag(title){
-                axios.post('/api/adm_panel/tags_admin/',{title:title}).then(res=>{
+            createTag(){
+                axios.post('/api/adm_panel/tags_admin',{title:this.titleAdd}).then(res=>{
                     this.getTags()
                     alert("Запись успешно была добавлена")
+                    this.titleAdd = null
+                    //console.log(res)
+                    //console.log(this.titleAdd)
+
                 }).catch(function (error) {
                     console.log(error)
-                    alert('Произошла ошибка при удалении, обратитесь в консоль')
+                    alert('Произошла ошибка, обратитесь в консоль')
                 })
             }
     }

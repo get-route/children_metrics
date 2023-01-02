@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\StoreTagRequest;
 use App\Http\Requests\Admin\TagRequest;
 use App\Models\Tag;
 use Illuminate\Http\Request;
@@ -36,9 +37,9 @@ class TagsAdminController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(TagRequest $request)
+    public function store(StoreTagRequest $request)
     {
-        $data = $request->validate();
+        $data = $request->validated();
         $createTag = Tag::create(['title'=>$request->title]);
         return $createTag;
     }

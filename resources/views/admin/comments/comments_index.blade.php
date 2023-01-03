@@ -80,64 +80,9 @@
                 <div class="row">
                     <div class="col-lg-12 grid-margin stretch-card">
                         <div class="card">
-                            <div class="card-body">
+                            <div class="card-body" id="app">
                                 <h4 class="card-title">Сводная таблица</h4>
-
-                                <div class="table-responsive">
-                                    <table class="table table-striped">
-                                        <thead>
-                                        <tr>
-                                            <th>
-                                                ID
-                                            </th>
-                                            <th>
-                                                Имя
-                                            </th>
-                                            <th>
-                                                Email
-                                            </th>
-                                            <th>
-                                                Текст
-                                            </th>
-                                            <th>
-                                                Дата
-                                            </th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        @foreach($comments_all as $comment)
-                                            <tr>
-                                                <td>
-                                                    {{$comment->id}}
-                                                </td>
-                                                <td>
-                                                    {{$comment->name}}
-                                                </td>
-                                                <td>
-                                                    {{$comment->email}}
-                                                </td>
-
-                                                <td>
-                                                    {{$comment->text}}
-                                                </td>
-                                                <td>
-                                                    {{$comment->updated_at}}
-                                                </td>
-
-                                                <td>
-                                                    <a href="#" class="btn btn-dark m-2">Править</a>
-                                                    <a href="#" class="btn btn-danger m-2">Удалить</a>
-                                                    @if($comment->public =="Нет")
-                                                    <a href="#" class="btn btn-success m-2">Одобрить</a>
-                                                    @else
-                                                        <a href="#" class="btn btn-secondary m-2">Запретить</a>
-                                                    @endif
-                                                </td>
-                                            </tr>
-                                        @endforeach
-                                        </tbody>
-                                    </table>
-                                </div>
+                                <admin-comment-component></admin-comment-component>
                             </div>
                         </div>
                     </div>                </div>
@@ -161,6 +106,3 @@
 </body>
 
 </html>
-
-
-

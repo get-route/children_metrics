@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Comment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -15,7 +16,7 @@ class CommentsAdminController extends Controller
      */
     public function index()
     {
-//        $comments_all = DB::table('comments')->get();
+
         return view('admin.comments.comments_index');
     }
 
@@ -43,12 +44,23 @@ class CommentsAdminController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
-        //
+        $comments_all = DB::table('comments')->get();
+        return response()->json($comments_all);
+    }
+    /**
+     * Display the specified resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function metric_url($id)
+    {
+        $metrics_url = DB::table('metrics')->where('id','=',$id)->get('url');
+
+        return response($metrics_url);
     }
 
     /**

@@ -82,6 +82,7 @@
                         <div class="card">
                             <div class="card-body" id="app">
                                 <h4 class="card-title">Сводная таблица</h4>
+
                                 <admin-comment-component></admin-comment-component>
                             </div>
                         </div>

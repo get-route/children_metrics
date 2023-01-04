@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Comment;
+use App\Models\Metric;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -16,7 +17,6 @@ class CommentsAdminController extends Controller
      */
     public function index()
     {
-
         return view('admin.comments.comments_index');
     }
 
@@ -48,7 +48,7 @@ class CommentsAdminController extends Controller
      */
     public function show()
     {
-        $comments_all = DB::table('comments')->get();
+        $comments_all = Comment::with('metrics')->get();
         return response()->json($comments_all);
     }
     /**

@@ -7,7 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Comment extends Model
 {
+    protected $table = 'comments';
+
     public function metrics(){
-        return $this->belongsTo(Metric::class);
+        return $this->belongsTo(Metric::class,'metric_id');
     }
 }

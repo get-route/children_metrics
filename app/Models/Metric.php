@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Metric extends Model
 {
-
+    protected $table = 'metrics';
     public function comments(){
         return $this->hasMany(Comment::class,'metric_id');
     }

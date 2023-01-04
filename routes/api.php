@@ -28,5 +28,4 @@ Route::group(['prefix'=>'/adm_panel'],function (){
     Route::delete('/tags_admin/{id}','App\Http\Controllers\Admin\TagsAdminController@destroy');
     //----Comment Params----
     Route::get('/comments_admin','App\Http\Controllers\Admin\CommentsAdminController@show');
-    Route::get('/comments_admin/{id_metric}','App\Http\Controllers\Admin\CommentsAdminController@metric_url');
 });

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\Comment\ReplyCommentRequest;
 use App\Models\Comment;
 use App\Models\Metric;
 use Illuminate\Http\Request;
@@ -36,9 +37,18 @@ class CommentsAdminController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ReplyCommentRequest $request)
     {
-        //
+        $data = $request->validated();
+        $reply_admin = Comment::create([
+            'text'=>$request->text,
+            'name'=>$request->name,
+            'email'=>$request->email,
+            'metric_id'=>$request->metric_id,
+            'parent_id'=>$request->parent_id,
+            'public'=>"ДА",
+        ]);
+        return $reply_admin;
     }
 
     /**

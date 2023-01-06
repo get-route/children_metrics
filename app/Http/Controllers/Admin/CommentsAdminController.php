@@ -58,7 +58,7 @@ class CommentsAdminController extends Controller
      */
     public function show()
     {
-        $comments_all = Comment::with('metrics')->get();
+        $comments_all = Comment::with('metrics')->orderBy('metric_id','ASC')->get();
         return response()->json($comments_all);
     }
     /**
@@ -68,7 +68,7 @@ class CommentsAdminController extends Controller
      */
     public function metric_url($id)
     {
-        $metrics_url = DB::table('metrics')->where('id','=',$id)->get('url');
+        $metrics_url = DB::table('metrics')->where('id','=',$id)->orderBy('metric_id','DESC')->get('url');
 
         return response($metrics_url);
     }

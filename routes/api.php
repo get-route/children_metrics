@@ -29,4 +29,7 @@ Route::group(['prefix'=>'/adm_panel'],function (){
     //----Comment Params----
     Route::get('/comments_admin','App\Http\Controllers\Admin\CommentsAdminController@show');
     Route::post('/comments_admin','App\Http\Controllers\Admin\CommentsAdminController@store');
+    Route::patch('/comments_admin/{id}','App\Http\Controllers\Admin\CommentsAdminController@update');
+    Route::patch('/comments_admin/public/{id}','App\Http\Controllers\Admin\CommentsAdminController@edit');
+    Route::delete('/comments_admin/{id}','App\Http\Controllers\Admin\CommentsAdminController@destroy');
 });

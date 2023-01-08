@@ -1,5 +1,5 @@
 <template>
-    <div class="table">
+    <div class="table table-responsive">
         <table class="table table-bordered">
             <thead class="thead-dark" >
             <tr>
@@ -26,14 +26,23 @@
             {{comments.id}}
         </td>
         <td>
-            {{comments.name}}
+
+            <textarea type="text" v-model="comments.name">
+                {{comments.name}}
+            </textarea>
+
         </td>
         <td>
-            {{comments.email}}
+            <textarea type="email" v-model="comments.email" >
+                {{comments.email}}
+            </textarea>
         </td>
 
         <td>
-            {{comments.text}}
+            <textarea rows="9" type="text" v-model="comments.text">
+                {{comments.text}}
+            </textarea>
+
         </td>
         <td>
 
@@ -64,13 +73,13 @@
         </td>
 
         <td>
-            <a href="#" class="btn btn-dark m-2">Править</a>
-            <a href="#" class="btn btn-danger m-2">Удалить</a>
+            <a href="#" @click.prevent="redactComment(comments.id,comments.text, comments.name, comments.email)" class="btn btn-dark m-2">Править</a>
+            <a href="#" @click.prevent="deleteComment(comments.id)" class="btn btn-danger m-2">Удалить</a>
             <p v-if="comments.public == 'Нет'">
-                <a href="#" class="btn btn-success m-2">Одобрить</a>
+                <a href="#" @click.prevent="publicComment(comments.id,'ДА')" class="btn btn-success m-2">Одобрить</a>
             </p>
             <p v-else >
-                <a href="#" class="btn btn-outline-danger m-2">Скрыть</a>
+                <a href="#" @click.prevent="publicComment(comments.id,'Нет')" class="btn btn-outline-danger m-2">Скрыть</a>
             </p>
 
         </td>
@@ -83,14 +92,21 @@
             ➥
         </td>
         <td>
-            {{comments_reply.name}}
+            <textarea type="email" v-model="comments_reply.name" >
+                {{comments_reply.name}}
+            </textarea>
         </td>
         <td>
-            {{comments_reply.email}}
+            <textarea type="email" v-model="comments_reply.email" >
+                {{comments_reply.email}}
+            </textarea>
         </td>
 
         <td>
-            {{comments_reply.text}}
+           <textarea rows="9" type="text" v-model="comments_reply.text">
+                {{comments_reply.text}}
+            </textarea>
+
         </td>
         <td>
             <p>
@@ -120,13 +136,13 @@
         </td>
 
         <td>
-            <a href="#" class="btn btn-dark m-2">Править</a>
-            <a href="#" class="btn btn-danger m-2">Удалить</a>
-            <p v-if="comments.public == 'Нет'">
-                <a href="#" class="btn btn-success m-2">Одобрить</a>
+            <a href="#" @click.prevent="redactComment(comments_reply.id,comments_reply.text, comments_reply.name, comments_reply.email)" class="btn btn-dark m-2">Править</a>
+            <a href="#" @click.prevent="deleteComment(comments_reply.id)" class="btn btn-danger m-2">Удалить</a>
+            <p v-if="comments_reply.public == 'Нет'">
+                <a href="#" @click.prevent="publicComment(comments_reply.id,'ДА')" class="btn btn-success m-2">Одобрить</a>
             </p>
             <p v-else >
-                <a href="#" class="btn btn-outline-danger m-2">Скрыть</a>
+                <a href="#" @click.prevent="publicComment(comments_reply.id,'Нет')" class="btn btn-outline-danger m-2">Скрыть</a>
             </p>
 
         </td>
@@ -168,10 +184,11 @@
               urlMetric: null,
               replyForm: false,
               replyText:null,
+              pubComment:null,
               adminEmail:'admin@mail.ru',
               adminName:'Администрация',
               replyArr: [],
-              parentArr:[]
+              parentArr:[],
           }
         },
         mounted() {
@@ -189,7 +206,7 @@
                     this.parentArr = res.data.filter(function (parent) {
                         return parent.parent_id == null;
                     })
-                    console.log(this.parentArr)
+                    //console.log(this.parentArr)
 
                     return this.getComment
 
@@ -211,7 +228,38 @@
                     console.log(error)
                 })
             },
+            redactComment(id,text, name, email){
+                axios.patch('/api/adm_panel/comments_admin/' + id,{text:text, name:name, email:email}).then(res=>{
+                    this.getComments()
+                    alert('Ваш комментарий отредактирован')
 
+                }).catch(function(error){
+                    alert('Произошла ошибка при отправке, просьба обратиться в консоль')
+                    console.log(error)
+                })
+            },
+            deleteComment(id){
+                axios.delete('/api/adm_panel/comments_admin/' + id,).then(res=>{
+                    this.getComments()
+                    alert('Ваш комментарий удален')
+
+                }).catch(function(error){
+                    alert('Произошла ошибка при удалении, просьба обратиться в консоль')
+                    console.log(error)
+                })
+            },
+            publicComment(id,publicComment){
+                this.pubComment = publicComment
+                axios.patch('/api/adm_panel/comments_admin/public/' + id,{public:this.pubComment}).then(res=>{
+                    this.getComments()
+                    alert('Ваш комментарий прошел настройки публикации')
+                    this.pubComment = null
+
+                }).catch(function(error){
+                    alert('Произошла ошибка при отправке, просьба обратиться в консоль')
+                    console.log(error)
+                })
+            },
         }
     }
 </script>

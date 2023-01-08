@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\Comment\OnOFFCommentRequest;
 use App\Http\Requests\Admin\Comment\ReplyCommentRequest;
+use App\Http\Requests\Admin\Comment\UpdateCommentRequest;
 use App\Models\Comment;
 use App\Models\Metric;
 use Illuminate\Http\Request;
@@ -19,16 +21,6 @@ class CommentsAdminController extends Controller
     public function index()
     {
         return view('admin.comments.comments_index');
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
     }
 
     /**
@@ -61,17 +53,6 @@ class CommentsAdminController extends Controller
         $comments_all = Comment::with('metrics')->orderBy('metric_id','ASC')->get();
         return response()->json($comments_all);
     }
-    /**
-     * Display the specified resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function metric_url($id)
-    {
-        $metrics_url = DB::table('metrics')->where('id','=',$id)->orderBy('metric_id','DESC')->get('url');
-
-        return response($metrics_url);
-    }
 
     /**
      * Show the form for editing the specified resource.
@@ -79,9 +60,12 @@ class CommentsAdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(OnOFFCommentRequest $request, $id)
     {
-        //
+        $public_comment = DB::table('comments')->where('id','=',$id)->update([
+            'public'=>$request->public,
+        ]);
+        return $public_comment;
     }
 
     /**
@@ -91,9 +75,17 @@ class CommentsAdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateCommentRequest $request, $id)
     {
-        //
+        $data = $request->validated();
+        $updated_comment = DB::table('comments')->where('id','=',$id)->update(
+          [
+              'name'=>$request->name,
+              'text'=>$request->text,
+              'email'=>$request->email,
+          ]
+        );
+        return $updated_comment;
     }
 
     /**
@@ -104,6 +96,7 @@ class CommentsAdminController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $delete_comment =DB::table('comments')->where('id','=',$id)->delete();
+        return $delete_comment;
     }
 }

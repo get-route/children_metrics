@@ -10,6 +10,9 @@
                     Заголовок
                 </th>
                 <th>
+                    URL
+                </th>
+                <th>
                     <a href="#" class="btn btn-success m-2" @click.prevent="createTag()">+</a>
                     <input v-model="titleAdd">
                 </th>
@@ -23,6 +26,9 @@
                 </td>
                 <td>
                     <input v-model="tags.title">
+                </td>
+                <td>
+                    <a :href="'/tag/'+tags.url">{{tags.url}}</a>
                 </td>
                 <td>
                     <a href="#" class="btn btn-dark m-2" @click.prevent="updateTag(tags.id, tags.title)">Править</a>

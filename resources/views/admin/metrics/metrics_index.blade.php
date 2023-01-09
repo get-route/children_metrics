@@ -77,70 +77,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-lg-12 grid-margin stretch-card">
-                        <div class="card">
-                            <div class="card-body">
-                                <h4 class="card-title">Сводная таблица</h4>
-
-                                <div class="table-responsive">
-                                    <table class="table table-striped">
-                                        <thead>
-                                        <tr>
-                                            <th>
-                                                Метрика
-                                            </th>
-                                            <th>
-                                                Заголовок
-                                            </th>
-                                            <th>
-                                                Описание
-                                            </th>
-                                            <th>
-                                                Цена
-                                            </th>
-                                            <th>
-                                                Дата
-                                            </th>
-                                            <th>
-                                                Просмотры
-                                            </th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        @foreach($all_metrics as $metrica)
-                                        <tr>
-                                            <td class="py-1 img-table">
-                                                <a href="{{route('index')}}/{{$metrica->url}}" target="_blank"> <img src="{{asset('Frontend\img\metrica/'.$metrica->photo)}}" alt="image"></a>
-                                            </td>
-                                            <td>
-                                                {{$metrica->title}}
-                                            </td>
-                                            <td>
-                                                {{$metrica->description}}
-                                            </td>
-
-                                            <td>
-                                                {{$metrica->prise}}
-                                            </td>
-                                            <td>
-                                                {{$metrica->updated_at}}
-                                            </td>
-                                            <td>
-                                               {{$metrica->views}}
-                                            </td>
-                                            <td>
-                                                <a href="#" class="btn btn-dark m-2">Править</a>
-                                                <a href="#" class="btn btn-danger m-2">Удалить</a>
-                                            </td>
-                                        </tr>
-                                        @endforeach
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>                </div>
+                <div class="row" id="app">
+                    <admin-metric-component></admin-metric-component>
+                </div>
             </div>
             <!-- content-wrapper ends -->
             <!-- partial:partials/_footer.html -->
@@ -161,5 +100,3 @@
 </body>
 
 </html>
-
-

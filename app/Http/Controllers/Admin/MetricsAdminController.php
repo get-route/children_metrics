@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Metric;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Cviebrock\EloquentSluggable\Services\SlugService;
 
 class MetricsAdminController extends Controller
 {
@@ -15,7 +17,6 @@ class MetricsAdminController extends Controller
      */
     public function index()
     {
-//        $all_metrics = DB::table('metrics')->get();
         return view('admin.metrics.metrics_index');
 
     }
@@ -47,9 +48,11 @@ class MetricsAdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
-        //
+        $all_metrics = Metric::with('tags')->orderBy('updated_at','ASC')->get(['id','title','photo','prise','url','public']);
+        return response($all_metrics);
+
     }
 
     /**

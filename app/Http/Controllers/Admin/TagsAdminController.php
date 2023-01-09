@@ -6,8 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\StoreTagRequest;
 use App\Http\Requests\Admin\TagRequest;
 use App\Models\Tag;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Cviebrock\EloquentSluggable\Services\SlugService;
+
 
 class TagsAdminController extends Controller
 {
@@ -40,7 +41,7 @@ class TagsAdminController extends Controller
     public function store(StoreTagRequest $request)
     {
         $data = $request->validated();
-        $createTag = Tag::create(['title'=>$request->title]);
+        $createTag = Tag::create(['title'=>$request->title, 'url' => SlugService::createSlug(Tag::class, 'url', $request->title),]);
         return $createTag;
     }
 

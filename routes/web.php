@@ -21,8 +21,6 @@ Route::group(['prefix'=>'/adm_panel'],function (){
     Route::get('/comments_admin','App\Http\Controllers\Admin\CommentsAdminController@index')->name('comments_admin.index');
     Route::get('/tags_admin','App\Http\Controllers\Admin\TagsAdminController@index')->name('tags_admin.index');
 });
-
-
 Route::get('/','App\Http\Controllers\IndexController@index')->name('index');
 Route::get('/redactor','App\Http\Controllers\RedactorController@index')->name('index.redactor');
 

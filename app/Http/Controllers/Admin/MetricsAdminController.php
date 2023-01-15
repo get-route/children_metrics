@@ -7,6 +7,7 @@ use App\Models\Metric;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Cviebrock\EloquentSluggable\Services\SlugService;
+use Symfony\Component\Console\Input\Input;
 
 class MetricsAdminController extends Controller
 {
@@ -54,6 +55,18 @@ class MetricsAdminController extends Controller
         return response($all_metrics);
 
     }
+    /**
+     * Display the specified resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function directive()
+    {
+        $directive_img = scandir('Frontend/img/metrica');
+        $directive_img = array_splice($directive_img, 2);
+        return response($directive_img);
+
+    }
 
     /**
      * Show the form for editing the specified resource.
@@ -77,6 +90,7 @@ class MetricsAdminController extends Controller
     {
         //
     }
+
 
     /**
      * Remove the specified resource from storage.

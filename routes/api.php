@@ -34,4 +34,6 @@ Route::group(['prefix'=>'/adm_panel'],function (){
     Route::delete('/comments_admin/{id}','App\Http\Controllers\Admin\CommentsAdminController@destroy');
     //----Metrics Params----
     Route::get('/metrics_admin','App\Http\Controllers\Admin\MetricsAdminController@show');
+    Route::get('/metrics_admin/directive','App\Http\Controllers\Admin\MetricsAdminController@directive');
+
 });

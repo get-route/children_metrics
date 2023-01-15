@@ -41,7 +41,7 @@ class TagsAdminController extends Controller
     public function store(StoreTagRequest $request)
     {
         $data = $request->validated();
-        $createTag = Tag::create(['title'=>$request->title, 'url' => SlugService::createSlug(Tag::class, 'url', $request->title),]);
+        $createTag = Tag::create(['title'=>$request->title]);
         return $createTag;
     }
 

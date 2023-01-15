@@ -78,7 +78,9 @@
                     </div>
                 </div>
                 <div class="row" id="app">
+
                     <admin-metric-component></admin-metric-component>
+
                 </div>
             </div>
             <!-- content-wrapper ends -->
@@ -94,6 +96,9 @@
 </div>
 <!-- container-scroller -->
 @yield('scripts')
+
+
+
 
 <!-- plugins:js -->
 

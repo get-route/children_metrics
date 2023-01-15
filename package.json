@@ -15,9 +15,12 @@
         "postcss": "^8.1.14",
         "sass": "^1.32.11",
         "vite": "^3.0.0",
-        "vue": "^3.2.37"
+        "vue": "^3.2.45"
     },
     "dependencies": {
+        "@ckeditor/ckeditor5-upload": "^35.4.0",
+        "@mayasabha/ckeditor4-vue3": "^0.0.6",
+        "ckeditor5-simple-upload": "^1.0.7",
         "huebee": "^2.1.1",
         "vue": "^3.2.41",
         "vue-color": "^2.8.1",

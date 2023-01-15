@@ -7,8 +7,7 @@ import AdminMetricComponent from "./components/admin/AdminMetricComponent.vue";
 import AdminTagComponent from "./components/admin/AdminTagComponent.vue";
 import Vue3ColorPicker from "vue3-colorpicker";
 import "vue3-colorpicker/style.css";
-
-
+import CKEditor from '@mayasabha/ckeditor4-vue3';
 const app = createApp({
     components:{
         RedactorIndex,
@@ -21,5 +20,7 @@ const app = createApp({
 });
 app.use(Vue3ColorPicker)
 app.use(store);
+app.use(CKEditor);
+
 
 app.mount('#app');

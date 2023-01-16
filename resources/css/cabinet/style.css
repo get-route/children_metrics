@@ -9386,6 +9386,21 @@ pre code {
 .offset-11 {
   margin-left: 91.66667%;
 }
+.img-metric{
+    height: 300px;
+
+    overflow:auto;
+}
+.img-metric-admin {
+    border: 2px dashed #8b8787;
+    box-shadow:  2px 2px 2px #8b8787;
+    width: 200px;
+    height: 200px;
+}
+.img-metric-admin:checked, .img-metric-admin:hover{
+    border: 2px dashed #058d26;
+    box-shadow:  2px 2px 2px #058d26;
+}
 
 @media (min-width: 576px) {
   .col-sm {

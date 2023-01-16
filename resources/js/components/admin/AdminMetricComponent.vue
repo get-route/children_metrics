@@ -15,14 +15,22 @@
                             <textarea  v-model="titleForm" cols="50" rows="2" placeholder="Укажите заголовок страницы"></textarea>
 
                         </div>
+
                         <div class="col-lg-12 row">
                             <h2 class="col-lg-12">Выберите метрику</h2>
-                            <div class="col-lg-3" v-for="directive in this.directiveImg">
-                                <a href="#" class="btn">
-                                    <img :src="'/public/Frontend/img/metrica/'+ directive" height="100" width="100" >
-                                </a>
 
-                            </div>
+                                <div  class="overflow-scroll img-metric">
+                                    <template v-for="directive in this.directiveImg">
+                                        <a  @click.prevent="this.successImage(directive)" href="#" class="btn col-lg-4">
+                                            <img :src="'/public/Frontend/img/metrica/'+ directive"  class="img-metric-admin">
+                                            <img v-if="this.activeImg == directive" src="/public/admin/image/verification.png">
+                                        </a>
+                                    </template>
+
+
+                                </div>
+
+
                         </div>
                         <div class="col-lg-12 m-4">
                             <h2>Description</h2>
@@ -126,6 +134,8 @@
                 imagesForm:"",
                 priseForm:"Бесплатная",
                 hidenForm: false,
+                successImg:null,
+                activeImg: null,
             }
         },
 
@@ -144,12 +154,15 @@
           },getDirective(){
               axios.get('/api/adm_panel/metrics_admin/directive').then(res=>{
                   this.directiveImg = res.data
-                  console.log(res.data)
               }).catch(function (error) {
                   console.log(error)
                   alert('Папка пуста или ошибка соединения. Обратитесь в консоль')
               })
           },
+            successImage(img){
+              this.successImg = img
+                this.activeImg = img
+            }
 
 
 

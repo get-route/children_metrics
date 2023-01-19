@@ -3,11 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\Metric\ImgMetricRequest;
 use App\Models\Metric;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use Cviebrock\EloquentSluggable\Services\SlugService;
-use Symfony\Component\Console\Input\Input;
+use Intervention\Image\Facades\Image;
+use function League\Flysystem\has;
 
 class MetricsAdminController extends Controller
 {
@@ -38,9 +38,15 @@ class MetricsAdminController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function uploads(ImgMetricRequest $request)
     {
-        //
+        $newMetric = $request->all();
+        if ($request->hasFile('image')){
+
+            $newMetric = $request->file('image')->store("public/metric");
+        }
+        return response($newMetric);
+
     }
 
     /**
@@ -62,8 +68,10 @@ class MetricsAdminController extends Controller
      */
     public function directive()
     {
-        $directive_img = scandir('Frontend/img/metrica');
+        $directive_img = scandir('storage/metric');
         $directive_img = array_splice($directive_img, 2);
+        //$image = Image::make('Frontend/img/metrica/metrika.jpg')->fit(100,100)->save('app/'.date('Y-m-d'));
+
         return response($directive_img);
 
     }

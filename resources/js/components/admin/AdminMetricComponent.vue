@@ -17,12 +17,17 @@
                         </div>
 
                         <div class="col-lg-12 row">
-                            <h2 class="col-lg-12">Выберите метрику</h2>
+                            <h2 class="col-lg-12">Выберите метрику
+                                    <label for="image" class="btn btn-success">➕</label>
+                                    <input id="image" name="image" ref="addImg" style="visibility:hidden;" @change="addImages()" type="file">
+
+
+                            </h2>
 
                                 <div  class="overflow-scroll img-metric">
                                     <template v-for="directive in this.directiveImg">
                                         <a  @click.prevent="this.successImage(directive)" href="#" class="btn col-lg-4">
-                                            <img :src="'/public/Frontend/img/metrica/'+ directive"  class="img-metric-admin">
+                                            <img :src="'/public/storage/metric/'+ directive"  class="img-metric-admin">
                                             <img v-if="this.activeImg == directive" src="/public/admin/image/verification.png">
                                         </a>
                                     </template>
@@ -48,7 +53,9 @@
                                     <a href="" @click.prevent="this.priseForm = 'Бесплатная'">
                                         <p>БЕСПЛАТНО</p>
                                         <img src="/public/admin/image/slippers.png">
-
+                                        <p v-if="this.priseForm == 'Бесплатная'">
+                                            <img  src="/public/admin/image/verification.png">
+                                        </p>
                                     </a>
 
                                 </div>
@@ -56,15 +63,18 @@
                                     <a href="#"  @click.prevent="this.priseForm = 'Платная'">
                                         <p>ПЛАТНО</p>
                                         <img src="/public/admin/image/price.png">
+                                        <p v-if="this.priseForm == 'Платная'">
+                                            <img  src="/public/admin/image/verification.png">
+                                        </p>
                                     </a>
 
                                 </div>
 
 
                         </div>
-
-
-
+                        <div class="col-lg-12 text-center">
+                            <a href="#" class="btn btn-success m-6">ОПРАВИТЬ</a>
+                        </div>
 
                     </div>
                 </div>
@@ -136,12 +146,14 @@
                 hidenForm: false,
                 successImg:null,
                 activeImg: null,
+                addimg:null,
             }
         },
 
         mounted() {
             this.getMetrics()
             this.getDirective()
+
             },
         methods:{
           getMetrics(){
@@ -159,10 +171,27 @@
                   alert('Папка пуста или ошибка соединения. Обратитесь в консоль')
               })
           },
+            addImages(){
+                const formData = new FormData()
+                formData.append('image',this.$refs.addImg.files[0])
+              axios.post('/api/adm_panel/metrics_admin/add',formData,{
+                  headers:{
+                      'Content-Type':'multipart/form-data'
+                  }
+              }).then(res=>{
+                  this.addimg = res.data
+                  this.getDirective()
+                  alert('Картинка успешно загружена')
+
+              }).catch(function (error) {
+                  console.log(error)
+                  alert('Изображение не было загружено')
+              })
+          },
             successImage(img){
               this.successImg = img
                 this.activeImg = img
-            }
+            },
 
 
 

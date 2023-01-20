@@ -33,7 +33,8 @@ Route::group(['prefix'=>'/adm_panel'],function (){
     Route::patch('/comments_admin/public/{id}','App\Http\Controllers\Admin\CommentsAdminController@edit');
     Route::delete('/comments_admin/{id}','App\Http\Controllers\Admin\CommentsAdminController@destroy');
     //----Metrics Params----
-    Route::post('/metrics_admin/add','App\Http\Controllers\Admin\MetricsAdminController@uploads');
+    Route::post('/metrics_admin/add-image','App\Http\Controllers\Admin\MetricsAdminController@uploads');
+    Route::get('/metrics_admin/delete-image/{image}','App\Http\Controllers\Admin\MetricsAdminController@dirdelete');
     Route::get('/metrics_admin','App\Http\Controllers\Admin\MetricsAdminController@show');
     Route::get('/metrics_admin/directive','App\Http\Controllers\Admin\MetricsAdminController@directive');
 

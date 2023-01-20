@@ -27,8 +27,10 @@
                                 <div  class="overflow-scroll img-metric">
                                     <template v-for="directive in this.directiveImg">
                                         <a  @click.prevent="this.successImage(directive)" href="#" class="btn col-lg-4">
-                                            <img :src="'/public/storage/metric/'+ directive"  class="img-metric-admin">
+                                            <img @click="deleteImage(directive)" src="/public/admin/image/delete.png">
+                                            <img :src="'/public/storage/thumbnail/thumbnail-'+ directive"  class="img-metric-admin">
                                             <img v-if="this.activeImg == directive" src="/public/admin/image/verification.png">
+
                                         </a>
                                     </template>
 
@@ -99,7 +101,7 @@
                         <tbody>
                         <tr v-for="metric in allMetrics">
                             <td class="py-1 img-table">
-                                <a :href="'/'+ metric.url" target="_blank"> <img :src="'\/public\/Frontend\/img\/metrica\/'+ metric.photo" alt="image"></a>
+                                <a :href="'/'+ metric.url" target="_blank"> <img :src="'/public/storage/thumbnail/thumbnail-'+ metric.photo" alt="image"></a>
                             </td>
                             <td>
                                 {{metric.title}}
@@ -174,7 +176,7 @@
             addImages(){
                 const formData = new FormData()
                 formData.append('image',this.$refs.addImg.files[0])
-              axios.post('/api/adm_panel/metrics_admin/add',formData,{
+              axios.post('/api/adm_panel/metrics_admin/add-image',formData,{
                   headers:{
                       'Content-Type':'multipart/form-data'
                   }
@@ -188,6 +190,15 @@
                   alert('Изображение не было загружено')
               })
           },
+            deleteImage(image){
+                axios.get('/api/adm_panel/metrics_admin/delete-image/'+ image,{image:image}).then(res=>{
+                    this.getDirective()
+                    console.log('Удалил')
+                }).catch(function (error) {
+                    console.log(error)
+                    alert('Произошла ошибка выгрузки. Посторите консоль')
+                })
+            },
             successImage(img){
               this.successImg = img
                 this.activeImg = img

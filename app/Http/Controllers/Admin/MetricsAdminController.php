@@ -3,10 +3,16 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\Metric\CreateRequest;
 use App\Http\Requests\Admin\Metric\ImgMetricRequest;
 use App\Models\Metric;
+use App\Models\Relationships\TagMetric;
+use App\Models\Tag;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 use Intervention\Image\Facades\Image;
 use function League\Flysystem\has;
 
@@ -28,9 +34,30 @@ class MetricsAdminController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create( CreateRequest $request)
     {
-        //
+        $data = $request->validated();
+        //returns ID new post
+        $createMetric = DB::table('metrics')->insertGetId([
+            'title'=> $request->title,
+            'photo'=> $request->photo,
+            'description'=> $request->description,
+            'text'=> $request->text,
+            'prise'=> $request->prise,
+            'url'=>Str::slug($request->title),
+            'created_at'=>Carbon::now(),
+            'updated_at'=>Carbon::now(),
+        ]
+
+        );
+        //returns Id new posts and add new relationships for tags
+        foreach ($request->tags as $tag){
+            $relationship_tag = TagMetric::create([
+                'tag_id'=>$tag,
+                'metric_id'=>$createMetric,
+                ]);
+        }
+        return response($createMetric);
     }
 
     /**
@@ -65,6 +92,19 @@ class MetricsAdminController extends Controller
     {
         $all_metrics = Metric::with('tags')->orderBy('updated_at','ASC')->get(['id','title','photo','prise','url','public']);
         return response($all_metrics);
+
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show_tags()
+    {
+        $all_tags = Tag::all();
+        return response()->json($all_tags);
 
     }
     //File manager storage images for metric

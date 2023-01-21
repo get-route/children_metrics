@@ -4,7 +4,7 @@ namespace App\Http\Requests\Admin\Metric;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ImgMetricRequest extends FormRequest
+class CreateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,7 +24,10 @@ class ImgMetricRequest extends FormRequest
     public function rules()
     {
         return [
-            'image'=>'image|mimes:jpeg,png,jpg,gif,svg|dimensions:min_width=3500,min_height=4900,max_width=3550,max_height=4961'
+            'title'=>'required',
+        'description'=>'required',
+        'text'=>'required',
+
         ];
     }
 }

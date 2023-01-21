@@ -34,9 +34,11 @@ Route::group(['prefix'=>'/adm_panel'],function (){
     Route::delete('/comments_admin/{id}','App\Http\Controllers\Admin\CommentsAdminController@destroy');
     //----Metrics Params----
     Route::post('/metrics_admin/add-image','App\Http\Controllers\Admin\MetricsAdminController@uploads');
+    Route::post('/metrics_admin/create','App\Http\Controllers\Admin\MetricsAdminController@create');
     Route::get('/metrics_admin/delete-image/{image}','App\Http\Controllers\Admin\MetricsAdminController@dirdelete');
     Route::get('/metrics_admin','App\Http\Controllers\Admin\MetricsAdminController@show');
     Route::get('/metrics_admin/directive','App\Http\Controllers\Admin\MetricsAdminController@directive');
+    Route::get('/metrics_admin/all-tags','App\Http\Controllers\Admin\MetricsAdminController@show_tags');
 
 
 });

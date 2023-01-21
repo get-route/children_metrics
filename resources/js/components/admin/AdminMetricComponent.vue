@@ -48,6 +48,20 @@
                             <h2>Краткая информация</h2>
                             <ckeditor id="editor1" v-model="editorData" :config="editorConfig"></ckeditor>
                         </div>
+                        <div class="col-lg-12">
+
+                            <h2>Теги для метрики</h2>
+                            <div class="row m-4">
+                                <div v-for="tags in this.allTag" class="col-lg-3 m-4">
+                                        <input class="form-check-input " type="checkbox" :id="tags.url" v-model="tagsArr" :value="tags.id">
+                                        <label class="form-check-label btn btn-dark" :for="tags.url">{{tags.title}}</label>
+
+                                </div>
+                            </div>
+
+
+
+                        </div>
                         <div class="col-lg-12 row">
                             <h2 class="col-lg-12">Доступ ({{this.priseForm}})</h2>
 
@@ -75,7 +89,7 @@
 
                         </div>
                         <div class="col-lg-12 text-center">
-                            <a href="#" class="btn btn-success m-6">ОПРАВИТЬ</a>
+                            <a href="#" @click.prevent="createMetric(this.titleForm,this.activeImg,this.descriptionForm, this.editorData, this.tagsArr, this.priseForm)" class="btn btn-success m-6">ОПРАВИТЬ</a>
                         </div>
 
                     </div>
@@ -136,10 +150,12 @@
         data(){
             return{
                 allMetrics: null,
+                allTag: null,
                 directiveImg:null,
                 editorConfig: {
                     language:'ru',
                 },
+                tagsArr:[],
                 editorData: "",
                 titleForm:"",
                 descriptionForm:"",
@@ -154,18 +170,36 @@
 
         mounted() {
             this.getMetrics()
+            this.allTags()
             this.getDirective()
 
             },
         methods:{
-          getMetrics(){
+          createMetric(titleForm,activeImg,descriptionForm, editorData, tagsArr, priseForm){
+              axios.post('/api/adm_panel/metrics_admin/create',{title:titleForm,photo:activeImg,description:descriptionForm,text:editorData,tags:tagsArr,prise:priseForm}).then(res=>{
+                  this.getMetrics()
+              }).catch(function (error) {
+                  console.log(error)
+                  alert('Произошла ошибка при отправке. Посмотрите консоль')
+              })
+          },
+            getMetrics(){
               axios.get('/api/adm_panel/metrics_admin').then(res=>{
                   this.allMetrics = res.data
               }).catch(function (error) {
                   console.log(error)
-                  alert('Произошла ошибка выгрузки. Посторите консоль')
+                  alert('Произошла ошибка выгрузки. Посмотрите консоль')
               })
-          },getDirective(){
+          },
+            allTags(){
+              axios.get('/api/adm_panel/metrics_admin/all-tags').then(res=>{
+                  this.allTag = res.data
+              }).catch(function (error) {
+                  console.log(error)
+                  alert('Произошла ошибка выгрузки. Посмотрите консоль')
+              })
+          },
+            getDirective(){
               axios.get('/api/adm_panel/metrics_admin/directive').then(res=>{
                   this.directiveImg = res.data
               }).catch(function (error) {
@@ -203,8 +237,6 @@
               this.successImg = img
                 this.activeImg = img
             },
-
-
 
         },
 

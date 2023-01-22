@@ -4,7 +4,7 @@ namespace App\Http\Requests\Admin\Metric;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CreateRequest extends FormRequest
+class UpdateMetricRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.

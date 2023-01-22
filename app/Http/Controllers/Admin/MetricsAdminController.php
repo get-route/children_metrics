@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Metric\CreateRequest;
 use App\Http\Requests\Admin\Metric\ImgMetricRequest;
+use App\Http\Requests\Admin\Metric\UpdateMetricRequest;
 use App\Models\Metric;
 use App\Models\Relationships\TagMetric;
 use App\Models\Tag;
@@ -144,7 +145,8 @@ class MetricsAdminController extends Controller
      */
     public function edit($id)
     {
-        //
+        $metric_edit = Metric::with('tags')->where('id','=',$id)->get();
+        return response($metric_edit);
     }
 
     /**
@@ -154,9 +156,29 @@ class MetricsAdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateMetricRequest $request, $id)
     {
-        //
+        $data = $request->validated();
+        //returns ID new post
+        $updateMetric = DB::table('metrics')->where('id','=',$id)->update([
+                'title'=> $request->title,
+                'photo'=> $request->photo,
+                'description'=> $request->description,
+                'text'=> $request->text,
+                'prise'=> $request->prise,
+                'url'=>Str::slug($request->title),
+            ]
+
+        );
+        //$delete_relationships = Metric::with('tags')->delete();
+        //returns Id new posts and add new relationships for tags
+        foreach ($request->tags as $tag){
+            $relationship_tag = TagMetric::create([
+                'tag_id'=>$tag,
+                'metric_id'=>$id,
+            ]);
+        }
+        return response($updateMetric);
     }
 
 

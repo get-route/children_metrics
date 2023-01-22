@@ -5,9 +5,10 @@
                 <h4 class="card-title">Таблица метрик сайта</h4>
                 <p><a href="#" @click="this.hidenForm = true" class="btn btn-success ">Добавить</a>
                 <template v-if="this.hidenForm">
-                    <a @click="this.hidenForm=false" href="#" class="btn btn-danger m-4">Х</a>
+                    <a @click="this.hidenForm=false, this.openUpdForm=false" href="#" class="btn btn-danger m-4">Х</a>
                 </template>
                 </p>
+                <!--container add new metric-->
                 <div v-if="this.hidenForm" class="col-lg-12 m-4" style="border: black 1px dotted">
                     <div class="row text-center">
                         <div class="col-lg-12 m-4">
@@ -94,6 +95,103 @@
 
                     </div>
                 </div>
+                <!--end container add new metric-->
+
+                <!--container UPDATE metric-->
+                <div v-if="this.openUpdForm" class="col-lg-12 m-4" style="border: black 1px dotted">
+                    <div class="row text-center">
+                        <template v-if="this.openUpdForm">
+                            <a @click="this.hidenForm=false, this.openUpdForm=false" href="#" class="btn btn-danger m-4">Х</a>
+                        </template>
+                        <h1>Форма обновления метрики</h1>
+                        <div class="col-lg-12 m-4">
+                            <h2>Title</h2>
+                            <textarea  v-model="this.editMetric.title" cols="50" rows="2">
+                                {{this.editMetric.title}}
+                            </textarea>
+                        </div>
+
+                        <div class="col-lg-12 row">
+                            <h2 class="col-lg-12">Выберите метрику
+                                <label for="image" class="btn btn-success">➕</label>
+                                <input id="image" name="image" ref="addImg" style="visibility:hidden;" @change="addImages()" type="file">
+
+
+                            </h2>
+
+                            <div  class="overflow-scroll img-metric">
+                                <template v-for="directive in this.directiveImg">
+                                    <a  @click.prevent="this.successImage(directive)" href="#" class="btn col-lg-4">
+                                        <img @click="deleteImage(directive)" src="/public/admin/image/delete.png">
+                                        <img :src="'/public/storage/thumbnail/thumbnail-'+ directive"  class="img-metric-admin">
+                                        <img v-if="this.activeImg == directive" src="/public/admin/image/verification.png">
+
+                                    </a>
+                                </template>
+
+
+                            </div>
+
+
+                        </div>
+                        <div class="col-lg-12 m-4">
+                            <h2>Description</h2>
+                            <textarea  v-model="this.editMetric.description" cols="50" rows="4" placeholder="Описание для поисковиков">{{this.editMetric.description}}</textarea>
+
+                        </div>
+                        <div class="col-lg-12 ">
+                            <h2>Краткая информация</h2>
+                            <ckeditor id="editor1" v-model="this.editMetric.text" :config="editorConfig"></ckeditor>
+                        </div>
+                        <div class="col-lg-12">
+
+                            <h2>Теги для метрики</h2>
+                            <div class="row m-4">
+                                <div v-for="tags in this.allTag" class="col-lg-3 m-4">
+
+                                        <input class="form-check-input " type="checkbox" :id="tags.url" v-model="tagsArr" :value="tags.id">
+
+                                    <label class="form-check-label btn btn-dark" :for="tags.url">{{tags.title}}</label>
+
+                                </div>
+                            </div>
+
+
+
+                        </div>
+                        <div class="col-lg-12 row">
+                            <h2 class="col-lg-12">Доступ ({{this.editMetric.prise}})</h2>
+
+                            <div class="col-lg-4">
+                                <a href="" @click.prevent="this.editMetric.prise = 'Бесплатная'">
+                                    <p>БЕСПЛАТНО</p>
+                                    <img src="/public/admin/image/slippers.png">
+                                    <p v-if="this.editMetric.prise == 'Бесплатная'">
+                                        <img  src="/public/admin/image/verification.png">
+                                    </p>
+                                </a>
+
+                            </div>
+                            <div class="col-lg-4">
+                                <a href="#"  @click.prevent="this.editMetric.prise = 'Платная'">
+                                    <p>ПЛАТНО</p>
+                                    <img src="/public/admin/image/price.png">
+                                    <p v-if="this.editMetric.prise == 'Платная'">
+                                        <img  src="/public/admin/image/verification.png">
+                                    </p>
+                                </a>
+
+                            </div>
+
+
+                        </div>
+                        <div class="col-lg-12 text-center">
+                            <a href="#" @click.prevent="updateMetric(this.idActiveUpd, this.editMetric.title,this.activeImg,this.editMetric.description, this.editMetric.text, this.tagsArr, this.editMetric.prise)" class="btn btn-success m-6">ОБНОВИТЬ</a>
+                        </div>
+
+                    </div>
+                </div>
+                <!--end container UPDATE metric-->
                 <div class="table-responsive">
                     <table class="table table-striped">
                         <thead>
@@ -131,7 +229,7 @@
                                {{metric.prise}}
                             </td>
                             <td>
-                                <a href="#" class="btn btn-dark m-2">Править</a>
+                                <a href="#" class="btn btn-dark m-2" @click="editMetrics(metric.id)">Править</a>
                                 <a href="#" class="btn btn-danger m-2">Удалить</a>
                             </td>
                         </tr>
@@ -155,16 +253,19 @@
                 editorConfig: {
                     language:'ru',
                 },
-                tagsArr:[],
+                tagsArr:[],//tags all data
                 editorData: "",
                 titleForm:"",
                 descriptionForm:"",
                 imagesForm:"",
                 priseForm:"Бесплатная",
-                hidenForm: false,
+                hidenForm: false,//hide form creted metric
+                openUpdForm:false,//hide form update metric
                 successImg:null,
                 activeImg: null,
                 addimg:null,
+                idActiveUpd:null,//active for patch metric in table
+                editMetric:null,
             }
         },
 
@@ -178,9 +279,33 @@
           createMetric(titleForm,activeImg,descriptionForm, editorData, tagsArr, priseForm){
               axios.post('/api/adm_panel/metrics_admin/create',{title:titleForm,photo:activeImg,description:descriptionForm,text:editorData,tags:tagsArr,prise:priseForm}).then(res=>{
                   this.getMetrics()
+
               }).catch(function (error) {
                   console.log(error)
                   alert('Произошла ошибка при отправке. Посмотрите консоль')
+              })
+          },
+            updateMetric(id, titleForm,activeImg,descriptionForm, editorData, tagsArr, priseForm){
+              axios.patch('/api/adm_panel/metrics_admin/update/'+ id,{title:titleForm,photo:activeImg,description:descriptionForm,text:editorData,tags:tagsArr,prise:priseForm}).then(res=>{
+                  this.getMetrics()
+                  this.openUpdForm = false
+                  this.idActiveUpd = null
+              }).catch(function (error) {
+                  console.log(error)
+                  alert('Произошла ошибка при отправке. Посмотрите консоль')
+              })
+          },
+            editMetrics(id){
+              axios.get('/api/adm_panel/metrics_admin/edit/' + id).then(res=>{
+                  this.editMetric = res.data[0]
+                  console.log(this.editMetric)
+                  this.openUpdForm = true
+                  this.idActiveUpd = id
+                  this.activeImg = this.editMetric.photo
+                  console.log('Обновление успешно')
+              }).catch(function (error) {
+                  console.log(error)
+                  alert('Произошла ошибка выгрузки. Посмотрите консоль')
               })
           },
             getMetrics(){
@@ -236,6 +361,10 @@
             successImage(img){
               this.successImg = img
                 this.activeImg = img
+            },
+            openUpdateForm(id){
+                this.openUpdForm = true
+                this.idActiveUpd = id
             },
 
         },

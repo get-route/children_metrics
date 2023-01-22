@@ -35,6 +35,8 @@ Route::group(['prefix'=>'/adm_panel'],function (){
     //----Metrics Params----
     Route::post('/metrics_admin/add-image','App\Http\Controllers\Admin\MetricsAdminController@uploads');
     Route::post('/metrics_admin/create','App\Http\Controllers\Admin\MetricsAdminController@create');
+    Route::patch('/metrics_admin/update/{id}','App\Http\Controllers\Admin\MetricsAdminController@update');
+    Route::get('/metrics_admin/edit/{id}','App\Http\Controllers\Admin\MetricsAdminController@edit');
     Route::get('/metrics_admin/delete-image/{image}','App\Http\Controllers\Admin\MetricsAdminController@dirdelete');
     Route::get('/metrics_admin','App\Http\Controllers\Admin\MetricsAdminController@show');
     Route::get('/metrics_admin/directive','App\Http\Controllers\Admin\MetricsAdminController@directive');

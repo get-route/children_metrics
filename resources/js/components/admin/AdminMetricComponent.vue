@@ -230,7 +230,9 @@
                             </td>
                             <td>
                                 <a href="#" class="btn btn-dark m-2" @click="editMetrics(metric.id)">Править</a>
-                                <a href="#" class="btn btn-danger m-2">Удалить</a>
+                                <a href="#" @click.prevent="deleteMetrics(metric.id)" class="btn btn-danger m-2">Удалить</a>
+                                <a v-if="metric.public == 'Нет'" href="#" @click.prevent="publicONMetrics(metric.id,'Да')" class="btn btn-success m-2">Одобрить</a>
+                                <a v-else href="#" @click.prevent="publicONMetrics(metric.id,'Нет')" class="btn btn-facebook m-2">Скрыть</a>
                             </td>
                         </tr>
                         </tbody>
@@ -279,7 +281,13 @@
           createMetric(titleForm,activeImg,descriptionForm, editorData, tagsArr, priseForm){
               axios.post('/api/adm_panel/metrics_admin/create',{title:titleForm,photo:activeImg,description:descriptionForm,text:editorData,tags:tagsArr,prise:priseForm}).then(res=>{
                   this.getMetrics()
-
+                  this.tagsArr = []
+                  this.hidenForm= false
+                  this.titleForm=""
+                  this.activeImg=null
+                  this.descriptionForm=""
+                  this.editorData=null
+                  this.priseForm= "Бесплатная"
               }).catch(function (error) {
                   console.log(error)
                   alert('Произошла ошибка при отправке. Посмотрите консоль')
@@ -290,11 +298,22 @@
                   this.getMetrics()
                   this.openUpdForm = false
                   this.idActiveUpd = null
+                  this.tagsArr = []
+                  this.activeImg=null
+                  this.priseForm= "Бесплатная"
               }).catch(function (error) {
                   console.log(error)
                   alert('Произошла ошибка при отправке. Посмотрите консоль')
               })
           },
+            publicONMetrics(id,publicON){
+                axios.patch('/api/adm_panel/metrics_admin/ON/'+ id,{publicON:publicON}).then(res=>{
+                    this.getMetrics()
+                }).catch(function (error) {
+                    console.log(error)
+                    alert('Произошла ошибка при отправке. Посмотрите консоль')
+                })
+            },
             editMetrics(id){
               axios.get('/api/adm_panel/metrics_admin/edit/' + id).then(res=>{
                   this.editMetric = res.data[0]
@@ -302,7 +321,6 @@
                   this.openUpdForm = true
                   this.idActiveUpd = id
                   this.activeImg = this.editMetric.photo
-                  console.log('Обновление успешно')
               }).catch(function (error) {
                   console.log(error)
                   alert('Произошла ошибка выгрузки. Посмотрите консоль')
@@ -316,6 +334,16 @@
                   alert('Произошла ошибка выгрузки. Посмотрите консоль')
               })
           },
+            deleteMetrics(id){
+                axios.delete('/api/adm_panel/metrics_admin/delete/' + id).then(res=>{
+                    this.getMetrics()
+                    alert('Запись удалена')
+                }).catch(function (error) {
+                    console.log(error)
+                    alert('Произошла ошибка удаления. Посмотрите консоль')
+                })
+
+            },
             allTags(){
               axios.get('/api/adm_panel/metrics_admin/all-tags').then(res=>{
                   this.allTag = res.data

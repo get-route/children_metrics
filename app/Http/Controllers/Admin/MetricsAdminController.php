@@ -170,7 +170,10 @@ class MetricsAdminController extends Controller
             ]
 
         );
-        //$delete_relationships = Metric::with('tags')->delete();
+        //pre-delete relationships for metric
+        $tag_relationship = DB::table('tag_metric')->where('metric_id','=',$id)->delete();
+
+
         //returns Id new posts and add new relationships for tags
         foreach ($request->tags as $tag){
             $relationship_tag = TagMetric::create([
@@ -178,6 +181,21 @@ class MetricsAdminController extends Controller
                 'metric_id'=>$id,
             ]);
         }
+        return response($updateMetric);
+    }
+
+ /**
+     * Update the specified resource in storage.
+     *
+     * @param  int  $id
+     */
+    public function onpublic(Request $request, $id)
+    {
+
+        //returns ID new post
+        $updateMetric = DB::table('metrics')->where('id','=',$id)->update(['public'=> $request->publicON,]
+        );
+        //pre-delete relationships for metric
         return response($updateMetric);
     }
 
@@ -190,6 +208,7 @@ class MetricsAdminController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $metric_del = Metric::find($id)->delete();
+        $tag_relationship = DB::table('tag_metric')->where('metric_id','=',$id)->delete();
     }
 }

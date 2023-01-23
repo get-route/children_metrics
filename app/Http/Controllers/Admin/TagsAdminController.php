@@ -87,9 +87,9 @@ class TagsAdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Tag $id)
+    public function destroy($id)
     {
-        $deleteTag = DB::table('tags')->where('id','=',$id->id)->delete();
-        return $deleteTag;
+        $deleteTag = Tag::find($id)->delete();
+        $tag_relationship = DB::table('tag_metric')->where('tag_id','=',$id)->delete();
     }
 }

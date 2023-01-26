@@ -24,7 +24,9 @@
 
         <div class="container" >
             <div class="row" id="app">
-
+@if(session()->has('success'))
+    {{session('success')}}
+                @endif
                 <Register></Register>
             </div>
 
@@ -44,9 +46,3 @@
 
 </html>
 
-<script>
-    import Register from "../../../js/components/frontend/auth/Register";
-    export default {
-        components: {Register}
-    }
-</script>

@@ -30,9 +30,9 @@ Route::get('/','App\Http\Controllers\IndexController@index')->name('index');
 
 //Auth controller/Register Controller
 Route::get('/register','App\Http\Controllers\Auth\RegisterController@create')->name('register.create');
-Route::post('/register','App\Http\Controllers\Auth\RegisterController@store')->name('register.store');
+
 Route::get('/authentication','App\Http\Controllers\Auth\AuthController@auth')->name('auth.create');
-Route::post('/authentication','App\Http\Controllers\Auth\AuthController@store')->name('auth.store');
+
 
 //Cabinet Metric
 Route::get('/redactor','App\Http\Controllers\RedactorController@index')->name('index.redactor');

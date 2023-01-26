@@ -1,7 +1,7 @@
 @section('menu')
     <nav class="navbar navbar-expand-lg navbar-light fixed-top py-5 d-block"
          data-navbar-on-scroll="data-navbar-on-scroll">
-        <div class="container"><a class="navbar-brand" href="index.html"><img src="{{asset('Frontend/img/logo.svg')}}" height="34"
+        <div class="container"><a class="navbar-brand" href="{{route('index')}}"><img src="{{asset('Frontend/img/logo.png')}}" height="34"
                                                                               alt="logo"/></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"

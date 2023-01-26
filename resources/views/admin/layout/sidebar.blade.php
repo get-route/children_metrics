@@ -33,7 +33,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link btn-sm btn-danger" href="#">
+                <a class="nav-link btn-sm btn-danger" href="{{route('auth.logout')}}">
                     <i class="mdi mdi-exit-run menu-icon"></i>
                     <span class="menu-title">Выйти</span>
                 </a>

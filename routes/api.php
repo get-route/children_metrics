@@ -47,4 +47,4 @@ Route::group(['prefix'=>'/adm_panel'],function (){
 
 Route::post('/register','App\Http\Controllers\Auth\RegisterController@store')->name('register.store');
 
-Route::post('/authentication','App\Http\Controllers\Auth\AuthController@store')->name('auth.store');
+

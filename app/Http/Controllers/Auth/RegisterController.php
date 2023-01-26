@@ -7,6 +7,7 @@ use App\Http\Requests\Auth\RegisterRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class RegisterController extends Controller
 {
@@ -18,7 +19,7 @@ class RegisterController extends Controller
        $user = User::create([
            'name'=>$request->name,
            'email'=>$request->email,
-           'password'=>$request->password,
+           'password'=>Hash::make($request->password),
        ]);
        session()->flash('success','Вы успешно зарегистрировались');
        Auth::login($user);

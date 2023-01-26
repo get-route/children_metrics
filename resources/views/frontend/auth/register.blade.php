@@ -24,9 +24,7 @@
 
         <div class="container" >
             <div class="row" id="app">
-@if(session()->has('success'))
-    {{session('success')}}
-                @endif
+
                 <Register></Register>
             </div>
 

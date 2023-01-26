@@ -78,7 +78,7 @@
                     alert('Вы успешно зарегистрировались.')
                     //console.log(this.register)
                 }).catch(function (error) {
-                    console.log(error)
+                    //console.log(error)
                     alert('Ошибка при регистрации. Проверьте правильно ввода пароля и адреса электронной почты')
                 })
             }

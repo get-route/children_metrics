@@ -3,20 +3,21 @@
         <form>
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Адрес электронной почты</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                <input v-model="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="*используется при входе и подтверждении аккаунта">
                 <div id="emailHelp" class="form-text">Мы никогда никому не передадим вашу электронную почту.
                 </div>
             </div>
             <div class="mb-3">
                 <label for="exampleInputPassword1" class="form-label">Пароль</label>
-                <input type="password" class="form-control" id="exampleInputPassword1">
+                <input v-model="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="*указанный при регистрации">
             </div>
             <div class="mb-3 form-check">
                 <input checked type="checkbox" class="form-check-input" id="exampleCheck1">
-                <label class="form-check-label" for="exampleCheck1">*"Нажимая кнопку Войти, Вы соглашаетесь с обработкой Ваших персональных данных (Имени и адреса электронной почты)"</label>
+                <label class="form-check-label" for="exampleCheck1">*"Нажимая кнопку Регистрации, Вы соглашаетесь с обработкой Ваших персональных данных (Имени и адреса электронной почты)"</label>
             </div>
-            <button type="submit" class="btn btn-primary">Войти</button>
+            <button type="submit" class="btn btn-primary" @click.prevent="AuthUser(this.password,this.email)">Войти</button>
             <a href="./register" class="btn btn-facebook m-4">Регистрация</a>
+
         </form>
     </div>
     <div class="col-lg-3">
@@ -46,7 +47,27 @@
 
 <script>
     export default {
-        name: "Auth"
+        name: "Auth",
+        data(){
+            return{
+                register:null,
+                email:null,
+                password:null,
+            }
+        },
+        methods:{
+            AuthUser(password, email){
+                axios.post('/api/authentication',{password:password,email:email}).then(res=>{
+                    this.register = res.data
+                        this.email = null
+                        this.password = null
+                    console.log(this.register)
+                }).catch(function (error) {
+                    console.log(error)
+                    alert('Ошибка при регистрации. Проверьте правильно ввода пароля и адреса электронной почты')
+                })
+            }
+        }
     }
 </script>
 
@@ -56,4 +77,3 @@
         height: auto;
     }
 </style>
-

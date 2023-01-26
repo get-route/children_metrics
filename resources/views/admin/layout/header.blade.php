@@ -17,4 +17,5 @@
     <meta name="msapplication-TileImage" content="{{asset('Frontend/img/favicons/mstile-150x150.png')}} ">
     <meta name="theme-color" content="#ffffff">
 
+
 @endsection

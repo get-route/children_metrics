@@ -7,20 +7,56 @@
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"> </span>
             </button>
-            <div class="collapse navbar-collapse border-top border-lg-0 mt-4 mt-lg-0" id="navbarSupportedContent">
+            <div class="collapse navbar-collapse border-top border-lg-0" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto pt-2 pt-lg-0 font-base align-items-lg-center align-items-start">
                     <li class="nav-item px-3 px-xl-4"><a class="nav-link fw-medium" aria-current="page" href="#service">Service</a>
                     </li>
                     <li class="nav-item px-3 px-xl-4"><a class="nav-link fw-medium" aria-current="page"
                                                          href="#destination">Destination</a></li>
+
                     <li class="nav-item px-3 px-xl-4"><a class="nav-link fw-medium" aria-current="page" href="#booking">Booking</a>
                     </li>
                     <li class="nav-item px-3 px-xl-4"><a class="nav-link fw-medium" aria-current="page"
                                                          href="#testimonial">Testimonial</a></li>
-                    <li class="nav-item px-3 px-xl-4"><a class="nav-link fw-medium" aria-current="page"
-                                                         href="{{route('auth.create')}}">Войти</a></li>
-                    <li class="nav-item px-3 px-xl-4"><a class="btn btn-outline-dark order-1 order-lg-0 fw-medium"
-                                                         href="#!">Sign Up</a></li>
+                        <!-- Authentication Links -->
+                        @guest
+                            @if (Route::has('login'))
+                            <li class="nav-item px-3 px-xl-4"><a class="btn btn-outline-dark order-1 order-lg-0 fw-medium" aria-current="page"
+                                                                 href="{{ route('login') }}">Войти</a></li>
+                            @endif
+
+                            @if (Route::has('register'))
+                                    <li class="nav-item px-3 px-xl-4"><a class="btn btn-outline-dark order-1 order-lg-0 fw-medium" aria-current="page"
+                                                                         href="{{ route('register') }}">Регистрация</a></li>
+                            @endif
+                        @else
+                            <li>
+                                <div class="nav-item dropdown">
+                                <button class="btn btn-secondary dropdown-toggle" type="button" id="navbarDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                    {{ Auth::user()->name }}
+                                </button>
+
+                                <div class="dropdown-menu m-0 dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
+                                    <a class="dropdown-item" href="{{ route('logout') }}">
+                                       Выйти
+                                    </a>
+                                    @if(\Illuminate\Support\Facades\Auth::check() && \Illuminate\Support\Facades\Auth::user()->is_admin == 0)
+                                        <a class="dropdown-item" href="{{ route('cabinet') }}">
+                                            Профиль
+                                        </a>
+                                    @else
+                                        <a class="dropdown-item" href="{{ route('admin') }}">
+                                            Админка
+                                        </a>
+                                    @endif
+                                </div>
+                                </div>
+
+                            </li>
+                        @endguest
                 </ul>
             </div>
         </div>

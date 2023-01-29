@@ -1,4 +1,4 @@
-@section('title','Личный кабинет пользователя - 333')
+@section('title',"Личный кабинет пользователя - $user->name")
 @include('cabinet.layout.header')
 @include('cabinet.layout.footer')
 <!DOCTYPE html>
@@ -29,8 +29,9 @@
                 <li class="nav-item nav-profile dropdown text-center">
 
                         <img src="images/faces/face5.jpg" alt="profile"/>
-                        <span class="nav-profile-name">Иван Петров
-                            <a class="btn-sm btn-danger" href="#">Выйти</a>
+                        <span class="nav-profile-name">
+                            {{$user->name}}
+                            <a class="btn-sm btn-danger" href="{{route('logout')}}">Выйти</a>
                         </span>
 
                     <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
@@ -47,7 +48,7 @@
                         <div class="d-flex justify-content-between flex-wrap">
                             <div class="d-flex align-items-end flex-wrap">
                                 <div class="mr-md-3 mr-xl-5">
-                                    <h2>Рады видеть, nickname</h2>
+                                    <h2>Рады видеть, {{$user->name}}</h2>
                                     <p class="mb-md-0">*Это Ваш личный кабинет. В нем Вы можете увидеть ранее скаченные и созданные метрики.</p>
                                 </div>
                             </div>
@@ -68,7 +69,7 @@
                                                     <small class="mb-1 text-muted">Дата регистрации</small>
                                                     <div class="dropdown">
 
-                                                            <h5 class="mb-0 d-inline-block">26 Jul 2018</h5>
+                                                            <h5 class="mb-0 d-inline-block">{{$user->email_verified_at->format('d-m-Y')}}</h5>
 
                                                     </div>
                                                 </div>
@@ -77,7 +78,11 @@
                                                 <i class="mdi mdi-currency-usd mr-3 icon-lg text-danger"></i>
                                                 <div class="d-flex flex-column justify-content-around">
                                                     <small class="mb-1 text-muted">Доступ</small>
-                                                    <h5 class="mr-2 mb-0">Базовый</h5>
+                                                    @if($user->name==1)
+                                                    <h5 class="mr-2 mb-0">Платный</h5>
+                                                    @else
+                                                    <h5 class="mr-2 mb-0">Бесплатный</h5>
+                                                    @endif
                                                 </div>
                                             </div>
                                             <div class="d-flex border-md-right flex-grow-1 align-items-center justify-content-center p-3 item">

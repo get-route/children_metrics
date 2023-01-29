@@ -2,7 +2,6 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -45,6 +44,5 @@ Route::group(['prefix'=>'/adm_panel'],function (){
     Route::delete('/metrics_admin/delete/{id}','App\Http\Controllers\Admin\MetricsAdminController@destroy');
 });
 
-Route::post('/register','App\Http\Controllers\Auth\RegisterController@store')->name('register.store');
 
 

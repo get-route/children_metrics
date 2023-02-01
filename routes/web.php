@@ -12,7 +12,12 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+//Index
+Route::get('/','App\Http\Controllers\IndexController@index')->name('index');
 
+Route::group(['prefix'=>'/metrika'],function (){
+   Route::get('/{url_metric}','App\Http\Controllers\Frontend\Metrik\IndexMetricController@index')->name('metrika.index');
+});
 Route::group(['prefix'=>'/cabinet','middleware'=>['cabinet','auth','verified']],function (){
     Route::get('/index','App\Http\Controllers\Cabinet\IndexCabinetController@index')->name('cabinet');
 });
@@ -25,8 +30,7 @@ Route::group(['prefix'=>'/adm_panel','middleware'=>['auth','admin']],function ()
     Route::get('/tags_admin','App\Http\Controllers\Admin\TagsAdminController@index')->name('tags_admin.index');
 });
 
-//Index
-Route::get('/','App\Http\Controllers\IndexController@index')->name('index');
+
 
 //Auth controller/Register Controller
 //Route::group(['middleware'=>'guest'], function (){

@@ -16,6 +16,11 @@
                             <textarea  v-model="titleForm" cols="50" rows="2" placeholder="Укажите заголовок страницы"></textarea>
 
                         </div>
+                        <div class="col-lg-12 m-4">
+                            <h2>H1</h2>
+                            <textarea  v-model="h1Form" cols="50" rows="2" placeholder="Укажите h1"></textarea>
+
+                        </div>
 
                         <div class="col-lg-12 row">
                             <h2 class="col-lg-12">Выберите метрику
@@ -90,7 +95,7 @@
 
                         </div>
                         <div class="col-lg-12 text-center">
-                            <a href="#" @click.prevent="createMetric(this.titleForm,this.activeImg,this.descriptionForm, this.editorData, this.tagsArr, this.priseForm)" class="btn btn-success m-6">ОПРАВИТЬ</a>
+                            <a href="#" @click.prevent="createMetric(this.titleForm,this.h1Form,this.activeImg,this.descriptionForm, this.editorData, this.tagsArr, this.priseForm)" class="btn btn-success m-6">ОПРАВИТЬ</a>
                         </div>
 
                     </div>
@@ -110,7 +115,12 @@
                                 {{this.editMetric.title}}
                             </textarea>
                         </div>
-
+                        <div class="col-lg-12 m-4">
+                            <h2>H1</h2>
+                            <textarea  v-model="this.editMetric.h1" cols="50" rows="2">
+                                {{this.editMetric.h1}}
+                            </textarea>
+                        </div>
                         <div class="col-lg-12 row">
                             <h2 class="col-lg-12">Выберите метрику
                                 <label for="image" class="btn btn-success">➕</label>
@@ -186,7 +196,7 @@
 
                         </div>
                         <div class="col-lg-12 text-center">
-                            <a href="#" @click.prevent="updateMetric(this.idActiveUpd, this.editMetric.title,this.activeImg,this.editMetric.description, this.editMetric.text, this.tagsArr, this.editMetric.prise)" class="btn btn-success m-6">ОБНОВИТЬ</a>
+                            <a href="#" @click.prevent="updateMetric(this.idActiveUpd, this.editMetric.title,this.editMetric.h1,this.activeImg,this.editMetric.description, this.editMetric.text, this.tagsArr, this.editMetric.prise)" class="btn btn-success m-6">ОБНОВИТЬ</a>
                         </div>
 
                     </div>
@@ -258,6 +268,7 @@
                 tagsArr:[],//tags all data
                 editorData: "",
                 titleForm:"",
+                h1Form:"",
                 descriptionForm:"",
                 imagesForm:"",
                 priseForm:"Бесплатная",
@@ -278,8 +289,8 @@
 
             },
         methods:{
-          createMetric(titleForm,activeImg,descriptionForm, editorData, tagsArr, priseForm){
-              axios.post('/api/adm_panel/metrics_admin/create',{title:titleForm,photo:activeImg,description:descriptionForm,text:editorData,tags:tagsArr,prise:priseForm}).then(res=>{
+          createMetric(titleForm,h1Form,activeImg,descriptionForm, editorData, tagsArr, priseForm){
+              axios.post('/api/adm_panel/metrics_admin/create',{title:titleForm,h1:h1Form,photo:activeImg,description:descriptionForm,text:editorData,tags:tagsArr,prise:priseForm}).then(res=>{
                   this.getMetrics()
                   this.tagsArr = []
                   this.hidenForm= false
@@ -293,8 +304,8 @@
                   alert('Произошла ошибка при отправке. Посмотрите консоль')
               })
           },
-            updateMetric(id, titleForm,activeImg,descriptionForm, editorData, tagsArr, priseForm){
-              axios.patch('/api/adm_panel/metrics_admin/update/'+ id,{title:titleForm,photo:activeImg,description:descriptionForm,text:editorData,tags:tagsArr,prise:priseForm}).then(res=>{
+            updateMetric(id, titleForm,h1Form,activeImg,descriptionForm, editorData, tagsArr, priseForm){
+              axios.patch('/api/adm_panel/metrics_admin/update/'+ id,{title:titleForm,h1:h1Form,photo:activeImg,description:descriptionForm,text:editorData,tags:tagsArr,prise:priseForm}).then(res=>{
                   this.getMetrics()
                   this.openUpdForm = false
                   this.idActiveUpd = null

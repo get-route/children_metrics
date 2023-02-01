@@ -20,17 +20,20 @@ Route::group(['prefix'=>'/adm_panel'],function (){
     Route::get('/index','App\Http\Controllers\Admin\IndexAdminController@index')->name('admin');
     Route::get('/metrics_admin','App\Http\Controllers\Admin\MetricsAdminController@index');
     Route::get('/comments_admin','App\Http\Controllers\Admin\CommentsAdminController@index');
+
     //----Tag Params----
     Route::post('/tags_admin','App\Http\Controllers\Admin\TagsAdminController@store');
     Route::get('/tags_admin','App\Http\Controllers\Admin\TagsAdminController@show');
     Route::patch('/tags_admin/{id}','App\Http\Controllers\Admin\TagsAdminController@update');
     Route::delete('/tags_admin/{id}','App\Http\Controllers\Admin\TagsAdminController@destroy');
+
     //----Comment Params----
     Route::get('/comments_admin','App\Http\Controllers\Admin\CommentsAdminController@show');
     Route::post('/comments_admin','App\Http\Controllers\Admin\CommentsAdminController@store');
     Route::patch('/comments_admin/{id}','App\Http\Controllers\Admin\CommentsAdminController@update');
     Route::patch('/comments_admin/public/{id}','App\Http\Controllers\Admin\CommentsAdminController@edit');
     Route::delete('/comments_admin/{id}','App\Http\Controllers\Admin\CommentsAdminController@destroy');
+
     //----Metrics Params----
     Route::post('/metrics_admin/add-image','App\Http\Controllers\Admin\MetricsAdminController@uploads');
     Route::post('/metrics_admin/create','App\Http\Controllers\Admin\MetricsAdminController@create');
@@ -43,6 +46,7 @@ Route::group(['prefix'=>'/adm_panel'],function (){
     Route::get('/metrics_admin/all-tags','App\Http\Controllers\Admin\MetricsAdminController@show_tags');
     Route::delete('/metrics_admin/delete/{id}','App\Http\Controllers\Admin\MetricsAdminController@destroy');
 });
-
+//----Frontend success Metric User download for cabinet statistic----
+Route::post('/metrika/{propertyUrl}/userupload','App\Http\Controllers\Cabinet\UserMetrikController@uploads_cabinet')->name('cabinet.user');
 
 

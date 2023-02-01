@@ -10,8 +10,9 @@
 </head>
 <body>
 <div class="container-scroller">
+
     <!-- partial:partials/_navbar.html -->
-    <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+    <nav class="navbar p-0 fixed-top d-flex flex-row">
         <div class="navbar-brand-wrapper d-flex justify-content-center">
             <div class="navbar-brand-inner-wrapper d-flex justify-content-between align-items-center w-100">
                 <a class="navbar-brand brand-logo" href="{{route('index')}}"><img src="{{asset('Frontend/img/logo.png')}}" alt="logo"/></a>
@@ -21,26 +22,41 @@
             </div>
         </div>
     </nav>
+</div>
+<nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+    <div class="navbar-brand-wrapper d-flex justify-content-center">
+        <div class="navbar-brand-inner-wrapper d-flex justify-content-between align-items-center w-100">
+            <a class="navbar-brand brand-logo" href="{{route('index')}}"><img src="{{asset('Frontend/img/logo.png')}}" alt="logo"/></a>
+            <a class="navbar-brand brand-logo-mini" href="{{route('index')}}"><img src="{{asset('Frontend/img/favicons/mstile-150x150.png')}}" alt="logo"/></a>
+            <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+                <span class="mdi mdi-sort-variant"></span>
+            </button>
+        </div>
+    </div>
+    <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
+        <ul class="navbar-nav navbar-nav-right">
+            <li class="nav-item nav-profile dropdown">
+                <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
+                    <img src="images/faces/faces.png" alt="profile"/>
+                    <span class="nav-profile-name">{{$user->name}}</span>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
+                    <a class="dropdown-item" href="{{route('logout')}}">
+                        <i class="mdi mdi-logout text-primary"></i>
+                        Выйти
+                    </a>
+                </div>
+            </li>
+        </ul>
+
+    </div>
+</nav>
+<!-- partial -->
+<div class="container-fluid page-body-wrapper">
+    <!-- partial:partials/_sidebar.html -->
+    <nav class="sidebar sidebar-offcanvas" id="sidebar">
+    </nav>
     <!-- partial -->
-    <div class="container-fluid page-body-wrapper">
-        <!-- partial:partials/_sidebar.html -->
-        <nav class="sidebar sidebar-offcanvas" id="sidebar">
-            <ul class="nav">
-                <li class="nav-item nav-profile dropdown text-center">
-
-                        <img src="images/faces/face5.jpg" alt="profile"/>
-                        <span class="nav-profile-name">
-                            {{$user->name}}
-                            <a class="btn-sm btn-danger" href="{{route('logout')}}">Выйти</a>
-                        </span>
-
-                    <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
-
-                    </div>
-                </li>
-            </ul>
-        </nav>
-        <!-- partial -->
         <div class="main-panel">
             <div class="content-wrapper">
                 <div class="row">
@@ -211,7 +227,6 @@
 
 <!-- plugins:js -->
 @vite([
-'resources/js/app.js',
 'resources/js/cabinet/chart.js',
 'resources/js/cabinet/Chart.min.js',
 'resources/js/cabinet/jquery.dataTables.js',

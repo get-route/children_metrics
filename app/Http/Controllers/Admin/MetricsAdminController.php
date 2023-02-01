@@ -45,6 +45,7 @@ class MetricsAdminController extends Controller
             'description'=> $request->description,
             'text'=> $request->text,
             'prise'=> $request->prise,
+            'h1'=>$request->h1,
             'url'=>Str::slug($request->title),
             'created_at'=>Carbon::now(),
             'updated_at'=>Carbon::now(),
@@ -166,6 +167,7 @@ class MetricsAdminController extends Controller
                 'description'=> $request->description,
                 'text'=> $request->text,
                 'prise'=> $request->prise,
+                'h1'=>$request->h1,
                 'url'=>Str::slug($request->title),
             ]
 

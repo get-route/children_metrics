@@ -1,5 +1,16 @@
 <template>
-    <div class="row">
+    <div>
+        {{userid}}
+    <div v-if="this.redactOpen==false" class="col-lg-12 text-center filter-block">
+        <div  class="filter-block-redact">
+            <button @click="this.redactOpen = true" class="btn btn-success mt-10">Открыть редактор</button>
+        </div>
+    </div>
+        <div v-else class="filter-block-redact text-center">
+                <button @click="this.redactOpen=false" class="btn btn-dark ">Закрыть редактор</button>
+        </div>
+
+    <div class="row" v-if="redactOpen==true">
         <div class="col-lg-5 col-md-5 col-5">
             <div class="row">
 
@@ -314,11 +325,16 @@
 
         <!-- #OutPut information input field section# -->
         <div class="col-lg-7 col-md-7 col-7 text-center " >
-
+            <div class="col-lg-12">
+                <SaveComponent
+                    :imgNatParams="this.$refs.fotodemo"
+                    :userid="userid"
+                    :urlproperty="urlmetric"
+                ></SaveComponent>
+            </div>
             <div class="col-lg-12 sticky-top mt-6">
 
-
-            <img src="public/Frontend/img/metrica/metrika4.jpg" class="foto_demo" ref="fotodemo">
+            <img :src="'/storage/metric/' + startimg" class="foto_demo" ref="fotodemo">
             <!--            Name - поле для имени-->
             <div class="col-lg-12 text-center">
                 <div ref="nameField"
@@ -453,52 +469,34 @@
 
                 </div>
 <!--                Canvas download button. Кнопка и логика загрузки для канваса. Чтобы наносить надписи на изображение.-->
-            <SaveComponent :imgNatParams="this.$refs.fotodemo"></SaveComponent>
+
 
         <!-- #/END OutPut information input field section# -->
         </div>
     </div>
 
     </div>
-
-
+    </div>
 </template>
 
 <script>
     import FontsController from "./fonts/FontsController.vue";
     import SaveComponent from "./save/SaveComponent.vue";
     export default {
+        props:['startimg','userid','urlmetric'],
         name: "Redactor-Index",
         components: {SaveComponent, FontsController},
-        data(){
+
+    data(){
           return{
-
+              redactOpen:false,
           }
-        },
-        mounted() {
-
-            //this.$store.dispatch("actionScreenWeight",window.screen.width - 90)
-            //this.$store.dispatch("actionScreenHeight", window.screen.height - 90)
-            //размеры $event.target.getBoundingClientRect()
-            //this.img()
-            // console.log(this.$refs.fotodemo.getBoundingClientRect().right)
-            // console.log(document.getElementById("canvas"))
-            // console.log(this.$refs.fotodemo.naturalHeight)
-            // console.log(this.$refs.fotodemo.naturalWidth)
-            //  console.log(this.$refs.fotodemo.clientHeight)
-            //  console.log(this.$refs.fotodemo.clientWidth)
-             //console.log(this.$refs)
-            //  console.log(window.screen.width)
-            //  console.log(window.screen.height)
-             //console.log("Left - "+this.$store.state.fontRedact.leftName,
-             //"TOP - " + this.$store.state.fontRedact.topName)
-           // console.log( this.valueInput.nameField.name)
         },
 
     }
 </script>
 
-<style >
+<style>
     .bounce-enter-active {
         animation: bounce-in .5s;
     }
@@ -536,5 +534,19 @@
     .foto_demo img:hover{
         background-color: #0b2e13;
     }
+    .filter-block{
+        background-color: #3f4b50;
+        box-shadow: #414b50 4px 4px 4px 4px;
+        height: 300px;
+        z-index: 0;
+    }
+    .filter-block:hover{
+        background-color: #49575c;
+        box-shadow: #414b50 4px 4px 4px 4px;
 
+    }
+    .filter-block-redact button{
+        z-index:2;
+
+    }
 </style>

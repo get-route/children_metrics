@@ -1,12 +1,6 @@
 <template>
     <div v-if="imgNatParams" class="col-lg-9 text-center mt-5">
         <button id="download" class="btn btn-success m-2" ref="load_metrics"  @click="imgReads(
-//          this.stateMetric(this.$store.state.prestart,
-// this.$store.state.start,
-// this.$store.state.progress,
-// this.$store.state.progressTwo,
-// this.$store.state.progressThree,
-// this.$store.state.finish),
         $event,
         this.imgRead,
         this.canvas,
@@ -28,6 +22,8 @@
         this.$store.state.Week,
         this.$store.state.Weight,
         this.$store.state.YearsName,
+        userid,
+        urlproperty,
         )">Скачать </button>
         <div v-if="spinner" class="spinner-border text-success col-lg-3" role="status">
             <span class="visually-hidden">Загрузка...</span>
@@ -55,6 +51,8 @@
         name: "Save-Component",
         props:[
         'imgNatParams',
+            'userid',
+            'urlproperty',
         ],
 
         data(){
@@ -68,15 +66,13 @@
                 progress:null,
                 progressTwo:null,
                 progressThree:null,
+                successMetric:null,
             }
         },
-    computed:{
 
-    }
-    ,
         methods:{
             //Method read img and property field component/Ф-я добавляет текст за счет канвас и выводит на экран с заполненными данными из формы.
-            imgReads(event,imgRead,canvas, context, imgSize,adaptive,fieldName, fieldChild,fieldBrother, fieldAddInfo, fieldBirthday, fieldFather, fieldHeight, fieldHoro, fieldMother, fieldSister, fieldTown, fieldWatchBirthday, fieldWeek, fieldWeight, fieldYearsName){
+            imgReads(event,imgRead,canvas, context, imgSize,adaptive,fieldName, fieldChild,fieldBrother, fieldAddInfo, fieldBirthday, fieldFather, fieldHeight, fieldHoro, fieldMother, fieldSister, fieldTown, fieldWatchBirthday, fieldWeek, fieldWeight, fieldYearsName,idUser,propertyUrl,){
 
                 imgRead = new Image()
                 canvas = document.getElementById("canvas")
@@ -84,25 +80,6 @@
                 canvas.height = 4961;
                 context = canvas.getContext("2d")
                 imgRead.src = imgSize.currentSrc
-                // this.start = this.$store.state.start
-                //console.log(this.$store.state.start)
-                //console.log(load)
-                //this.start = 1
-
-                //this.spinner = true
-                //var xhr = new XMLHttpRequest();
-                //console.log($refs)
-                // обработчик для отправки
-                // xhr.onprogress = function(event) {
-                //
-                //     alert( 'Получено с сервера ' + event.loaded + ' байт из ' + event.total );
-                //
-                // }
-
-                    // setTimeout(()=>{
-                    //     this.finish = this.$store.state.finish
-                    // },2000);
-                //Info blocks state downloads...
                 this.spinner = true
                 setTimeout(()=>{
                     this.start =  this.$store.state.start
@@ -222,15 +199,25 @@
                     context.fillText(fieldYearsName.nameYearsName,(fieldYearsName.leftYearsNamePos * (coefficientWidthHeight)+fieldYearsName.leftYearsNamePos) -((fieldYearsName.fontSizeNameYearsName * (ParamsHeight))), ((ParamsHeight)* fieldYearsName.topYearsNamePos ) +(fieldYearsName.fontSizeNameYearsName * (ParamsWidth)))
                     //link start
                     var image = canvas.toDataURL();
+
+                    // download metrik images in storage
+                    axios.post('/api/metrika/'+propertyUrl+'/userupload',{path:idUser,images:image}).then(res=>{
+                        console.log('Все хорошо')
+                        console.log(res.data)
+                    }).catch(function (error){
+                        console.log(error)
+                    })
+
                     var tmpLink = document.createElement( 'a' );
                     tmpLink.download = 'image.png'; // set the name of the download file
                     tmpLink.href = image;
+
                     document.body.appendChild( tmpLink );
+                    //var one = document.body.appendChild( tmpLink );
                     tmpLink.click();
                     document.body.removeChild( tmpLink );
                 }
             },
-
         }
     }
 </script>

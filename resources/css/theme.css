@@ -19646,3 +19646,17 @@ iframe {
     width: 100%;
     height: auto;
 }
+.parent_comment, .child_comment {
+    background-color: #edf3f3;
+    border-radius: 20px;
+    font-size: 16px;
+    color: black;
+}
+.parent_comment_user p, .child_comment_user p {
+    font-weight: inherit;
+    font-family: "Roboto", sans-serif;
+}
+.form-comment {
+    background-color: #edf3f3;
+}
+

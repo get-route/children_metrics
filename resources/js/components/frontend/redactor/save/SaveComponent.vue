@@ -1,5 +1,6 @@
 <template>
     <div v-if="imgNatParams" class="col-lg-9 text-center mt-5">
+        <a href="/cabinet/index" class="btn btn-dark">Личный Кабинет</a>
         <button id="download" class="btn btn-success m-2" ref="load_metrics"  @click="imgReads(
         $event,
         this.imgRead,
@@ -24,7 +25,7 @@
         this.$store.state.YearsName,
         userid,
         urlproperty,
-        )">Скачать </button>
+        )">Сохранить</button>
         <div v-if="spinner" class="spinner-border text-success col-lg-3" role="status">
             <span class="visually-hidden">Загрузка...</span>
 
@@ -107,115 +108,115 @@
                     context.drawImage(imgRead,0,0)
                     var ParamsHeight = imgSize.naturalHeight/imgSize.clientHeight
                     var ParamsWidth = imgSize.naturalWidth/imgSize.clientWidth
+                    var ParamsWidthNew = imgSize.clientWidth * 2
                     var coefficientWidthHeight = imgSize.naturalWidth/imgSize.clientHeight
 
 
                     //font.js component --fieldName--
                     context.fillStyle = fieldName.colorName
                     context.font = fieldName.fontSizeName * (ParamsWidth) +'px '+fieldName.font
-                   context.fillText(fieldName.name,(fieldName.leftName * (coefficientWidthHeight)+fieldName.leftName) -((fieldName.fontSizeName * (ParamsHeight))), ((ParamsHeight)* fieldName.topName ) +(fieldName.fontSizeName * (ParamsWidth)))
+                   context.fillText(fieldName.name,(fieldName.leftName * (coefficientWidthHeight)+fieldName.leftName) - ParamsWidthNew, ((ParamsHeight)* fieldName.topName ) +(fieldName.fontSizeName * (ParamsWidth)))
 
                     //children.js component --fieldChild--
                     context.fillStyle = fieldChild.colorNameChild
                     context.font = fieldChild.fontSizeNameChild * (ParamsWidth) +'px '+fieldChild.fontChild
 
-                    context.fillText(fieldChild.nameChild,(fieldChild.leftChildPos * (coefficientWidthHeight)+fieldChild.leftChildPos) -((fieldChild.fontSizeNameChild * (ParamsHeight))), ((ParamsHeight)* fieldChild.topChildPos ) +(fieldChild.fontSizeNameChild * (ParamsWidth)))
+                    context.fillText(fieldChild.nameChild,(fieldChild.leftChildPos * (coefficientWidthHeight)+fieldChild.leftChildPos) -ParamsWidthNew, ((ParamsHeight)* fieldChild.topChildPos ) +(fieldChild.fontSizeNameChild * (ParamsWidth)))
 
                     //brother.js component --fieldBrother--
                     context.fillStyle = fieldBrother.colorNameBrother
                     context.font = fieldBrother.fontSizeNameBrother * (ParamsWidth) +'px '+fieldBrother.fontBrother
 
-                    context.fillText(fieldBrother.nameBrother,(fieldBrother.leftBrotherPos * (coefficientWidthHeight)+fieldBrother.leftBrotherPos) -((fieldBrother.fontSizeNameBrother * (ParamsHeight))), ((ParamsHeight)* fieldBrother.topBrotherPos ) +(fieldBrother.fontSizeNameBrother * (ParamsWidth)))
+                    context.fillText(fieldBrother.nameBrother,(fieldBrother.leftBrotherPos * (coefficientWidthHeight)+fieldBrother.leftBrotherPos) -ParamsWidthNew, ((ParamsHeight)* fieldBrother.topBrotherPos ) +(fieldBrother.fontSizeNameBrother * (ParamsWidth)))
 
                     //addinfo.js component --fieldAddnfo--
                     context.fillStyle = fieldAddInfo.colorNameAddInfo
                     context.font = fieldAddInfo.fontSizeNameAddInfo * (ParamsWidth) +'px '+fieldAddInfo.fontAddInfo
 
-                    context.fillText(fieldAddInfo.nameAddInfo,(fieldAddInfo.leftAddInfoPos * (coefficientWidthHeight)+fieldAddInfo.leftAddInfoPos) -((fieldAddInfo.fontSizeNameAddInfo * (ParamsHeight))), ((ParamsHeight)* fieldAddInfo.topAddInfoPos ) +(fieldAddInfo.fontSizeNameAddInfo * (ParamsWidth)))
+                    context.fillText(fieldAddInfo.nameAddInfo,(fieldAddInfo.leftAddInfoPos * (coefficientWidthHeight)+fieldAddInfo.leftAddInfoPos) -ParamsWidthNew, ((ParamsHeight)* fieldAddInfo.topAddInfoPos ) +(fieldAddInfo.fontSizeNameAddInfo * (ParamsWidth)))
                         //Birthday.js component --fieldBirthday--
                         context.fillStyle = fieldBirthday.colorNameBirthday
                     context.font = fieldBirthday.fontSizeNameBirthday * (ParamsWidth) +'px '+fieldBirthday.fontBirthday
 
-                    context.fillText(fieldBirthday.nameBirthday,(fieldBirthday.leftBirthdayPos * (coefficientWidthHeight)+fieldBirthday.leftBirthdayPos) -((fieldBirthday.fontSizeNameBirthday * (ParamsHeight))), ((ParamsHeight)* fieldBirthday.topBirthdayPos ) +(fieldBirthday.fontSizeNameBirthday * (ParamsWidth)))
+                    context.fillText(fieldBirthday.nameBirthday,(fieldBirthday.leftBirthdayPos * (coefficientWidthHeight)+fieldBirthday.leftBirthdayPos) -ParamsWidthNew, ((ParamsHeight)* fieldBirthday.topBirthdayPos ) +(fieldBirthday.fontSizeNameBirthday * (ParamsWidth)))
 
                     //Father.js component --fieldFather--
                     context.fillStyle = fieldFather.colorNameFather
                     context.font = fieldFather.fontSizeNameFather * (ParamsWidth) +'px '+fieldFather.fontFather
 
-                    context.fillText(fieldFather.nameFather,(fieldFather.leftFatherPos * (coefficientWidthHeight)+fieldFather.leftFatherPos) -((fieldFather.fontSizeNameFather * (ParamsHeight))), ((ParamsHeight)* fieldFather.topFatherPos ) +(fieldFather.fontSizeNameFather * (ParamsWidth)))
+                    context.fillText(fieldFather.nameFather,(fieldFather.leftFatherPos * (coefficientWidthHeight)+fieldFather.leftFatherPos) -ParamsWidthNew, ((ParamsHeight)* fieldFather.topFatherPos ) +(fieldFather.fontSizeNameFather * (ParamsWidth)))
 
                     //Height.js component --fieldHeight--
                     context.fillStyle = fieldHeight.colorNameHeight
                     context.font = fieldHeight.fontSizeNameHeight * (ParamsWidth) +'px '+fieldHeight.fontHeight
 
-                    context.fillText(fieldHeight.nameHeight,(fieldHeight.leftHeightPos * (coefficientWidthHeight)+fieldHeight.leftHeightPos) -((fieldHeight.fontSizeNameHeight * (ParamsHeight))), ((ParamsHeight)* fieldHeight.topHeightPos ) +(fieldHeight.fontSizeNameHeight * (ParamsWidth)))
+                    context.fillText(fieldHeight.nameHeight,(fieldHeight.leftHeightPos * (coefficientWidthHeight)+fieldHeight.leftHeightPos) -ParamsWidthNew, ((ParamsHeight)* fieldHeight.topHeightPos ) +(fieldHeight.fontSizeNameHeight * (ParamsWidth)))
 
                     //Horo.js component --fieldHoro--
                     context.fillStyle = fieldHoro.colorNameHoro
                     context.font = fieldHoro.fontSizeNameHoro * (ParamsWidth) +'px '+fieldHoro.fontHoro
 
-                    context.fillText(fieldHoro.nameHoro,(fieldHoro.leftHoroPos * (coefficientWidthHeight)+fieldHoro.leftHoroPos) -((fieldHoro.fontSizeNameHoro * (ParamsHeight))), ((ParamsHeight)* fieldHoro.topHoroPos ) +(fieldHoro.fontSizeNameHoro * (ParamsWidth)))
+                    context.fillText(fieldHoro.nameHoro,(fieldHoro.leftHoroPos * (coefficientWidthHeight)+fieldHoro.leftHoroPos) -ParamsWidthNew, ((ParamsHeight)* fieldHoro.topHoroPos ) +(fieldHoro.fontSizeNameHoro * (ParamsWidth)))
 
 
                     //Mother.js component --fieldMother--
                     context.fillStyle = fieldMother.colorNameMother
                     context.font = fieldMother.fontSizeNameMother * (ParamsWidth) +'px '+fieldMother.fontMother
 
-                    context.fillText(fieldMother.nameMother,(fieldMother.leftMotherPos * (coefficientWidthHeight)+fieldMother.leftMotherPos) -((fieldMother.fontSizeNameMother * (ParamsHeight))), ((ParamsHeight)* fieldMother.topMotherPos ) +(fieldMother.fontSizeNameMother * (ParamsWidth)))
+                    context.fillText(fieldMother.nameMother,(fieldMother.leftMotherPos * (coefficientWidthHeight)+fieldMother.leftMotherPos) -ParamsWidthNew, ((ParamsHeight)* fieldMother.topMotherPos ) +(fieldMother.fontSizeNameMother * (ParamsWidth)))
 
                     //Sister.js component --fieldSister--
                     context.fillStyle = fieldSister.colorNameSister
                     context.font = fieldSister.fontSizeNameSister * (ParamsWidth) +'px '+fieldSister.fontSister
 
-                    context.fillText(fieldSister.nameSister,(fieldSister.leftSisterPos * (coefficientWidthHeight)+fieldSister.leftSisterPos) -((fieldSister.fontSizeNameSister * (ParamsHeight))), ((ParamsHeight)* fieldSister.topSisterPos ) +(fieldSister.fontSizeNameSister * (ParamsWidth)))
+                    context.fillText(fieldSister.nameSister,(fieldSister.leftSisterPos * (coefficientWidthHeight)+fieldSister.leftSisterPos) -ParamsWidthNew, ((ParamsHeight)* fieldSister.topSisterPos ) +(fieldSister.fontSizeNameSister * (ParamsWidth)))
 
                     //Town.js component --fieldTown--
                     context.fillStyle = fieldTown.colorNameTown
                     context.font = fieldTown.fontSizeNameTown * (ParamsWidth) +'px '+fieldTown.fontTown
 
-                    context.fillText(fieldTown.nameTown,(fieldTown.leftTownPos * (coefficientWidthHeight)+fieldTown.leftTownPos) -((fieldTown.fontSizeNameTown * (ParamsHeight))), ((ParamsHeight)* fieldTown.topTownPos ) +(fieldTown.fontSizeNameTown * (ParamsWidth)))
+                    context.fillText(fieldTown.nameTown,(fieldTown.leftTownPos * (coefficientWidthHeight)+fieldTown.leftTownPos) -ParamsWidthNew, ((ParamsHeight)* fieldTown.topTownPos ) +(fieldTown.fontSizeNameTown * (ParamsWidth)))
 
                     //WatchBirthday.js component --fieldWatchBirthday--
                     context.fillStyle = fieldWatchBirthday.colorNameWatchBirthday
                     context.font = fieldWatchBirthday.fontSizeNameWatchBirthday * (ParamsWidth) +'px '+fieldWatchBirthday.fontWatchBirthday
 
-                    context.fillText(fieldWatchBirthday.nameWatchBirthday,(fieldWatchBirthday.leftWatchBirthdayPos * (coefficientWidthHeight)+fieldWatchBirthday.leftWatchBirthdayPos) -((fieldWatchBirthday.fontSizeNameWatchBirthday * (ParamsHeight))), ((ParamsHeight)* fieldWatchBirthday.topWatchBirthdayPos ) +(fieldWatchBirthday.fontSizeNameWatchBirthday * (ParamsWidth)))
+                    context.fillText(fieldWatchBirthday.nameWatchBirthday,(fieldWatchBirthday.leftWatchBirthdayPos * (coefficientWidthHeight)+fieldWatchBirthday.leftWatchBirthdayPos) -ParamsWidthNew, ((ParamsHeight)* fieldWatchBirthday.topWatchBirthdayPos ) +(fieldWatchBirthday.fontSizeNameWatchBirthday * (ParamsWidth)))
 
                     //Week.js component --fieldWeek--
                     context.fillStyle = fieldWeek.colorNameWeek
                     context.font = fieldWeek.fontSizeNameWeek * (ParamsWidth) +'px '+fieldWeek.fontWeek
 
-                    context.fillText(fieldWeek.nameWeek,(fieldWeek.leftWeekPos * (coefficientWidthHeight)+fieldWeek.leftWeekPos) -((fieldWeek.fontSizeNameWeek * (ParamsHeight))), ((ParamsHeight)* fieldWeek.topWeekPos ) +(fieldWeek.fontSizeNameWeek * (ParamsWidth)))
+                    context.fillText(fieldWeek.nameWeek,(fieldWeek.leftWeekPos * (coefficientWidthHeight)+fieldWeek.leftWeekPos) -ParamsWidthNew, ((ParamsHeight)* fieldWeek.topWeekPos ) +(fieldWeek.fontSizeNameWeek * (ParamsWidth)))
 
                     //Weight.js component --fieldWeight--
                     context.fillStyle = fieldWeight.colorNameWeight
                     context.font = fieldWeight.fontSizeNameWeight * (ParamsWidth) +'px '+fieldWeight.fontWeight
 
-                    context.fillText(fieldWeight.nameWeight,(fieldWeight.leftWeightPos * (coefficientWidthHeight)+fieldWeight.leftWeightPos) -((fieldWeight.fontSizeNameWeight * (ParamsHeight))), ((ParamsHeight)* fieldWeight.topWeightPos ) +(fieldWeight.fontSizeNameWeight * (ParamsWidth)))
+                    context.fillText(fieldWeight.nameWeight,(fieldWeight.leftWeightPos * (coefficientWidthHeight)+fieldWeight.leftWeightPos) -ParamsWidthNew, ((ParamsHeight)* fieldWeight.topWeightPos ) +(fieldWeight.fontSizeNameWeight * (ParamsWidth)))
                     //YearsName.js component --fieldYearsName--
                     context.fillStyle = fieldYearsName.colorNameYearsName
                     context.font = fieldYearsName.fontSizeNameYearsName * (ParamsWidth) +'px '+fieldYearsName.fontYearsName
 
-                    context.fillText(fieldYearsName.nameYearsName,(fieldYearsName.leftYearsNamePos * (coefficientWidthHeight)+fieldYearsName.leftYearsNamePos) -((fieldYearsName.fontSizeNameYearsName * (ParamsHeight))), ((ParamsHeight)* fieldYearsName.topYearsNamePos ) +(fieldYearsName.fontSizeNameYearsName * (ParamsWidth)))
+                    context.fillText(fieldYearsName.nameYearsName,(fieldYearsName.leftYearsNamePos * (coefficientWidthHeight)+fieldYearsName.leftYearsNamePos) -ParamsWidthNew, ((ParamsHeight)* fieldYearsName.topYearsNamePos ) +(fieldYearsName.fontSizeNameYearsName * (ParamsWidth)))
                     //link start
                     var image = canvas.toDataURL();
-
                     // download metrik images in storage
                     axios.post('/api/metrika/'+propertyUrl+'/userupload',{path:idUser,images:image}).then(res=>{
-                        console.log('Все хорошо')
-                        console.log(res.data)
+                        alert('Ваша метрика сформирована успешно. Вы можете скачать ее в личном кабинете')
                     }).catch(function (error){
-                        console.log(error)
+                        alert ('Произошла ошибка при сохранении. Попробуйте заново и сообщите администрации сайта')
+                        //console.log(error)
                     })
-
-                    var tmpLink = document.createElement( 'a' );
-                    tmpLink.download = 'image.png'; // set the name of the download file
-                    tmpLink.href = image;
-
-                    document.body.appendChild( tmpLink );
-                    //var one = document.body.appendChild( tmpLink );
-                    tmpLink.click();
-                    document.body.removeChild( tmpLink );
+                    // Download ready images funcrion
+                    // var tmpLink = document.createElement( 'a' );
+                    // tmpLink.download = 'image.png'; // set the name of the download file
+                    // tmpLink.href = image;
+                    //
+                    // document.body.appendChild( tmpLink );
+                    // //var one = document.body.appendChild( tmpLink );
+                    // tmpLink.click();
+                    // document.body.removeChild( tmpLink );
                 }
             },
         }

@@ -7,7 +7,8 @@ import AdminMetricComponent from "./components/admin/AdminMetricComponent.vue";
 import AdminTagComponent from "./components/admin/AdminTagComponent.vue";
 import Register from "./components/frontend/auth/Register.vue";
 import Auth from "./components/frontend/auth/Auth.vue";
-import tyt from "./components/tyt.vue";
+import TablesComponent from "./components/cabinet/TablesComponent.vue";
+import FormComponents from "./components/frontend/comments/FormComponents.vue";
 import Vue3ColorPicker from "vue3-colorpicker";
 import "vue3-colorpicker/style.css";
 import CKEditor from '@mayasabha/ckeditor4-vue3';
@@ -19,7 +20,8 @@ const app = createApp({
         AdminCommentComponent,
         Register,
         Auth,
-        tyt
+        TablesComponent,
+        FormComponents,
     }
 });
 app.use(Vue3ColorPicker)

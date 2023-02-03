@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Frontend\Metrik;
 use App\Http\Controllers\Controller;
 use App\Models\Metric;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class IndexMetricController extends Controller
 {
@@ -14,7 +15,12 @@ class IndexMetricController extends Controller
         //Count view increment
         $metrika[0]->views +=1;
         $metrika[0]->update();
-
-        return view('frontend.metrika.index',compact('metrika'));
+        $user = Auth::check();
+        return view('frontend.metrika.index',compact('metrika','user'));
     }
+//    public function comments_metrik($url_metrik){
+//        $metrika_comments = Metric::with(['comments'])->where('url','=',$url_metrik)->get();
+//
+//        return $metrika_comments;
+//    }
 }

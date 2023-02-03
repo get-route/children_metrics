@@ -46,7 +46,11 @@ Route::group(['prefix'=>'/adm_panel'],function (){
     Route::get('/metrics_admin/all-tags','App\Http\Controllers\Admin\MetricsAdminController@show_tags');
     Route::delete('/metrics_admin/delete/{id}','App\Http\Controllers\Admin\MetricsAdminController@destroy');
 });
-//----Frontend success Metric User download for cabinet statistic----
+//----Frontend success Metric User download for cabinet statistic (Storage)----
 Route::post('/metrika/{propertyUrl}/userupload','App\Http\Controllers\Cabinet\UserMetrikController@uploads_cabinet')->name('cabinet.user');
-
-
+//----Cabinet ready metrik for user----
+Route::post('/cabinet/index/table','App\Http\Controllers\Cabinet\UserMetrikController@table_cabinet')->name('cabinet.table');
+Route::post('/cabinet/index/table/stat','App\Http\Controllers\Cabinet\UserMetrikController@incr_stat')->name('cabinet.statistic');
+Route::get('/cabinet/index/table/delete/{user}/{image}','App\Http\Controllers\Cabinet\UserMetrikController@destroy_metrik')->name('cabinet.deleteimg');
+//----Comments for posts of metriks----
+Route::post('/metric/add-comment','App\Http\Controllers\Frontend\Metrik\CommentsController@index')->name('metrik.comment');

@@ -16,7 +16,11 @@
 <!-- ===============================================-->
 
 <main class="main" id="top">
-    @yield('menu')
+    <nav class="navbar navbar-expand-lg navbar-light"
+         data-navbar-on-scroll="data-navbar-on-scroll">
+        @yield('menu')
+    </nav>
+
     <div>
         <main class="py-4">
             @yield('content')
@@ -57,20 +61,32 @@
         <!-- end of .container-->
 
     </section>
-    <section>
+
+    <section class="redactor">
         <div class="container">
             <div class="row" id="app">
+                @auth
                <Redactor-Index
                    startimg="{{$metrika[0]->photo}}"
                    userid="{{\Illuminate\Support\Facades\Auth::user()->id}}"
                    urlmetric="{{$metrika[0]->url}}"
                >
+                    @endauth
+                @guest
+                    <div class="text-center col-lg-12">
+                        <p>❌</p>
+                        <p>*Для показа редактора Метрик, необходимо зарегистрироваться на сайте</p>
+                        <a href="{{route('register')}}" class="btn btn-lg btn-success">Зарегистрироваться</a>
+                    </div>
+
+                    @endguest
             </div>
         </div>
     </section>
-    <section>
+    <section class="text">
         <div class="container">
             <div class="row">
+                <h2 class="text-center">Дополнительная информация о метрике</h2>
                 <div class="col-lg-4 text-center">
                     <img src="{{asset('storage/thumbnail/thumbnail-')}}{{$metrika[0]->photo}}">
                 </div>
@@ -79,6 +95,86 @@
                 </div>
             </div>
         </div>
+    </section>
+    <section class="comments" id="comment">
+        <div class="container">
+            <div class="row">
+                <h3 class="text-center">Комментарии пользователей</h3>
+
+                @foreach($metrika[0]->comments as $coments_metrik)
+                    @if($coments_metrik->public == "ДА" && !$coments_metrik->parent_id)
+                <div class="col-lg-12 row parent_comment row">
+                    <div class="col-lg-3 text-center parent_comment_user">
+                        <p>{{$coments_metrik->name}}</p>
+                        <p>{{$coments_metrik->updated_at->format('d-m-Y')}}</p>
+                    </div>
+                    <div class="col-lg-9">
+                        <p>{{$coments_metrik->text}}</p>
+                        <form-components
+                        metricId="{{$metrika[0]->id}}"
+                        parentId="Null"
+                        authcheck="{{$user}}"
+                        >
+
+                    </div>
+
+                </div>
+                    @elseif($coments_metrik->public == "ДА" && $coments_metrik->parent_id)
+                <div class="row m-2">
+                    <div class="col-lg-3">
+
+                    </div>
+                    <div class="col-lg-9 child_comment row text-right ">
+                        <div class="col-lg-2 text-center child_comment_user">
+                            <p>{{$coments_metrik->name}}</p>
+                            <p>{{$coments_metrik->updated_at->format('d-m-Y')}}</p>
+                        </div>
+                        <div class="col-lg-10">
+                            <p>{{$coments_metrik->text}}</p>
+                            <form-components
+                                metricid="{{$metrika[0]->id}}"
+                                parentid="{{$coments_metrik->parent_id}}"
+                                authcheck="{{$user}}"
+                            >
+                        </div>
+                    </div>
+                </div>
+                    @endif
+                @endforeach
+            </div>
+        </div>
+
+    </section>
+
+    <section class="form-comment">
+        <div class="container row">
+            <div class="col-lg-3">
+
+            </div>
+            <div class="col-lg-9">
+                @guest
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Ваше имя</label>
+                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Александра">
+                </div>
+                    <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="exampleFormControlInput2" placeholder="name@example.com">
+                </div>
+                @endguest
+
+                <div class="mb-3">
+                    <label for="exampleFormControlTextarea1" class="form-label">Ваш комментарий</label>
+                    <textarea class="form-control" id="exampleFormControlTextarea3" rows="3"></textarea>
+                </div>
+                    <div class="m-3 text-center">
+                        <button class="btn-lg btn-success ">Отправить</button>
+                    </div>
+
+            </div>
+        </div>
+
+
     </section>
     <!-- <section> close ============================-->
     <!-- ============================================-->

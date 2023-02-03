@@ -16,7 +16,10 @@
 <!-- ===============================================-->
 
 <main class="main" id="top">
-    @yield('menu')
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top py-5 d-block "
+         data-navbar-on-scroll="data-navbar-on-scroll">
+        @yield('menu')
+    </nav>
     <section style="padding-top: 7rem;">
 
         <!--/.bg-holder-->

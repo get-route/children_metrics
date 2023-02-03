@@ -1,6 +1,5 @@
 <template>
     <div>
-        {{userid}}
     <div v-if="this.redactOpen==false" class="col-lg-12 text-center filter-block">
         <div  class="filter-block-redact">
             <button @click="this.redactOpen = true" class="btn btn-success mt-10">Открыть редактор</button>
@@ -524,7 +523,7 @@
         margin: 2px;
     }
     .foto_demo{
-        width: 80%;
+        width: 60%;
         height: auto;
     }
     .foto_demo img{

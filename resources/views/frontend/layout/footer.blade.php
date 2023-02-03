@@ -5,7 +5,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-3 col-md-7 col-12 mb-4 mb-md-6 mb-lg-0 order-0"><img class="mb-4"
-                                                                                    src="{{asset('Frontend/img/logo2.svg')}} "
+                                                                                    src="{{asset('Frontend/img/logo.png')}} "
                                                                                     width="150" alt="jadoo"/>
                 <p class="fs--1 text-secondary mb-0 fw-medium">Book your trip in minute, get full Control for much
                     longer.</p>
@@ -74,6 +74,7 @@
 <!-- ===============================================-->
 @vite([
 'resources/js/app.js',
+'resources/js/comment.js',
 'resources/js/fontawesome/all.min.js',
 'resources/js/theme.js',
 'resources/css/theme.css',

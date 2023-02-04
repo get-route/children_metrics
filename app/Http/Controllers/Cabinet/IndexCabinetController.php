@@ -11,11 +11,16 @@ class IndexCabinetController extends Controller
 {
     public function index(){
         $user = Auth::user();
+        $path = "storage/user/$user->id";
+        if (file_exists($path)){
+            //quantity stat in cabinet users ready_metriks
+            $quantity_metrik = scandir($path);
+            $quantity_metrik = array_splice($quantity_metrik, 3);
+            $quantity = count($quantity_metrik);
+        }else{
+            $quantity = 0;
+        }
 
-        //quantity stat in cabinet users ready_metriks
-        $quantity_metrik = scandir("storage/user/$user->id");
-        $quantity_metrik = array_splice($quantity_metrik, 3);
-        $quantity = count($quantity_metrik);
 
         return view('cabinet.index',compact('user','quantity'));
     }

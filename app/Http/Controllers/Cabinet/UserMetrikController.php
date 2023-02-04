@@ -37,8 +37,14 @@ class UserMetrikController extends Controller
      */
     public function table_cabinet(Request $request)
     {
-        $directive_img = scandir("storage/user/$request->auth");
-        $directive_img = array_splice($directive_img, 3);
+        $path = "storage/user/$request->auth";
+        if (file_exists($path)){
+            $directive_img = scandir($path);
+            $directive_img = array_splice($directive_img, 3);
+        }else{
+            $directive_img = 0;
+        }
+
         return $directive_img;
     }
     public function incr_stat(Request $request){

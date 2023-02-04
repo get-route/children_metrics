@@ -74,7 +74,8 @@
 <!-- ===============================================-->
 @vite([
 'resources/js/app.js',
-'resources/js/comment.js',
+'resources/js/comment-reply.js',
+'resources/js/comment-index.js',
 'resources/js/fontawesome/all.min.js',
 'resources/js/theme.js',
 'resources/css/theme.css',

@@ -34,7 +34,11 @@
                                 $ 77.99
                             </td>
                             <td>
-                                <a href="#" class="btn btn-facebook m-2" @click.prevent="downloadStat(userid, 'download',userid, ready)">Скачать</a>
+                                <p v-if="this.preloader" class="spinner-border m-5 col-lg-12" role="status">
+
+                                </p>
+                                <a v-else href="#" class="btn btn-facebook m-2" @click.prevent="downloadStat(userid, 'download',userid, ready)">Скачать</a>
+
                                 <a href="#" class="btn btn-danger m-2" @click.prevent="deleteImg(userid, ready)">Удалить</a>
                             </td>
                         </tr>
@@ -56,6 +60,7 @@
             return{
                 readyMetrik:null,
                 openTable:false,
+                preloader:false,
             }
         },
         methods:{
@@ -70,6 +75,7 @@
             },
             downloadStat(authid, upd_value, pathID, img){
                 axios.post('/api/cabinet/index/table/stat',{auth:authid,update:upd_value}).then(res=>{
+                    this.preloader = true
                     // Download ready images funcrion
                      var tmpLink = document.createElement( 'a' );
                     tmpLink.download = 'my-baby-metrik.jpg'; // set the name of the download file
@@ -79,6 +85,10 @@
                     var one = document.body.appendChild( tmpLink );
                      tmpLink.click();
                      document.body.removeChild( tmpLink );
+
+                    setTimeout(()=>{
+                        this.preloader = false
+                    },8000);
                 }).catch(function (error) {
                     alert("Произошла ошибка!. Попробуйте еще раз или обратитесь к администрации сайта.")
                 })

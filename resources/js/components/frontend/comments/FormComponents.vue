@@ -19,8 +19,8 @@
         <textarea v-model="text" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
     </div>
     <div class="m-3 text-center">
-        <button  class="btn-sm btn-success m-2" @click="submitReply(name, email, text, metricid, parentid, this.auth)" >Отправить</button>
-        <button  @click.prevent="openForm=false" class="btn-sm btn-danger">❌</button>
+        <button  class="btn-sm btn-success m-2" @click="submitReply(name, email, text, this.metrikId, this.parentId, this.auth)" >Отправить</button>
+        <button  @click.prevent="openForm=false" class="btn-sm">❌</button>
     </div>
 
 </div>
@@ -33,6 +33,10 @@
             return{
                 openForm:false,
                 auth:false,
+                metrikId:null,
+                parentId:null,
+                nameAuth:null,
+                emailAuth:null,
                 name:null,
                 email:null,
                 text:null,
@@ -41,16 +45,27 @@
         methods:{
             replyComments(metrikId, parentId, auth){
                 this.openForm = true
-                this.auth = auth
-                console.log(metrikId, parentId ,auth)
+                if (auth){
+                    this.auth = JSON.parse(auth)
+                }
+
+                this.parentId = parentId
+                this.metrikId = metrikId
+               // console.log(metrikId, parentId ,auth)
+
             },
             submitReply(name, email, text, metrikId, parentId, auth){
-                axios.post('/api/metric/add-comment',{name:name, email:email, text:text,metrikId:metrikId, parentId:parentId, auth:auth}).then(res=>{
-                    console.log(res.data)
+                if (auth){
+                    name = auth.name
+                    email = auth.email
+                }
+                axios.post('/api/metric/add-comment',{name:name, email:email, text:text,metrikId:metrikId, parentId:parentId}).then(res=>{
+                    this.text = null
+                    alert('Спасибо за комментарий!. После проверки он будет добавлен.')
                 }).catch(function (error) {
-                    console.log(error)
+                    alert('Произошла ошибка. Попробуйте уточнить сведения комментария или обратитесь к администрации')
                 })
-            }
+            },
         }
     }
 </script>

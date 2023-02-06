@@ -24,7 +24,10 @@ class StoreTagRequest extends FormRequest
     public function rules()
     {
         return [
-            'title'=>'required|unique:tags'
+            'title'=>'required|unique:tags',
+            'text'=>'required',
+            'h1'=>'required',
+            'description'=>'required',
         ];
     }
 }

@@ -125,8 +125,11 @@
                     </div>
                 </div>
                 <div class="row" id="app">
+
                  <tables-component
-                     userid="{{$user->id}}">
+                     userid="{{$user->id}}"
+                     indexurl="{{route('index')}}"
+                 >
 
             <!-- content-wrapper ends -->
             <!-- partial:partials/_footer.html -->
@@ -141,17 +144,16 @@
 </div>
 <!-- container-scroller -->
 <script src="{{asset('Cabinet/js/vendor.bundle.base.js')}}"></script>
-
 <!-- plugins:js -->
 @vite([
-'resources/js/app.js',
-'resources/js/cabinet/chart.js',
-'resources/js/cabinet/Chart.min.js',
-'resources/js/cabinet/jquery.dataTables.js',
-'resources/js/cabinet/dataTables.bootstrap4.js',
-'resources/js/cabinet/off-canvas.js',
-'resources/js/cabinet/hoverable-collapse.js',
-'resources/js/cabinet/template.js',
+    'resources/js/app.js',
+    'resources/js/cabinet/chart.js',
+    'resources/js/cabinet/Chart.min.js',
+    'resources/js/cabinet/jquery.dataTables.js',
+    'resources/js/cabinet/dataTables.bootstrap4.js',
+    'resources/js/cabinet/off-canvas.js',
+    'resources/js/cabinet/hoverable-collapse.js',
+    'resources/js/cabinet/template.js',
 ])
 </body>
 

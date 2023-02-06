@@ -13,10 +13,7 @@
                                 Метрика
                             </th>
                             <th>
-                                Размер
-                            </th>
-                            <th>
-                                Формат
+                                Добавить в соц.сети
                             </th>
 
                         </tr>
@@ -28,10 +25,12 @@
                                 <img :src="'/storage/user/'+ userid +'/thumbnail/thumbnail-'+ ready" alt="image">
                             </td>
                             <td>
-                                Herman Beck
-                            </td>
-                            <td>
-                                $ 77.99
+                                <soc-but-components
+                                    OK="true"
+                                    VK="true"
+                                    :url="indexurl"
+                                    title="Посмотрите какая метрика у меня получилась!.."
+                                    :images="indexurl + '/storage/user/' + userid +'/'+ ready"></soc-but-components>
                             </td>
                             <td>
                                 <p v-if="this.preloader" class="spinner-border m-5 col-lg-12" role="status">
@@ -52,16 +51,22 @@
 </template>
 
 <script>
+    import SocButComponents from "../social/SocButComponents.vue";
     export default {
 
         name: "TablesComponent",
-        props:['userid'],
+        components: {SocButComponents},
+        props:['userid','indexurl'],
         data(){
             return{
                 readyMetrik:null,
                 openTable:false,
                 preloader:false,
+
             }
+        },
+        computed:{
+
         },
         methods:{
             onloadMetrik(authid){
@@ -88,7 +93,7 @@
 
                     setTimeout(()=>{
                         this.preloader = false
-                    },8000);
+                    },10000);
                 }).catch(function (error) {
                     alert("Произошла ошибка!. Попробуйте еще раз или обратитесь к администрации сайта.")
                 })
@@ -100,6 +105,10 @@
                     alert("Произошла ошибка!. Попробуйте еще раз или обратитесь к администрации сайта.")
                 })
             },
+            // socialPop(url, title, imageUrl,){
+            //     window.open('https://vk.com/share.php?url=' + url +'&title='+ title +'&image='+ imageUrl,"_blank","popup=yes")
+            // }
+
         }
     }
 </script>

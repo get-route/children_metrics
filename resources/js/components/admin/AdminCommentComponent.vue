@@ -47,7 +47,7 @@
         <td>
 
             <p>
-                <a :href="'/' + comments.metrics.url" target="_blank">
+                <a :href="'/metrika/' + comments.metrics.url" target="_blank">
                     {{comments.metrics.title}}
                 </a>
             </p>
@@ -110,7 +110,7 @@
         </td>
         <td>
             <p>
-                <a :href="'/' + comments_reply.metrics.url" target="_blank">
+                <a :href="'/metrika/' + comments_reply.metrics.url" target="_blank">
                     {{comments_reply.metrics.title}}
                 </a>
             </p>

@@ -74,10 +74,9 @@
 <!-- ===============================================-->
 @vite([
 'resources/js/app.js',
-'resources/js/comment-reply.js',
-'resources/js/comment-index.js',
 'resources/js/fontawesome/all.min.js',
 'resources/js/theme.js',
 'resources/css/theme.css',
 ])
+<script src="https://yastatic.net/share2/share.js"></script>
 @endsection

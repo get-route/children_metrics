@@ -15,9 +15,17 @@ use Illuminate\Support\Facades\Route;
 //Index
 Route::get('/','App\Http\Controllers\IndexController@index')->name('index');
 
+//Metrik page
 Route::group(['prefix'=>'/metrika'],function (){
    Route::get('/{url_metric}','App\Http\Controllers\Frontend\Metrik\IndexMetricController@index')->name('metrika.index');
 });
+
+//Tags page
+Route::group(['prefix'=>'/tag'],function (){
+    Route::get('/{url_tag}','App\Http\Controllers\Frontend\Tag\IndexTagController@index')->name('tag.index');
+});
+
+//Cabinet users for download metriks
 Route::group(['prefix'=>'/cabinet','middleware'=>['cabinet','auth','verified']],function (){
     Route::get('/index','App\Http\Controllers\Cabinet\IndexCabinetController@index')->name('cabinet');
 });
@@ -32,25 +40,9 @@ Route::group(['prefix'=>'/adm_panel','middleware'=>['auth','admin']],function ()
 });
 
 
+//Route::get('/redactor','App\Http\Controllers\RedactorController@index')->name('index.redactor');
 
-//Auth controller/Register Controller
-//Route::group(['middleware'=>'guest'], function (){
-//
-//    Route::get('/authentication','App\Http\Controllers\Auth\AuthController@auth')->name('auth.create');
-//    Route::post('/authentication','App\Http\Controllers\Auth\AuthController@store')->name('auth.store');
-//    Route::get('/register','App\Http\Controllers\Auth\RegisterController@showRegistrationForm')->name('register.create');
-//    Route::post('/register','App\Http\Controllers\Auth\RegisterController@register')->name('register');
-//});
-//
-//Auth::routes(['verify'=>true]);
-//
-//Route::get('/verify_email',['\App\Http\Controllers\Auth\EmailVerificationController@show'])->middleware('auth')->name('verification.notice');
-//
-//
-//Cabinet Metric
-
-Route::get('/redactor','App\Http\Controllers\RedactorController@index')->name('index.redactor');
-
+//Verification && Notification
 Route::get('/logout','App\Http\Controllers\Auth\LogoutController')->name('logout');
 
 Route::get('/email/verify', function () {

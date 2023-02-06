@@ -42,6 +42,9 @@
                             <h1>{{$metrika[0]->h1}}</h1>
                             <p style="font-size: 14px">{{$metrika[0]->created_at->format('d-m-Y')}} - Просмотров: {{$metrika[0]->views}}</p>
                         </div>
+
+                        <div class="col-lg-12 ya-share2 text-center" data-curtain data-shape="round" data-services="vkontakte,odnoklassniki,telegram,twitter">
+                        </div>
                     </div>
                 </div>
                 <div class="col-lg-12 mt-5">
@@ -49,12 +52,27 @@
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{route('index')}}">Главная</a></li>
                             @foreach($metrika[0]->tags as $metrik_tags)
-                                <li class="breadcrumb-item " aria-current="page"><a class="btn btn-facebook" href="{{route('index')}}/{{$metrik_tags->url}}">[#{{$metrik_tags->title}}#]</a> </li>
+                                <li class="breadcrumb-item " aria-current="page"><a class="btn btn-facebook" href="{{route('index')}}/tag/{{$metrik_tags->url}}">[#{{$metrik_tags->title}}#]</a> </li>
                             @endforeach
                             <li class="breadcrumb-item active" aria-current="page">{{$metrika[0]->title}}</li>
                         </ol>
                     </nav>
+                    <div class="row block-info text-center">
+                        <div class="col-lg-4 ">
+                            <img src="{{asset('Frontend/img/steps/step1.png')}}" alt="шаги для создания своей метрики">
+                            <p>1.Зарегистрируйтесь и подтвердите учетную запись</p>
+                        </div>
+                        <div class="col-lg-4">
+                            <img src="{{asset('Frontend/img/steps/step2.png')}}" alt="шаги для создания своей метрики">
+                            <p>2. Выберите нужную метрику. Откройте редактор и нажмите "Сохранить"</p>
+                        </div>
+                        <div class="col-lg-4">
+                            <img src="{{asset('Frontend/img/steps/step3.png')}}" alt="шаги для создания своей метрики">
+               <p>3.Перейти в личный кабинет и скачайте готовую метрику онлайн.</p>
+                        </div>
+                    </div>
                 </div>
+
             </div>
 
         </div>
@@ -93,6 +111,24 @@
                 </div>
                 <div class="col-lg-8">
                     {!!$metrika[0]->text!!}
+                </div>
+                <div class="col-lg-12 text-center block-popular">
+                    <h3>Популярные метрики:</h3>
+                    <div class="row row-cols-1 row-cols-md-2 g-4">
+                        @foreach($random_metrik as $metriks_popular)
+                        <div class="col-lg-4">
+                            <div class="card">
+                                <img src="{{route('index')}}/storage/thumbnail/thumbnail-{{$metriks_popular->photo}}" class="img-thumbnail" alt="{{$metriks_popular->title}}">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{$metriks_popular->title}}</h5>
+                                    <button type=" button" class="btn btn-dark">
+                                        Просмотров:  <span class="badge badge-light">{{$metriks_popular->views}}</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        @endforeach
+                    </div>
                 </div>
             </div>
         </div>
@@ -163,6 +199,10 @@
 <!-- ===============================================-->
 <!-- ============================================-->
 @yield('footer')
+@vite([
+'resources/js/comment-reply.js',
+'resources/js/comment-index.js',
+])
 </body>
 
 </html>

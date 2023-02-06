@@ -19659,4 +19659,17 @@ iframe {
 .form-comment {
     background-color: #edf3f3;
 }
-
+.block-popular{
+    background-color: #edf3f3;
+    border-radius: 20px;
+    box-shadow:  4px 4px 4px #c2c7c7;
+}
+.block-info img{
+    width: 80px;
+    height: auto;
+}
+.block-info p{
+    font: "Helvetica Neue";
+    font-weight: bold;
+    font-style: italic;
+}

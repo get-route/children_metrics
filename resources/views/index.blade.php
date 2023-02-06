@@ -36,8 +36,8 @@
                             class="d-none d-xl-block"/>У нас множество дизайнов и шаблонов, в том числе и бесплатных<br
                             class="d-none d-xl-block"/>запечатлите момент рождения и любого события онлайн...</p>
                     <div class="text-center text-md-start"><a
-                            class="btn btn-primary btn-lg me-md-4 mb-3 mb-md-0 border-0 primary-btn-shadow" href="#!"
-                            role="button">Открыть редактор</a>
+                            class="btn btn-primary btn-lg me-md-4 mb-3 mb-md-0 border-0 primary-btn-shadow" href="{{route('login')}}"
+                            role="button" target="_blank">Открыть редактор</a>
                         <div class="w-100 d-block d-md-none"></div>
                         <a href="#!" role="button" data-bs-toggle="modal" data-bs-target="#popupVideo"><span
                                 class="btn btn-danger round-btn-lg rounded-circle me-3 danger-btn-shadow"> <img
@@ -121,45 +121,20 @@
                 <h3 class="fs-xl-10 fs-lg-8 fs-7 fw-bold font-cursive text-capitalize">Самые трендовые метрики месяца</h3>
             </div>
             <div class="row">
+                @foreach($random_metrik as $index_metrik)
                 <div class="col-md-4 mb-4">
-                    <div class="card overflow-hidden shadow"><img class="card-img-top"
-                                                                  src="{{asset('Frontend/img/dest/dest1.jpg')}} "
-                                                                  alt="Rome, Italty"/>
+                    <div class="card overflow-hidden shadow">
+                        <a class="link-900 text-decoration-none stretched-link" href="{{route('index')}}/metrika/{{$index_metrik->url}}">
+                            <img class="img-thumbnail" src="{{route('index')}}/storage/thumbnail/thumbnail-{{$index_metrik->photo}} " alt="{{$index_metrik->title}}"/>
+                        </a>
                         <div class="card-body py-4 px-3">
                             <div class="d-flex flex-column flex-lg-row justify-content-between mb-3">
-                                <h4 class="text-secondary fw-medium"><a
-                                        class="link-900 text-decoration-none stretched-link" href="#!">Черная рамка</a>
-                                </h4><span class="fs-1 fw-medium">Р99 РУБ</span>
+                                <span class="fs-1 fw-medium">Всего скачиваний: {{$index_metrik->views}}</span>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4 mb-4">
-                    <div class="card overflow-hidden shadow"><img class="card-img-top"
-                                                                  src="{{asset('Frontend/img/dest/dest2.jpg')}} "
-                                                                  alt="London, UK"/>
-                        <div class="card-body py-4 px-3">
-                            <div class="d-flex flex-column flex-lg-row justify-content-between mb-3">
-                                <h4 class="text-secondary fw-medium"><a
-                                        class="link-900 text-decoration-none stretched-link" href="#!">Светлая рамка</a>
-                                </h4><span class="fs-1 fw-medium">99 РУБ</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 mb-4">
-                    <div class="card overflow-hidden shadow"><img class="card-img-top"
-                                                                  src="{{asset('Frontend/img/dest/dest3.jpg')}} "
-                                                                  alt="Full Europe"/>
-                        <div class="card-body py-4 px-3">
-                            <div class="d-flex flex-column flex-lg-row justify-content-between mb-3">
-                                <h4 class="text-secondary fw-medium"><a
-                                        class="link-900 text-decoration-none stretched-link" href="#!">Светлая рамка</a>
-                                </h4><span class="fs-1 fw-medium">99 РУБ</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div><!-- end of .container-->
 

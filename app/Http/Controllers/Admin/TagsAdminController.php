@@ -23,16 +23,6 @@ class TagsAdminController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -41,7 +31,7 @@ class TagsAdminController extends Controller
     public function store(StoreTagRequest $request)
     {
         $data = $request->validated();
-        $createTag = Tag::create(['title'=>$request->title]);
+        $createTag = Tag::create(['title'=>$request->title, 'text'=>$request->text, 'h1'=>$request->h1,'description'=>$request->description]);
         return $createTag;
     }
 
@@ -57,17 +47,6 @@ class TagsAdminController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -76,9 +55,9 @@ class TagsAdminController extends Controller
      */
     public function update(TagRequest $request, $id)
     {
-        //$data = $request->validate();
-        $update_tag = DB::table('tags')->where('id','=',$id)->update(['title'=>$request->title]);
-        return $update_tag;
+        $data = $request->validated();
+        $update_tag = DB::table('tags')->where('id','=',$id)->update(['title'=>$request->title,'text'=>$request->text, 'h1'=>$request->h1,'description'=>$request->description]);
+        return response()->json($update_tag);
     }
 
     /**

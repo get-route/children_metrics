@@ -8,13 +8,13 @@ use Cviebrock\EloquentSluggable\Sluggable;
 class Tag extends Model
 {
 
-    protected $fillable = ['title','url'];
+    protected $fillable = ['title','url','text','h1', 'description'];
     protected $table = 'tags';
 
     use Sluggable;
     public function metric()
     {
-        return $this->belongsToMany(Metric::class,'tag_metric','metric_id','tag_id');
+        return $this->belongsToMany(Metric::class,'tag_metric','tag_id','metric_id');
     }
     public function sluggable():array
     {

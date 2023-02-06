@@ -24,7 +24,10 @@ class TagRequest extends FormRequest
     public function rules()
     {
         return [
-            'title'=>'required'
+            'title'=>'required',
+            'text'=>'required',
+            'h1'=>'required',
+            'description'=>'required',
         ];
     }
 }

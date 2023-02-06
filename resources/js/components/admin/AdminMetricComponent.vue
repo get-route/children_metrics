@@ -223,7 +223,7 @@
                         <tbody>
                         <tr v-for="metric in allMetrics">
                             <td class="py-1 img-table">
-                                <a :href="'/'+ metric.url" target="_blank"> <img :src="'/public/storage/thumbnail/thumbnail-'+ metric.photo" alt="image"></a>
+                                <a :href="'/metrika/'+ metric.url" target="_blank"> <img :src="'/public/storage/thumbnail/thumbnail-'+ metric.photo" alt="image"></a>
                             </td>
                             <td>
                                 {{metric.title}}

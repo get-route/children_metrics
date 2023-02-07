@@ -1,7 +1,8 @@
 @section('footer')
 <!-- <section> begin ============================-->
 <section class="pb-0 pb-lg-4 footer">
-
+{{--{{dd($metriks_random_all)}}--}}
+{{--    {{dd($all_tags_menu)}}--}}
     <div class="container">
         <div class="row">
             <div class="col-lg-3 col-md-7 col-12 mb-4 mb-md-6 mb-lg-0 order-0"><img class="mb-4"

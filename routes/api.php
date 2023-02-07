@@ -16,6 +16,10 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+//Catalog and filters page for all metriks
+Route::get('/all','App\Http\Controllers\Frontend\Metrik\Catalog\CatalogController@catalog')->name('catalog.all');
+Route::get('/all/tag','App\Http\Controllers\Frontend\Metrik\Catalog\CatalogController@tags')->name('catalog.tags');
+//Admin panels
 Route::group(['prefix'=>'/adm_panel'],function (){
     Route::get('/index','App\Http\Controllers\Admin\IndexAdminController@index')->name('admin');
     Route::get('/metrics_admin','App\Http\Controllers\Admin\MetricsAdminController@index');

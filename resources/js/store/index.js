@@ -31,7 +31,7 @@ export default createStore( {
         progress:'Наношу текст',
         progressTwo:'Формирую заголовки',
         progressThree:'Закрашиваю необходимые области',
-        finish:'Метрика готова к скачиванию! Спасибо за ожидание...'
+        finish:'Метрика готова к скачиванию! Спасибо за ожидание...',
     },
     actions: {
         PRE_START(payload, context){

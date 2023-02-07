@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 //Index
 Route::get('/','App\Http\Controllers\IndexController@index')->name('index');
+Route::get('/all','App\Http\Controllers\Frontend\Metrik\Catalog\CatalogController@index')->name('catalog.show');
 
 //Metrik page
 Route::group(['prefix'=>'/metrika'],function (){

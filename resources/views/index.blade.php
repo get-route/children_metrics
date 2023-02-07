@@ -30,45 +30,52 @@
                                                                                 src="{{asset('Frontend/img/hero/hero-img.png')}} "
                                                                                 alt="hero-header"/></div>
                 <div class="col-md-7 col-lg-6 text-md-start text-center py-6">
-                    <h4 class="fw-bold text-danger mb-3">Лучшие метрики на все события...</h4>
-                    <h1 class="hero-title">Оригинальные метрики для ребенка онлайн</h1>
-                    <p class="mb-4 fw-medium">Сделайте премиальную метрику для своего ребенка.<br
-                            class="d-none d-xl-block"/>У нас множество дизайнов и шаблонов, в том числе и бесплатных<br
-                            class="d-none d-xl-block"/>запечатлите момент рождения и любого события онлайн...</p>
-                    <div class="text-center text-md-start"><a
-                            class="btn btn-primary btn-lg me-md-4 mb-3 mb-md-0 border-0 primary-btn-shadow" href="{{route('login')}}"
-                            role="button" target="_blank">Открыть редактор</a>
-                        <div class="w-100 d-block d-md-none"></div>
-                        <a href="#!" role="button" data-bs-toggle="modal" data-bs-target="#popupVideo"><span
-                                class="btn btn-danger round-btn-lg rounded-circle me-3 danger-btn-shadow"> <img
-                                    src="{{asset('Frontend/img/hero/play.svg')}} " width="15"
-                                    alt="paly"/></span></a><span class="fw-medium">Инструкция</span>
-                        <div class="modal fade" id="popupVideo" tabindex="-1" aria-labelledby="popupVideo"
-                             aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered modal-lg">
-                                <div class="modal-content">
-
-                                </div>
-                            </div>
+                    <h4 class="fw-bold text-danger mb-3">
+                        Лучшие метрики на все события..
+                        .</h4>
+                    <h1 class="hero-title">
+                        Оригинальные метрики для ребенка онлайн</h1>
+                    <p class="mb-4 fw-medium">
+                        Сделайте премиальную метрику для своего ребенка.
+                        <br class="d-none d-xl-block"/>
+                        У нас множество дизайнов и шаблонов, в том числе и бесплатных
+                        <br class="d-none d-xl-block"/>
+                        запечатлите момент рождения и любого события онлайн...</p>
+                    <div class="text-center text-md-start row">
+                        <div class="col-lg-6">
+                            <a class="btn btn-primary btn-lg me-md-4 mb-3 mb-md-0 border-0 primary-btn-shadow" href="{{route('login')}}" role="button" target="_blank">
+                                Открыть редактор
+                            </a>
                         </div>
+
+                       <div class="col-lg-6">
+                           <!-- Button trigger modal -->
+                           <a href="#!" role="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                            <span class="btn btn-danger round-btn-lg rounded-circle me-3 danger-btn-shadow">
+                                <img @click="openVideo('dfd')" src="Frontend/img/hero/play.svg" width="15" alt="paly"/>
+                            </span>
+                           </a>
+                           <span class="fw-medium">
+            Инструкция
+        </span>
+                           <!-- Modal -->
+                           <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                               <div class="modal-dialog">
+                                   <div class="modal-content" id="app">
+                                       <index-video-component
+                                       video="https://www.youtube.com/embed/-wPg1tNEWmo?autoplay=1&amp;"
+                                       ></index-video-component>
+
+                                   </div>
+                               </div>
+                           </div>
+                       </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-    <div id="app">
-        <main class="py-4">
-            @yield('content')
-        </main>
-    </div>
-
-    <!-- ============================================-->
-    <!-- <section> begin ============================-->
-    <section class="pt-5 pt-md-9" id="service">
-
-        <div class="container">
-            <div class="position-absolute z-index--1 end-0 d-none d-lg-block"><img
-                    src="{{asset('Frontend/img/category/shape.svg')}} " style="max-width: 200px" alt="service"/></div>
+            <div class="position-absolute z-index--1 end-0 d-none d-lg-block">
+                <img src="Frontend/img/category/shape.svg" style="max-width: 200px" alt="service"/>
+            </div>
             <div class="mb-7 text-center">
                 <h5 class="text-secondary">Немного про сервис </h5>
                 <h3 class="fs-xl-10 fs-lg-8 fs-7 fw-bold font-cursive text-capitalize">Какие метрики может делать сервис?</h3>
@@ -102,13 +109,8 @@
                     </div>
                 </div>
             </div>
-        </div><!-- end of .container-->
-
+        </div>
     </section>
-    <!-- <section> close ============================-->
-    <!-- ============================================-->
-
-
     <!-- ============================================-->
     <!-- <section> begin ============================-->
     <section class="pt-5" id="destination">
@@ -123,14 +125,19 @@
             <div class="row">
                 @foreach($random_metrik as $index_metrik)
                 <div class="col-md-4 mb-4">
-                    <div class="card overflow-hidden shadow">
-                        <a class="link-900 text-decoration-none stretched-link" href="{{route('index')}}/metrika/{{$index_metrik->url}}">
-                            <img class="img-thumbnail" src="{{route('index')}}/storage/thumbnail/thumbnail-{{$index_metrik->photo}} " alt="{{$index_metrik->title}}"/>
+                    <div class="card overflow-hidden shadow text-center">
+                        <a class="link-900 text-decoration-none stretched-link " href="{{route('index')}}/metrika/{{$index_metrik->url}}">
+                            <img class="img-thumbnail card-metrik" src="{{route('index')}}/storage/thumbnail/thumbnail-{{$index_metrik->photo}} " alt="{{$index_metrik->title}}"/>
                         </a>
-                        <div class="card-body py-4 px-3">
-                            <div class="d-flex flex-column flex-lg-row justify-content-between mb-3">
-                                <span class="fs-1 fw-medium">Всего скачиваний: {{$index_metrik->views}}</span>
-                            </div>
+                        <div class="card-body py-4 px-3 text-center">
+
+                            <button type="button" class="btn btn-dark position-relative">
+                                Скачиваний:
+                                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-primary">
+    {{$index_metrik->views}}
+    <span class="visually-hidden">человек</span>
+  </span>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -378,4 +385,3 @@
 </body>
 
 </html>
-

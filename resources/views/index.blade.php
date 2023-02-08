@@ -43,8 +43,8 @@
                         запечатлите момент рождения и любого события онлайн...</p>
                     <div class="text-center text-md-start row">
                         <div class="col-lg-6">
-                            <a class="btn btn-primary btn-lg me-md-4 mb-3 mb-md-0 border-0 primary-btn-shadow" href="{{route('login')}}" role="button" target="_blank">
-                                Открыть редактор
+                            <a class="btn btn-primary btn-lg me-md-4 mb-3 mb-md-0 border-0 primary-btn-shadow" href="{{route('catalog.show')}}" role="button" target="_blank">
+                                Показать все
                             </a>
                         </div>
 
@@ -78,7 +78,7 @@
             </div>
             <div class="mb-7 text-center">
                 <h5 class="text-secondary">Немного про сервис </h5>
-                <h3 class="fs-xl-10 fs-lg-8 fs-7 fw-bold font-cursive text-capitalize">Какие метрики может делать сервис?</h3>
+                <h3 class="fs-xl-10 fs-lg-8 fs-7 fw-bold font-cursive text-capitalize" id="destination">Какие метрики может делать сервис?</h3>
             </div>
             <div class="row">
                 <div class="col-lg-4 col-sm-6 mb-6">
@@ -123,7 +123,7 @@
                 <h3 class="fs-xl-10 fs-lg-8 fs-7 fw-bold font-cursive text-capitalize">Самые трендовые метрики месяца</h3>
             </div>
             <div class="row">
-                @foreach($random_metrik as $index_metrik)
+                @foreach($metriks_random_all as $index_metrik)
                 <div class="col-md-4 mb-4">
                     <div class="card overflow-hidden shadow text-center">
                         <a class="link-900 text-decoration-none stretched-link " href="{{route('index')}}/metrika/{{$index_metrik->url}}">
@@ -152,7 +152,7 @@
 
     <!-- ============================================-->
     <!-- <section> begin ============================-->
-    <section id="booking">
+    <section>
 
         <div class="container">
             <div class="row align-items-center">
@@ -186,58 +186,10 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-6 d-flex justify-content-center align-items-start">
-                    <div class="card position-relative shadow" style="max-width: 370px;">
-                        <div class="position-absolute z-index--1 me-10 me-xxl-0" style="right:-160px;top:-210px;"><img
-                                src="{{asset('Frontend/img/steps/bg.png')}} " style="max-width:550px;" alt="shape"/>
-                        </div>
-                        <div class="card-body p-3"><img class="mb-4 mt-2 rounded-2 w-100"
-                                                        src="{{asset('Frontend/img/steps/booking-img.jpg')}} "
-                                                        alt="booking"/>
-                            <div>
-                                <h5 class="fw-medium">Trip To Greece</h5>
-                                <p class="fs--1 mb-3 fw-medium">14-29 June | by Robbin joseph</p>
-                                <div class="icon-group mb-4"><span class="btn icon-item"> <img
-                                            src="{{asset('Frontend/img/steps/leaf.svg')}} " alt=""/></span><span
-                                        class="btn icon-item"> <img src="{{asset('Frontend/img/steps/map.svg')}} "
-                                                                    alt=""/></span><span class="btn icon-item"> <img
-                                            src="{{asset('Frontend/img/steps/send.svg')}} " alt=""/></span>
-                                </div>
-                                <div class="d-flex align-items-center justify-content-between">
-                                    <div class="d-flex align-items-center mt-n1"><img class="me-3"
-                                                                                      src="{{asset('Frontend/img/steps/building.svg')}} "
-                                                                                      width="18" alt="building"/><span
-                                            class="fs--1 fw-medium">24 people going</span></div>
-                                    <div class="show-onhover position-relative">
-                                        <div
-                                            class="card hideEl shadow position-absolute end-0 start-xl-50 bottom-100 translate-xl-middle-x ms-3"
-                                            style="width: 260px;border-radius:18px;">
-                                            <div class="card-body py-3">
-                                                <div class="d-flex">
-                                                    <div style="margin-right: 10px"><img class="rounded-circle"
-                                                                                         src="{{asset('Frontend/img/steps/favorite-placeholder.png')}} "
-                                                                                         width="50" alt="favorite"/>
-                                                    </div>
-                                                    <div>
-                                                        <p class="fs--1 mb-1 fw-medium">Ongoing </p>
-                                                        <h5 class="fw-medium mb-3">Trip to rome</h5>
-                                                        <h6 class="fs--1 fw-medium mb-2"><span>40%</span> completed</h6>
-                                                        <div class="progress" style="height: 6px;">
-                                                            <div class="progress-bar" role="progressbar"
-                                                                 style="width: 40%;" aria-valuenow="25"
-                                                                 aria-valuemin="0" aria-valuemax="100"></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <button class="btn"><img src="{{asset('Frontend/img/steps/heart.svg')}} "
-                                                                 width="20" alt="step"/></button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="col-lg-6 d-flex justify-content-center align-items-start" id="block-index">
+                    <info-block-component
+                    :metriks="{{json_encode($metriks_random_once) }}"
+                    >
                 </div>
             </div>
         </div><!-- end of .container-->
@@ -255,7 +207,7 @@
             <div class="row">
                 <div class="col-lg-5">
                     <div class="mb-8 text-start">
-                        <h5 class="text-secondary">Отзывы </h5>
+                        <h5 class="text-secondary" id="booking">Отзывы </h5>
                         <h3 class="fs-xl-10 fs-lg-8 fs-7 fw-bold font-cursive text-capitalize">Что клиенты говорят о нас</h3>
                     </div>
                 </div>
@@ -352,19 +304,15 @@
                 <div class="row justify-content-center">
                     <div class="col-lg-8 col-md-10">
                         <h2 class="text-secondary lh-1-7 mb-7">У нас постоянно проходят акции и розыгрыши. Подпишитесь на нас в соц сетях или по почте, чтобы быть в курсе...</h2>
-                        <form class="row g-3 align-items-center w-lg-75 mx-auto">
-                            <div class="col-sm">
-                                <div class="input-group-icon">
-                                    <input class="form-control form-little-squirrel-control" type="email"
-                                           placeholder="Введите email " aria-label="email"/><img class="input-box-icon"
-                                                                                               src="{{asset('Frontend/img/cta/mail.svg')}} "
-                                                                                               width="17" alt="mail"/>
-                                </div>
+                            <div class="col-sm-auto text-center">
+                                <noindex>
+                                    <a href="https://vk.com/doldz" class="fs--1" target="_blank">
+                                        <img src="{{asset('Frontend/img/social/vk.png')}}" alt="ВК адрес группы сайта">
+                                    </a>
+                                </noindex>
+
                             </div>
-                            <div class="col-sm-auto">
-                                <button class="btn btn-danger orange-gradient-btn fs--1">Подписаться</button>
-                            </div>
-                        </form>
+
                     </div>
                 </div>
             </div>

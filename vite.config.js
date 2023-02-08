@@ -9,6 +9,7 @@ export default defineConfig({
                 'resources/js/app.js',
                 'resources/js/comment-reply.js',
                 'resources/js/comment-index.js',
+                'resources/js/index-page.js',
                 'resources/js/fontawesome/all.min.js',
                 'resources/js/theme.js',
                 'resources/css/theme.css',

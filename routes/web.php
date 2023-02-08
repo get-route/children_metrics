@@ -14,6 +14,9 @@ use Illuminate\Support\Facades\Route;
 */
 //Index
 Route::get('/','App\Http\Controllers\IndexController@index')->name('index');
+
+
+//Catalog filter
 Route::get('/all','App\Http\Controllers\Frontend\Metrik\Catalog\CatalogController@index')->name('catalog.show');
 
 //Metrik page
@@ -38,6 +41,9 @@ Route::group(['prefix'=>'/adm_panel','middleware'=>['auth','admin']],function ()
     Route::get('/comments_admin','App\Http\Controllers\Admin\CommentsAdminController@index')->name('comments_admin.index');
     Route::get('/tags_admin','App\Http\Controllers\Admin\TagsAdminController@index')->name('tags_admin.index');
     Route::get('/users_admin','App\Http\Controllers\Admin\UsersAdminController@index')->name('users_admin.index');
+    //Sitemap
+    Route::get('/satemap.xml','App\Http\Controllers\Sitemap\SitemapController@index')->name('sitemap.index');
+    Route::get('/satemap-new','App\Http\Controllers\Sitemap\SitemapController@store')->name('sitemap.update');
 });
 
 

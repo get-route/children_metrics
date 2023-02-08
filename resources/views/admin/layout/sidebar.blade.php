@@ -8,6 +8,13 @@
                 </a>
 
             </li>
+            <li class="nav-item text-center">
+                <a class="nav-link" href="{{route('sitemap.update')}}">
+                    <i class="mdi mdi-home menu-icon"></i>
+                    <span class="menu-title">Обновить Sitemap</span>
+                </a>
+
+            </li>
             <li class="nav-item">
                 <a class="nav-link" href="{{route('metrics_admin.index')}}">
                     <i class="mdi mdi-book-multiple menu-icon"></i>

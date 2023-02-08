@@ -19661,8 +19661,7 @@ iframe {
 }
 .block-popular{
     background-color: #edf3f3;
-    border-radius: 20px;
-    box-shadow:  4px 4px 4px #c2c7c7;
+    box-shadow:  1px 1px 1px #c2c7c7;
 }
 .block-info img{
     width: 80px;

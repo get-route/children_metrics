@@ -28,6 +28,7 @@ const app = createApp({
         CatalogComponents,
     }
 });
+
 app.use(Vue3ColorPicker)
 app.use(store);
 app.use(CKEditor);

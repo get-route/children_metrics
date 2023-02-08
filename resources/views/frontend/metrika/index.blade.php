@@ -112,7 +112,7 @@
                 <div class="col-lg-8">
                     {!!$metrika[0]->text!!}
                 </div>
-                <div class="col-lg-12 text-center block-popular">
+                <div class="col-lg-12 text-center">
                     <h3>Популярные метрики:</h3>
                     <div class="row row-cols-1 row-cols-md-2 g-4">
                         @foreach($random_metrik as $metriks_popular)

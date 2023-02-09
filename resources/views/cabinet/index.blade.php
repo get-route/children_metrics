@@ -37,7 +37,7 @@
         <ul class="navbar-nav navbar-nav-right">
             <li class="nav-item nav-profile dropdown">
                 <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
-                    <img src="images/faces/faces.png" alt="profile"/>
+
                     <span class="nav-profile-name">{{$user->name}}</span>
                 </a>
 

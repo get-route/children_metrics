@@ -1,5 +1,5 @@
-@section('title','Все метрики сайта - каталог')
-@section('description','Каталог метрик сайта')
+@section('title','Бесплатные шаблоны метрик для новорожденных детей')
+@section('description','Каталог бесплатных шаблонов метрик для новорожденных детей. Удобный выбор и возможность редактирования онлайн.')
 @include('frontend.layout.head')
 @include('frontend.layout.menu')
 @include('frontend.layout.footer')

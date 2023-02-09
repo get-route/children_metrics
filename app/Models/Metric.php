@@ -4,14 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
-use drh2so4\Thumbnail\Traits\thumbnail;
 
 class Metric extends Model
 {
     protected $table = 'metrics';
     protected $fillable = ['title', 'description', 'text', 'photo', 'prise', 'views', 'url', 'public','image'];
 
-    use Thumbnail;
     use Sluggable;
     public function comments()
     {

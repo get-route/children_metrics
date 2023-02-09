@@ -24,7 +24,7 @@ class ImgMetricRequest extends FormRequest
     public function rules()
     {
         return [
-            'image'=>'image|mimes:jpeg,png,jpg,gif,svg|dimensions:min_width=3500,min_height=4900,max_width=3550,max_height=4961'
+            'image'=>'image|mimes:jpeg,png,jpg,gif,svg|dimensions:min_width=3500,min_height=4900,max_width=3550,max_height=4965'
         ];
     }
 }

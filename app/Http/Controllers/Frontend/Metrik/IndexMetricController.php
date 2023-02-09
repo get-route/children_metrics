@@ -6,13 +6,13 @@ use App\Http\Controllers\Controller;
 use App\Models\Metric;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use function Termwind\li;
 
 class IndexMetricController extends Controller
 {
     public function index($url_metric){
         $metrika = Metric::with(['tags','comments'])->where('url','=',$url_metric)->get();
         $random_metrik = Metric::all('title','url','views','public','photo')->where('public','=','Да')->random(6);
-
         $parent_comment = $reply_comment = [];
 
         foreach ($metrika[0]->comments as $comment_param){

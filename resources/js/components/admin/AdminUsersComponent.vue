@@ -56,7 +56,7 @@
         methods:{
             getUserTable(){
                 axios.get('/api/adm_panel/users_admin').then(res=>{
-                    console.log(res.data)
+                   //console.log(res.data)
                     this.getUsers = res.data
                 }).catch(function (error) {
                     console.log(error)
@@ -64,6 +64,7 @@
             },
             deleteUser(id){
                 axios.delete('/api/adm_panel/users_admin/delete/' + id).catch(res=>{
+                    this.getUserTable()
                     alert('Пользователь удален')
                 }).catch(function (error) {
                     console.log(error)

@@ -212,5 +212,6 @@ class MetricsAdminController extends Controller
     {
         $metric_del = Metric::find($id)->delete();
         $tag_relationship = DB::table('tag_metric')->where('metric_id','=',$id)->delete();
+        $comment_relationship = DB::table('comments')->where('metric_id','=',$id)->delete();
     }
 }

@@ -1,5 +1,5 @@
-@section('title','Генератор метрик для новорожденных онлайн')
-@section('description','Описание для страницы генератора')
+@section('title','Сделать метрику онлайн и бесплатно с сервисом DolDz')
+@section('description','Онлайн редактор шаблонов для метрик. Сделайте метрику для новорожденного или ребенку на годик абсолютно бесплатно.')
 @include('frontend.layout.head')
 @include('frontend.layout.menu')
 @include('frontend.layout.footer')
